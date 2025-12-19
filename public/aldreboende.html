@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Äldreboenden | tvättlösningar.se</title>
+    <meta name="description" content="Pålitliga och kostnadseffektiva tvättsystem för äldreboenden. Enkel drift, låga kostnader och garanterad hygien enligt EN 14065.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            color: #1A2833;
+            background: #FAFBFC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2D9B81 0%, #47B39D 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🏡';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.1;
+            right: -5rem;
+            top: -5rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #2D9B81;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #2D9B81;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 3rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: -3rem;
+            position: relative;
+            z-index: 2;
+            border-radius: 8px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #2D9B81;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #4A5A66;
+            font-size: 0.95rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #005281;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4A5A66;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #2D9B81;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .benefit-description {
+            color: #4A5A66;
+            line-height: 1.6;
+        }
+
+        /* Solutions Grid */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #2D9B81;
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .solution-description {
+            color: #4A5A66;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .solution-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solution-features li {
+            padding: 0.5rem 0;
+            color: #1A2833;
+            font-size: 0.95rem;
+        }
+
+        .solution-features li::before {
+            content: "✓";
+            color: #2D9B81;
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, #E6F2F8 0%, #FFFFFF 100%);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .pricing h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #005281;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .pricing-title {
+            font-size: 1.25rem;
+            color: #005281;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .pricing-amount {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #2D9B81;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: #7A8A96;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            color: #4A5A66;
+            font-size: 0.9rem;
+        }
+
+        .pricing-features li::before {
+            content: "•";
+            color: #2D9B81;
+            margin-right: 0.75rem;
+        }
+
+        .pricing-note {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid #E0E4E8;
+            text-align: center;
+            color: #7A8A96;
+            font-size: 0.9rem;
+        }
+
+        /* Case Study */
+        .case-study {
+            background: linear-gradient(135deg, #F5F7F9 0%, #E6F2F8 100%);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .case-study-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .case-study-badge {
+            display: inline-block;
+            background: #2D9B81;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #005281;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study-subtitle {
+            color: #4A5A66;
+            font-size: 1.1rem;
+        }
+
+        .case-study-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .case-study-text {
+            color: #1A2833;
+            line-height: 1.8;
+        }
+
+        .case-study-stats {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .case-stat {
+            padding: 1rem 0;
+            border-bottom: 1px solid #E0E4E8;
+        }
+
+        .case-stat:last-child {
+            border-bottom: none;
+        }
+
+        .case-stat-label {
+            font-size: 0.9rem;
+            color: #7A8A96;
+            margin-bottom: 0.25rem;
+        }
+
+        .case-stat-value {
+            font-size: 1.5rem;
+            color: #2D9B81;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #2D9B81 0%, #47B39D 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .benefits-grid,
+            .solutions-grid,
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study-content {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .stats {
+                margin-top: -2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be injected here by header.js -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🏡 Äldreboenden</div>
+                <h1>Trygg och kostnadseffektiv tvätthantering</h1>
+                <p>
+                    Pålitliga tvättsystem som ger era boende ren tvätt varje dag – med enkel drift,
+                    låga kostnader och garanterad hygien.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="showConsultationBooking()">
+                        📞 Boka rådgivning
+                    </button>
+                    <a href="lcc-kalkylator.html" class="btn btn-secondary">
+                        💰 Beräkna kostnader
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="content-section" style="padding-top: 5rem;">
+        <div class="container">
+            <div class="stats">
+                <div class="stats-grid">
+                    <div>
+                        <div class="stat-number">3-5 kg</div>
+                        <div class="stat-label">Tvätt per plats/dygn</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">-30%</div>
+                        <div class="stat-label">Lägre driftskostnad</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">EN 14065</div>
+                        <div class="stat-label">Hygienstandard</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">10 år</div>
+                        <div class="stat-label">Livslängd</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Varför väljer äldreboenden oss?</h2>
+            <p class="section-subtitle">Vi förstår era behov och prioriteringar</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Låg total ägandekostnad</h3>
+                    <p class="benefit-description">
+                        Energieffektiva maskiner med låga driftskostnader. LCC-kalkylering visar ofta
+                        att rätt investering betalar sig inom 3-5 år.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">👍</div>
+                    <h3 class="benefit-title">Enkel att använda</h3>
+                    <p class="benefit-description">
+                        Intuitiva kontroller som gör det lätt för personal med olika erfarenhet.
+                        Automatiska program för olika textiltyper.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧪</div>
+                    <h3 class="benefit-title">Garanterad hygien</h3>
+                    <p class="benefit-description">
+                        EN 14065-certifiering ger trygghet att hygienstandarden uppfylls – viktigt
+                        för såväl boende som Arbetsmiljöverket.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔧</div>
+                    <h3 class="benefit-title">Pålitlig drift</h3>
+                    <p class="benefit-description">
+                        Robusta maskiner byggda för intensiv användning. Service och reservdelar
+                        garanterade i 10+ år.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🌱</div>
+                    <h3 class="benefit-title">Miljövänlig</h3>
+                    <p class="benefit-description">
+                        Låg vatten- och energiförbrukning. Moderna maskiner använder 50% mindre energi
+                        än äldre modeller.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📞</div>
+                    <h3 class="benefit-title">Lokal support</h3>
+                    <p class="benefit-description">
+                        Snabb service när det behövs. Förebyggande underhåll för att minimera
+                        driftstopp och oväntade kostnader.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="content-section" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Våra lösningar för äldreboenden</h2>
+            <p class="section-subtitle">Anpassade paket för olika storlekar</p>
+
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🏘️</div>
+                    <h3 class="solution-title">Litet boende (20-40 platser)</h3>
+                    <p class="solution-description">
+                        Kompakt och kostnadseffektiv lösning för mindre äldreboenden.
+                    </p>
+                    <ul class="solution-features">
+                        <li>1-2 tvättmaskiner (8-11 kg)</li>
+                        <li>1 torktumlare (8-11 kg)</li>
+                        <li>EN 14065 certifiering</li>
+                        <li>Automatisk dosering (tillval)</li>
+                        <li>Serviceavtal med fast årskostnad</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">🏢</div>
+                    <h3 class="solution-title">Mellanstor(t (40-80 platser)</h3>
+                    <p class="solution-description">
+                        Balanserad lösning med redundans och bra kapacitet.
+                    </p>
+                    <ul class="solution-features">
+                        <li>2-3 tvättmaskiner (11-18 kg)</li>
+                        <li>2 torktumlare (11-18 kg)</li>
+                        <li>Digitalt styrsystem</li>
+                        <li>Automatisk dosering inkluderat</li>
+                        <li>Prioriterad service (svar inom 4h)</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">🏙️</div>
+                    <h3 class="solution-title">Stort boende (80+ platser)</h3>
+                    <p class="solution-description">
+                        Professionellt system för stora anläggningar eller flera boenden.
+                    </p>
+                    <ul class="solution-features">
+                        <li>4-6 tvättmaskiner (18 kg)</li>
+                        <li>3-4 torktumlare (18 kg)</li>
+                        <li>Avancerat styrsystem med fjärrövervakning</li>
+                        <li>Full spårbarhet och rapportering</li>
+                        <li>24/7 support och dedikerad servicetekniker</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pricing">
+                <h3>Exempel på totalkostnader</h3>
+                <p style="text-align: center; color: #4A5A66; margin-bottom: 2rem;">
+                    Investering + drift i 10 år (inkl. energi, kemikalier, service)
+                </p>
+
+                <div class="pricing-grid">
+                    <div class="pricing-card">
+                        <h4 class="pricing-title">Litet boende</h4>
+                        <div class="pricing-amount">~850 000 kr</div>
+                        <div class="pricing-period">Total LCC över 10 år</div>
+                        <ul class="pricing-features">
+                            <li>Initial investering: ~250 000 kr</li>
+                            <li>Årlig drift: ~60 000 kr</li>
+                            <li>Service: ~10 000 kr/år</li>
+                            <li>Kostnad per plats/år: ~2 125 kr</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4 class="pricing-title">Mellanstort</h4>
+                        <div class="pricing-amount">~1,5 milj kr</div>
+                        <div class="pricing-period">Total LCC över 10 år</div>
+                        <ul class="pricing-features">
+                            <li>Initial investering: ~450 000 kr</li>
+                            <li>Årlig drift: ~90 000 kr</li>
+                            <li>Service: ~15 000 kr/år</li>
+                            <li>Kostnad per plats/år: ~1 875 kr</li>
+                        </ul>
+                    </div>
+
+                    <div class="pricing-card">
+                        <h4 class="pricing-title">Stort boende</h4>
+                        <div class="pricing-amount">~2,5 milj kr</div>
+                        <div class="pricing-period">Total LCC över 10 år</div>
+                        <ul class="pricing-features">
+                            <li>Initial investering: ~750 000 kr</li>
+                            <li>Årlig drift: ~150 000 kr</li>
+                            <li>Service: ~25 000 kr/år</li>
+                            <li>Kostnad per plats/år: ~1 563 kr</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="pricing-note">
+                    💡 <strong>Tips:</strong> Använd vår <a href="lcc-kalkylator.html" style="color: #0078B4; text-decoration: none;">LCC-kalkylator</a>
+                    för att få exakta siffror för just er verksamhet.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="case-study">
+                <div class="case-study-header">
+                    <div class="case-study-badge">FALLSTUDIE</div>
+                    <h3>Rosengården Äldreboende, Göteborg</h3>
+                    <p class="case-study-subtitle">65 platser • Demensboende</p>
+                </div>
+
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Utmaning:</strong> Rosengården hade extern tvättservice som kostade
+                            35 000 kr/månad. Logistiken var krånglig och ibland försvann kläder.
+                            Personalen önskade kunna tvätta direkt på plats.
+                        </p>
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Lösning:</strong> Vi installerade 3 st tvättmaskiner (11 kg) och
+                            2 st torktumlare med automatisk dosering. Enkel utbildning för personalen
+                            och tydliga instruktioner på maskiner na.
+                        </p>
+                        <p>
+                            <strong>Resultat:</strong> Efter 4 år har investeringen betalat sig.
+                            Årlig besparing är 220 000 kr jämfört med extern tvättservice. Personalen
+                            är nöjdare och de boende får snabbare tillgång till sina kläder.
+                        </p>
+                    </div>
+
+                    <div class="case-study-stats">
+                        <div class="case-stat">
+                            <div class="case-stat-label">Investering</div>
+                            <div class="case-stat-value">420 000 kr</div>
+                        </div>
+                        <div class="case-stat">
+                            <div class="case-stat-label">Årlig besparing</div>
+                            <div class="case-stat-value">220 000 kr</div>
+                        </div>
+                        <div class="case-stat">
+                            <div class="case-stat-label">Återbetalningstid</div>
+                            <div class="case-stat-value">1,9 år</div>
+                        </div>
+                        <div class="case-stat">
+                            <div class="case-stat-label">Installationsår</div>
+                            <div class="case-stat-value">2020</div>
+                        </div>
+                        <div class="case-stat">
+                            <div class="case-stat-label">Personalnöjdhet</div>
+                            <div class="case-stat-value">9/10</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Ska vi räkna på ert äldreboende?</h2>
+            <p class="cta-description">
+                Få en kostnadsfri behovsanalys och LCC-kalkylering
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="showConsultationBooking()">
+                    📞 Boka rådgivning
+                </button>
+                <a href="volymberaknare.html" class="btn btn-secondary">
+                    📊 Beräkna behov
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="header.js"></script>
+    <script src="config.js"></script>
+    <script src="analytics.js"></script>
+    <script src="lead-capture.js"></script>
+
+    <script>
+        // Track page view
+        if (typeof trackPageView !== 'undefined') {
+            trackPageView('Äldreboenden');
+        }
+
+        // Consultation booking handler
+        function showConsultationBooking() {
+            if (typeof LeadCaptureModal !== 'undefined') {
+                const modal = new LeadCaptureModal({
+                    title: 'Boka rådgivning för äldreboende',
+                    description: 'Vi kontaktar er inom 24 timmar för att boka ett möte.',
+                    submitButtonText: 'Boka rådgivning',
+                    requirePhone: true,
+                    onSubmit: async function(formData) {
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        const response = await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                ...formData,
+                                source: 'aldreboende_consultation'
+                            })
+                        });
+
+                        if (response.ok && typeof trackLeadCapture !== 'undefined') {
+                            trackLeadCapture('Äldreboende Consultation', true);
+                        }
+
+                        return response.ok;
+                    }
+                });
+                modal.show();
+            }
+        }
+    </script>
+</body>
+</html>

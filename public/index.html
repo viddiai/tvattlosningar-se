@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Vården | Professionella tvättsystem</title>
+    <meta name="description" content="Professionella tvättlösningar för vård och omsorg. Volymberäknare, LCC-kalkylatorer och expertguider för äldreboenden, sjukhus och vårdcentraler.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-mid);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem;
+        }
+
+        .tool-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .tool-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .tool-card p {
+            color: var(--text-mid);
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="hero">
+            <h1>Professionella Tvättlösningar för Vården</h1>
+            <p>Expertverktyg och guider för att dimensionera, beräkna och optimera era tvättsystem</p>
+        </section>
+
+        <!-- Verktyg -->
+        <section style="margin-bottom: 4rem;">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem;">Verktyg & Kalkylatorer</h2>
+            <div class="tools-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <a href="volymberaknare.html" class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3>Volymberäknare</h3>
+                    <p>Beräkna hur många tvättmaskiner och torktumlare ni behöver baserat på er verksamhet</p>
+                    <span class="btn">Starta beräkning →</span>
+                </a>
+
+                <a href="lcc-kalkylator.html" class="tool-card">
+                    <div class="tool-icon">💰</div>
+                    <h3>LCC-Kalkylator</h3>
+                    <p>Beräkna totalkostnaden över maskinernas livstid - inte bara inköpspriset</p>
+                    <span class="btn">Beräkna LCC →</span>
+                </a>
+
+                <a href="beredskapsquiz.html" class="tool-card">
+                    <div class="tool-icon">✅</div>
+                    <h3>Beredskapsquiz</h3>
+                    <p>Testa er organisations beredskap för tvätthantering vid kris</p>
+                    <span class="btn">Ta quiz →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Branscher -->
+        <section style="margin-bottom: 4rem;">
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem;">Lösningar för olika branscher</h2>
+            <div class="tools-grid">
+                <a href="sjukhus-akutvard.html" class="tool-card">
+                    <div class="tool-icon">🏥</div>
+                    <h3>Sjukhus & Akutvård</h3>
+                    <p>Specialanpassade lösningar för sjukhus och akutvård med höga hygienriktlinjer</p>
+                    <span class="btn">Läs mer →</span>
+                </a>
+
+                <a href="aldreboende.html" class="tool-card">
+                    <div class="tool-icon">🏡</div>
+                    <h3>Äldreboenden</h3>
+                    <p>Tvättlösningar anpassade för äldreboenden och särskilt boende</p>
+                    <span class="btn">Läs mer →</span>
+                </a>
+
+                <a href="vardcentraler.html" class="tool-card">
+                    <div class="tool-icon">🩺</div>
+                    <h3>Vårdcentraler</h3>
+                    <p>Kompakta och effektiva tvättlösningar för vårdmottagningar</p>
+                    <span class="btn">Läs mer →</span>
+                </a>
+
+                <a href="bygg-fastighet.html" class="tool-card">
+                    <div class="tool-icon">🏗️</div>
+                    <h3>Bygg & Fastighet</h3>
+                    <p>99,2% leverans enligt plan. Vi löser projektrisken med tvättsystem</p>
+                    <span class="btn">Läs mer →</span>
+                </a>
+
+                <a href="sport-fritid.html" class="tool-card">
+                    <div class="tool-icon">⚽</div>
+                    <h3>Sport & Fritid</h3>
+                    <p>Klarar era volymer. Överlever er intensitet. 140+ anläggningar</p>
+                    <span class="btn">Läs mer →</span>
+                </a>
+
+                <a href="djurhallning.html" class="tool-card">
+                    <div class="tool-icon">🐕</div>
+                    <h3>Djurvård</h3>
+                    <p>System som klarar hår, lukt och biologisk kontaminering</p>
+                    <span class="btn">Läs mer →</span>
+                </a>
+
+                <a href="raddningstjanst.html" class="tool-card">
+                    <div class="tool-icon">🚒</div>
+                    <h3>Räddningstjänst</h3>
+                    <p>96,4% PAH-reduktion. Vetenskapligt bevisad cancerprevention</p>
+                    <span class="btn">Läs mer →</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Övrigt -->
+        <section>
+            <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem;">Mer information</h2>
+            <div class="tools-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+                <a href="leasing.html" class="tool-card">
+                    <div class="tool-icon">💳</div>
+                    <h3>Leasing & Finansiering</h3>
+                    <p>Flexibla lösningar från noll initial kostnad till full äganderätt</p>
+                    <span class="btn">Se alternativ →</span>
+                </a>
+
+                <a href="guider.html" class="tool-card">
+                    <div class="tool-icon">📚</div>
+                    <h3>Guider & Resurser</h3>
+                    <p>Nedladdningsbara guider och expertråd för tvätthantering</p>
+                    <span class="btn">Utforska →</span>
+                </a>
+
+                <a href="kontakt.html" class="tool-card">
+                    <div class="tool-icon">📞</div>
+                    <h3>Kontakta Oss</h3>
+                    <p>Få personlig rådgivning från våra experter</p>
+                    <span class="btn">Kontakt →</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Tvättlösningar Sverige. Professionella tvättsystem för vård och omsorg.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

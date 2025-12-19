@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beredskapsquiz - Är ni redo för tvättupphandling? | tvättlösningar.se</title>
+    <meta name="description" content="Ta vårt 2-minuters quiz och få en personlig rapport om vad ni bör tänka på innan upphandling av tvättsystem.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+            --warning: #C74E3C;
+            --danger: #D93025;
+            --border: #E0E4E8;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        /* Intro */
+        .intro {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .intro p {
+            font-size: 1.125rem;
+            color: var(--text-mid);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .info-box {
+            background: var(--primary-light);
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: var(--spacing-lg);
+            text-align: left;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-xs);
+            font-size: 0.875rem;
+            color: var(--text-mid);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+
+        /* Quiz Card */
+        .quiz-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .question {
+            display: none;
+        }
+
+        .question.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .question-number {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            font-family: 'DM Serif Display', serif;
+            color: var(--primary);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .answer-options {
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .answer-option {
+            background: var(--bg-cream);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+        }
+
+        .answer-option:hover {
+            border-color: var(--accent);
+            background: var(--white);
+            transform: translateX(4px);
+        }
+
+        .answer-option.selected {
+            background: var(--primary-light);
+            border-color: var(--accent);
+            border-width: 2px;
+        }
+
+        .answer-radio {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--border);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .answer-option.selected .answer-radio {
+            border-color: var(--accent);
+            background: var(--accent);
+        }
+
+        .answer-option.selected .answer-radio::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .answer-content {
+            flex: 1;
+        }
+
+        .answer-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+
+        .answer-description {
+            font-size: 0.875rem;
+            color: var(--text-mid);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 180, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            margin-top: var(--spacing-lg);
+        }
+
+        /* Results */
+        .results {
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .score-number {
+            font-size: 5rem;
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .score-label {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .readiness-level {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            border-left: 4px solid var(--success);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .readiness-level.warning {
+            border-left-color: var(--warning);
+        }
+
+        .readiness-level.danger {
+            border-left-color: var(--danger);
+        }
+
+        .readiness-level h3 {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .category-results {
+            display: grid;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .category-card {
+            background: var(--white);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+        }
+
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .category-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+            color: var(--text-dark);
+        }
+
+        .category-score {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .score-icon {
+            font-size: 1.5rem;
+        }
+
+        .category-feedback {
+            color: var(--text-mid);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .recommendations {
+            background: var(--bg-cream);
+            padding: var(--spacing-sm);
+            border-radius: 4px;
+        }
+
+        .recommendations h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-xs);
+            color: var(--primary);
+        }
+
+        .recommendations ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .recommendations li {
+            padding: 0.25rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+            font-size: 0.875rem;
+        }
+
+        .recommendations li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .action-box {
+            background: var(--success);
+            color: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .action-box h3 {
+            color: var(--white);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .button-group {
+                flex-direction: column;
+            }
+
+            .score-number {
+                font-size: 4rem;
+            }
+        }
+
+        @media print {
+            .header,
+            .button-group,
+            .action-box {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be inserted here by header.js -->
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Intro -->
+        <section class="intro">
+            <h1>Är ni redo för tvättupphandling?</h1>
+            <p>Ta vårt quiz och få en personlig rapport med vad ni bör tänka på</p>
+
+            <div class="info-box">
+                <strong>⏱️ Tar bara 2 minuter</strong>
+                <p>10 snabba frågor om er beredskap inför upphandling av tvättsystem. Få direkt feedback på vad ni bör förbereda.</p>
+            </div>
+        </section>
+
+        <!-- Progress -->
+        <div class="progress-container">
+            <div class="progress-header">
+                <span>Fråga <span id="currentQuestion">1</span> av <span id="totalQuestions">10</span></span>
+                <span id="progressPercent">10%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Quiz -->
+        <div class="quiz-card" id="quizCard">
+            <!-- Questions will be generated here -->
+        </div>
+
+        <!-- Results -->
+        <div class="results" id="results">
+            <div class="score-card">
+                <div class="score-number" id="totalScore">0</div>
+                <div class="score-label">Beredskapspoäng av 100</div>
+            </div>
+
+            <div class="readiness-level" id="readinessLevel">
+                <h3 id="readinessTitle">Din beredskapsnivå</h3>
+                <p id="readinessDescription"></p>
+            </div>
+
+            <h2 style="text-align: center; margin-bottom: var(--spacing-md);">Detaljerad analys per område</h2>
+
+            <div class="category-results" id="categoryResults">
+                <!-- Category cards will be generated here -->
+            </div>
+
+            <div class="action-box">
+                <h3>Nästa steg för er upphandling</h3>
+                <p style="margin-bottom: var(--spacing-md); opacity: 0.9;">Vill ni ha hjälp att förbereda er upphandling?</p>
+                <div class="button-group">
+                    <button class="btn btn-primary" onclick="window.print()" style="background: white; color: var(--success);">🖨️ Skriv ut rapport</button>
+                    <a href="vard-hygien-landing.html#contact" class="btn btn-secondary" style="background: white; color: var(--success); border-color: white;">📞 Boka rådgivning</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Quiz questions
+        const questions = [
+            {
+                category: 'Volym & Kapacitet',
+                question: 'Har ni kartlagt er faktiska tvättvolym?',
+                options: [
+                    { text: 'Ja, detaljerad mätning över minst 3 månader', score: 10, feedback: 'Utmärkt! Solid datagrund.' },
+                    { text: 'Ja, ungefärlig uppskattning baserad på historik', score: 7, feedback: 'Bra start, men mer data ger säkrare dimensionering.' },
+                    { text: 'Nej, men vi har en uppfattning', score: 3, feedback: 'Risk för underdimensionering eller överdimensionering.' },
+                    { text: 'Nej, ingen aning', score: 0, feedback: 'Kritiskt! Börja mäta omedelbart.' }
+                ]
+            },
+            {
+                category: 'Volym & Kapacitet',
+                question: 'Har ni dimensionerat för toppbelastning (inte genomsnitt)?',
+                options: [
+                    { text: 'Ja, vi har identifierat och planerat för toppar', score: 10, feedback: 'Professionellt! Ni undviker flaskhalsar.' },
+                    { text: 'Vi vet att det finns toppar men har inte räknat på dem', score: 5, feedback: 'Gör en toppanalys innan upphandling.' },
+                    { text: 'Nej, vi räknar på genomsnittlig volym', score: 2, feedback: 'Farligt – systemet kommer inte klara influensasäsong.' },
+                    { text: 'Vad menar ni med toppar?', score: 0, feedback: 'Läs på om säsongsvariation och smittoutbrott.' }
+                ]
+            },
+            {
+                category: 'Budget & Ekonomi',
+                question: 'Har ni gjort en LCC-kalkyl (livscykelkostnad)?',
+                options: [
+                    { text: 'Ja, detaljerad LCC över 10-15 år', score: 10, feedback: 'Perfekt! Ni ser hela kostnadsbilden.' },
+                    { text: 'Vi har tittat på drift och investering separat', score: 6, feedback: 'Bra, men kombinera för totalbild.' },
+                    { text: 'Nej, vi fokuserar på inköpspris', score: 2, feedback: 'Varning! Billigaste alternativet ofta dyrast över tid.' },
+                    { text: 'Vad är LCC?', score: 0, feedback: 'Använd vår LCC-kalkylator omedelbart.' }
+                ]
+            },
+            {
+                category: 'Budget & Ekonomi',
+                question: 'Har ni budget för både investering OCH löpande drift?',
+                options: [
+                    { text: 'Ja, både CapEx och OpEx är godkända', score: 10, feedback: 'Utmärkt ekonomisk planering.' },
+                    { text: 'Vi har investeringsbudget, drift får vi se på', score: 5, feedback: 'Planera drift direkt – annars problem år 2.' },
+                    { text: 'Vi har inte tillräcklig budget', score: 2, feedback: 'Överväg leasing eller funktionshyra.' },
+                    { text: 'Ingen budget ännu', score: 0, feedback: 'Börja med budgetprocess omedelbart.' }
+                ]
+            },
+            {
+                category: 'Hygien & Krav',
+                question: 'Vet ni vilka hygienstandarder som gäller för er verksamhet?',
+                options: [
+                    { text: 'Ja, vi har dokumenterade krav (EN 14065, ISO 15883)', score: 10, feedback: 'Professionellt! Ni vet vad ni behöver.' },
+                    { text: 'Vi har hört talas om standarder men inte specifikt', score: 6, feedback: 'Ta reda på exakta krav innan upphandling.' },
+                    { text: 'Nej, men det fixar leverantören?', score: 2, feedback: 'Farligt! Ni måste själva verifiera efterlevnad.' },
+                    { text: 'Finns det speciella krav för vården?', score: 0, feedback: 'Ja! Läs på om EN 14065 och Socialstyrelsens krav.' }
+                ]
+            },
+            {
+                category: 'Hygien & Krav',
+                question: 'Har ni krav på spårbarhet och dokumentation av tvättcykler?',
+                options: [
+                    { text: 'Ja, specificerat i kravspec', score: 10, feedback: 'Korrekt för vården – viktigt vid revision.' },
+                    { text: 'Vi tror vi behöver det', score: 6, feedback: 'Undersök exakt vilken dokumentation ni måste ha.' },
+                    { text: 'Nej, är det nödvändigt?', score: 2, feedback: 'Ja, för de flesta vårdverksamheter.' },
+                    { text: 'Vad menar ni med spårbarhet?', score: 0, feedback: 'Kontakta Socialstyrelsen för krav.' }
+                ]
+            },
+            {
+                category: 'Infrastruktur & Installation',
+                question: 'Har ni utrett er befintliga infrastruktur (VVS, el, ventilation)?',
+                options: [
+                    { text: 'Ja, fullständig kartläggning med kapacitetsanalys', score: 10, feedback: 'Perfekt! Inga överraskningar vid installation.' },
+                    { text: 'Vi har kollat lite', score: 5, feedback: 'Gör en professionell analys – ofta dolda begränsningar.' },
+                    { text: 'Nej, men lokalen har väl det som behövs?', score: 2, feedback: 'Ofta inte! Kan betyda stora extrakostnader.' },
+                    { text: 'Vad behöver vi kolla?', score: 0, feedback: 'El-kapacitet, vattenflöde, avlopp, vent. Anlita expert.' }
+                ]
+            },
+            {
+                category: 'Infrastruktur & Installation',
+                question: 'Har ni en plan för installation utan att störa verksamheten?',
+                options: [
+                    { text: 'Ja, detaljerad tidsplan med leverantör', score: 10, feedback: 'Professionellt! Patientvården går före.' },
+                    { text: 'Vi har diskuterat det', score: 6, feedback: 'Konkretisera planen innan kontrakt.' },
+                    { text: 'Det får vi lösa när det väl händer', score: 2, feedback: 'Riskabelt – kan stoppa upp vården i veckor.' },
+                    { text: 'Går det inte att installera på en helg?', score: 0, feedback: 'Ofta 2-4 veckor process. Planera noggrant.' }
+                ]
+            },
+            {
+                category: 'Leverantörsval',
+                question: 'Har ni definierat vad som är viktigast för er?',
+                options: [
+                    { text: 'Ja, prioriterad kravlista (hygien, LCC, service, etc.)', score: 10, feedback: 'Utmärkt! Ni vet vad ni optimerar för.' },
+                    { text: 'Vi har några tankar', score: 6, feedback: 'Konkretisera och vikta kriterierna.' },
+                    { text: 'Vi vill ha lägsta pris', score: 2, feedback: 'Farligt för vården – kvalitet och tillförlitlighet viktigare.' },
+                    { text: 'Allt måste vara bra', score: 0, feedback: 'Omöjligt. Prioritera vad som är kritiskt.' }
+                ]
+            },
+            {
+                category: 'Leverantörsval',
+                question: 'Har ni kollat referenskunder inom vården?',
+                options: [
+                    { text: 'Ja, besökt liknande verksamheter med samma system', score: 10, feedback: 'Guld! Bästa sättet att validera leverantör.' },
+                    { text: 'Vi ska fråga efter referenser', score: 6, feedback: 'Gör det! Och besök verksamheten om möjligt.' },
+                    { text: 'Nej, men leverantören verkar seriös', score: 2, feedback: 'Verifiera alltid med referenser – särskilt inom vård.' },
+                    { text: 'Behövs det?', score: 0, feedback: 'Absolut! Kan avslöja problem tidigt.' }
+                ]
+            }
+        ];
+
+        // State
+        let currentQuestionIndex = 0;
+        let answers = [];
+        const totalQuestions = questions.length;
+
+        // Elements
+        const quizCard = document.getElementById('quizCard');
+        const resultsSection = document.getElementById('results');
+        const progressFill = document.getElementById('progressFill');
+        const currentQuestionEl = document.getElementById('currentQuestion');
+        const progressPercent = document.getElementById('progressPercent');
+
+        // Initialize quiz
+        function initQuiz() {
+            renderQuestion(0);
+            updateProgress();
+        }
+
+        // Render question
+        function renderQuestion(index) {
+            const q = questions[index];
+            const questionHTML = `
+                <div class="question active">
+                    <div class="question-number">Fråga ${index + 1} av ${totalQuestions}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="answer-options">
+                        ${q.options.map((opt, i) => `
+                            <div class="answer-option" data-option="${i}">
+                                <div class="answer-radio"></div>
+                                <div class="answer-content">
+                                    <div class="answer-title">${opt.text}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="button-group">
+                        ${index > 0 ? '<button class="btn btn-secondary" onclick="previousQuestion()">← Föregående</button>' : '<div></div>'}
+                        <button class="btn btn-primary" id="nextBtn" disabled>${index < totalQuestions - 1 ? 'Nästa →' : 'Se resultat →'}</button>
+                    </div>
+                </div>
+            `;
+
+            quizCard.innerHTML = questionHTML;
+
+            // Add click handlers
+            document.querySelectorAll('.answer-option').forEach(option => {
+                option.addEventListener('click', () => selectAnswer(option));
+            });
+
+            // Restore previous answer if exists
+            if (answers[index] !== undefined) {
+                const options = document.querySelectorAll('.answer-option');
+                options[answers[index]].classList.add('selected');
+                document.getElementById('nextBtn').disabled = false;
+            }
+        }
+
+        // Select answer
+        function selectAnswer(selectedOption) {
+            // Remove previous selection
+            document.querySelectorAll('.answer-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Add selection
+            selectedOption.classList.add('selected');
+
+            // Store answer
+            const optionIndex = parseInt(selectedOption.dataset.option);
+            answers[currentQuestionIndex] = optionIndex;
+
+            // Enable next button
+            document.getElementById('nextBtn').disabled = false;
+
+            // Add click handler to next button
+            document.getElementById('nextBtn').onclick = nextQuestion;
+        }
+
+        // Next question
+        function nextQuestion() {
+            if (currentQuestionIndex < totalQuestions - 1) {
+                currentQuestionIndex++;
+                renderQuestion(currentQuestionIndex);
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showResults();
+            }
+        }
+
+        // Previous question
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion(currentQuestionIndex);
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // Update progress
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100;
+            progressFill.style.width = progress + '%';
+            currentQuestionEl.textContent = currentQuestionIndex + 1;
+            progressPercent.textContent = Math.round(progress) + '%';
+        }
+
+        // Calculate and show results
+        function showResults() {
+            // Calculate total score
+            let totalScore = 0;
+            const categoryScores = {};
+
+            questions.forEach((q, i) => {
+                const answerIndex = answers[i];
+                const score = q.options[answerIndex].score;
+                totalScore += score;
+
+                // Category scores
+                if (!categoryScores[q.category]) {
+                    categoryScores[q.category] = { score: 0, max: 0, questions: [] };
+                }
+                categoryScores[q.category].score += score;
+                categoryScores[q.category].max += 10;
+                categoryScores[q.category].questions.push({
+                    question: q.question,
+                    answer: q.options[answerIndex],
+                    score: score
+                });
+            });
+
+            // Display total score
+            document.getElementById('totalScore').textContent = totalScore;
+
+            // Determine readiness level
+            const readinessLevel = document.getElementById('readinessLevel');
+            const readinessTitle = document.getElementById('readinessTitle');
+            const readinessDescription = document.getElementById('readinessDescription');
+
+            if (totalScore >= 85) {
+                readinessLevel.className = 'readiness-level';
+                readinessTitle.textContent = '🎯 Utmärkt beredskap!';
+                readinessDescription.textContent = 'Ni är väl förberedda för upphandling. Era processer är professionella och ni har tänkt igenom de kritiska aspekterna. Fortsätt enligt plan!';
+            } else if (totalScore >= 65) {
+                readinessLevel.className = 'readiness-level';
+                readinessTitle.textContent = '✅ Bra beredskap';
+                readinessDescription.textContent = 'Ni har kommit en bra bit på vägen. Det finns några områden som behöver förstärkas, men grunden är solid. Se detaljerna nedan för vad ni bör komplettera.';
+            } else if (totalScore >= 40) {
+                readinessLevel.className = 'readiness-level warning';
+                readinessTitle.textContent = '⚠️ Delvis förberedd';
+                readinessDescription.textContent = 'Ni har påbörjat arbetet men flera viktiga områden saknas. Vi rekommenderar att ni kompletterar enligt nedanstående innan ni går vidare med upphandling.';
+            } else {
+                readinessLevel.className = 'readiness-level danger';
+                readinessTitle.textContent = '🚨 Behöver mer förberedelse';
+                readinessDescription.textContent = 'Det finns betydande kunskapsluckor som kan leda till dyra misstag. Vi rekommenderar starkt att ni tar hjälp av en expert innan upphandling.';
+            }
+
+            // Generate category cards
+            const categoryResults = document.getElementById('categoryResults');
+            categoryResults.innerHTML = Object.entries(categoryScores).map(([category, data]) => {
+                const percentage = Math.round((data.score / data.max) * 100);
+                let icon = '✅';
+                if (percentage < 50) icon = '❌';
+                else if (percentage < 75) icon = '⚠️';
+
+                const recommendations = generateRecommendations(category, data);
+
+                return `
+                    <div class="category-card">
+                        <div class="category-header">
+                            <div class="category-title">${category}</div>
+                            <div class="category-score">
+                                <span class="score-icon">${icon}</span>
+                                <strong>${percentage}%</strong>
+                            </div>
+                        </div>
+                        <div class="category-feedback">
+                            ${getCategoryFeedback(percentage)}
+                        </div>
+                        ${recommendations.length > 0 ? `
+                            <div class="recommendations">
+                                <h4>Åtgärder:</h4>
+                                <ul>
+                                    ${recommendations.map(r => `<li>${r}</li>`).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }).join('');
+
+            // Hide quiz, show results
+            quizCard.style.display = 'none';
+            document.querySelector('.progress-container').style.display = 'none';
+            resultsSection.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getCategoryFeedback(percentage) {
+            if (percentage >= 85) return 'Utmärkt! Detta område är väl förberett.';
+            if (percentage >= 70) return 'Bra! Mindre justeringar kan behövas.';
+            if (percentage >= 50) return 'Delvis klart. Förstärkning rekommenderas.';
+            return 'Kritiskt område som behöver åtgärdas.';
+        }
+
+        function generateRecommendations(category, data) {
+            const recommendations = [];
+
+            data.questions.forEach(q => {
+                if (q.score < 7) {
+                    // Low score - add recommendation
+                    if (category === 'Volym & Kapacitet') {
+                        if (q.question.includes('kartlagt')) {
+                            recommendations.push('Starta mätning av tvättvolym i minst 3 månader');
+                        } else if (q.question.includes('toppbelastning')) {
+                            recommendations.push('Analysera säsongsvariationer och toppbelastning');
+                        }
+                    } else if (category === 'Budget & Ekonomi') {
+                        if (q.question.includes('LCC')) {
+                            recommendations.push('Använd vår LCC-kalkylator för att se totalkostnad');
+                        } else if (q.question.includes('budget')) {
+                            recommendations.push('Säkra budget för både investering och löpande drift');
+                        }
+                    } else if (category === 'Hygien & Krav') {
+                        if (q.question.includes('hygienstandarder')) {
+                            recommendations.push('Ta reda på vilka EN-standarder som gäller för er');
+                        } else if (q.question.includes('spårbarhet')) {
+                            recommendations.push('Kontrollera krav på dokumentation med Socialstyrelsen');
+                        }
+                    } else if (category === 'Infrastruktur & Installation') {
+                        if (q.question.includes('infrastruktur')) {
+                            recommendations.push('Genomför teknisk analys av VVS, el och ventilation');
+                        } else if (q.question.includes('installation')) {
+                            recommendations.push('Planera installation med hänsyn till pågående verksamhet');
+                        }
+                    } else if (category === 'Leverantörsval') {
+                        if (q.question.includes('viktigast')) {
+                            recommendations.push('Definiera och vikta era upphandlingskriterier');
+                        } else if (q.question.includes('referenskunder')) {
+                            recommendations.push('Besök minst 2 referenskunder med liknande verksamhet');
+                        }
+                    }
+                }
+            });
+
+            return [...new Set(recommendations)]; // Remove duplicates
+        }
+
+        // Initialize
+        initQuiz();
+    </script>
+
+    <!-- Header Navigation -->
+    <script src="header.js"></script>
+</body>
+</html>

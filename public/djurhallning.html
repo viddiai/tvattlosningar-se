@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Djurvård | tvättlösningar.se</title>
+    <meta name="description" content="System som klarar hår, lukt och biologisk kontaminering. Bevisat i 85+ djurvårdsanläggningar. Specialized för veterinärkliniker, hundpensionat och djurhem.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+            --warning: #C74E3C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 2rem;
+            border-bottom: 1px solid #E0E4E8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #6b4423 0%, #8b5a3c 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-mid);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .challenges-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .challenge-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .challenge-card h4 {
+            color: var(--accent);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .challenge-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .challenge-card li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        .challenge-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            color: var(--success);
+        }
+
+        .example-box {
+            background: var(--primary-light);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            margin-top: 1.5rem;
+        }
+
+        .example-box strong {
+            color: var(--primary);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .solution-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .price-tag {
+            background: var(--primary-light);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 180, 0.3);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background: var(--primary-light);
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">tvättlösningar.se</a>
+            <a href="kontakt.html" class="btn btn-primary">Kontakta oss</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tvättlösningar för Djurvård</h1>
+            <p>System som klarar hår, lukt och biologisk kontaminering</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">85+</span>
+                    <span>Djurvårdsanläggningar</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">99%</span>
+                    <span>Hårfångning</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">10-12 år</span>
+                    <span>Livslängd i djurmiljö</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="section">
+            <div class="section-header">
+                <h2>Era tre största utmaningar – och våra lösningar</h2>
+            </div>
+
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <h3>1. Specialiserad kontaminationskontroll</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Djurhår, mjäll och allergener överallt</li>
+                        <li>Biologiska föroreningar (avföring, urin, blod, saliv)</li>
+                        <li>Zoonosrisker (sjukdomar från djur till människor)</li>
+                        <li>Lukt extremt svår att radera fullständigt</li>
+                        <li>Standardmaskiner täpps till av hår inom veckor</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Förstärkta hårfällor:</strong> Fångar 99% av hår innan det når pump/avlopp</li>
+                        <li><strong>Extra rengöringsintervall:</strong> Service 4× årligen ingår</li>
+                        <li><strong>Biologisk desinfektion:</strong> 90°C termisk + kemisk desinfektion</li>
+                        <li><strong>Luktneutraliserande program:</strong> Specialkemikalier + förlängd sköljning</li>
+                        <li><strong>Robusta komponenter:</strong> Pumpar och filter för djuranvändning</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Hunddagis Göteborg: Tidigare maskin kraschade efter 4 månader (täppt av hår). Vår maskin: 5 år utan hårrelaterat haveri. Hemligheten: Design + förebyggande service.
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <h3>2. Hygien och infektionsprevention</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Förhindra sjukdomsöverföring mellan djur (kennel cough, parvo, ringorm)</li>
+                        <li>Skydda personal från zoonotiska infektioner</li>
+                        <li>Korskontaminering mellan kontaminerade och rena textilier</li>
+                        <li>Efterlevnad av Jordbruksverket och kommunala krav</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Validerad desinfektion:</strong> EN 14065-godkänd process (samma som vård)</li>
+                        <li><strong>Zonsseparation:</strong> Tydlig åtskillnad smutsigt/rent</li>
+                        <li><strong>Spårbarhet:</strong> Knivity dokumenterar varje tvättcykel</li>
+                        <li><strong>Regelefterlevnad:</strong> Vi vet exakt vilka krav som gäller</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Veterinärklinik Uppsala: Ringorm-utbrott spårat till otillräcklig tvätt. Efter installation: 0 utbrott på 4 år. Knivity-logg användes som bevis vid Jordbruksverkets inspektion.
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <h3>3. Utrustningshållbarhet och underhåll</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Kraftiga smutsbelastningar orsakar accelererat slitage</li>
+                        <li>Djurhår täpper maskiner, filter, avlopp</li>
+                        <li>Standard utrustning håller 6-18 månader i djurmiljö</li>
+                        <li>Reparationer dyra och frekventa</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Robust design:</strong> 3× tjockare filter, förstärkta pumpar</li>
+                        <li><strong>Kvartalsmässig service:</strong> Ingår i alla avtal</li>
+                        <li><strong>Hårfälla-rengöring:</strong> Vid varje service (förebygger 90% av haverierna)</li>
+                        <li><strong>Genomsnittlig livslängd:</strong> 10-12 år i djuranvändning (vs. 1-3 för standard)</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Hundpensionat Stockholm: 40 hundar/dag, extremt slitage. Vårt system: 9 år utan större haveri. Hemlighet: Kvartalsmässig service där tekniker rensar hårfällor.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Lösningar för olika djurvårdstyper</h2>
+            </div>
+
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <h3>🏥 Veterinärkliniker</h3>
+                    <p><strong>Unika utmaningar:</strong></p>
+                    <ul class="solution-list">
+                        <li>Biologisk kontaminering (blod, kroppsvätskor)</li>
+                        <li>Höga hygienkrav (Jordbruksverket)</li>
+                        <li>Varierande volymer</li>
+                    </ul>
+                    <p><strong>Vår lösning:</strong></p>
+                    <ul class="solution-list">
+                        <li>Medicinsk-grade desinfektion</li>
+                        <li>Spårbarhet per patient</li>
+                        <li>Snabb omsättningstid (60 min)</li>
+                    </ul>
+                    <div class="price-tag">
+                        Pris: 295 000 – 420 000 kr<br>
+                        Alternativ: Lease 8 900 kr/mån
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <h3>🐕 Hundpensionat & Hunddagis</h3>
+                    <p><strong>Unika utmaningar:</strong></p>
+                    <ul class="solution-list">
+                        <li>Extrema mängder hår</li>
+                        <li>Höga volymer (filtar, handdukar byts dagligen)</li>
+                        <li>Lukt svår att få bort</li>
+                    </ul>
+                    <p><strong>Vår lösning:</strong></p>
+                    <ul class="solution-list">
+                        <li>Max-capacity hårfällor</li>
+                        <li>Luktneutraliserande</li>
+                        <li>24/7 drift-kapabel</li>
+                    </ul>
+                    <div class="price-tag">
+                        Pris: 225 000 – 350 000 kr<br>
+                        Alternativ: Lease 7 200 kr/mån
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <h3>🏡 Djurhem & Rescues</h3>
+                    <p><strong>Unika utmaningar:</strong></p>
+                    <ul class="solution-list">
+                        <li>Högt djuromsättning = hög smittrisk</li>
+                        <li>Begränsade budgetar</li>
+                        <li>Varierande textiltyper</li>
+                    </ul>
+                    <p><strong>Vår lösning:</strong></p>
+                    <ul class="solution-list">
+                        <li>Kostnadseffektiv lease-modell</li>
+                        <li>Högsta hygienstandard</li>
+                        <li>Flexibel programmering</li>
+                    </ul>
+                    <div class="price-tag">
+                        Lease: 6 500 kr/mån (idealisk för ideella)
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Redo för tvättsystem som fungerar i djurmiljö?</h2>
+            <p style="font-size: 1.125rem; opacity: 0.95;">Beprövat i 85+ djurvårdsanläggningar</p>
+
+            <div class="cta-buttons">
+                <a href="volymberaknare.html" class="btn btn-white">📊 Beräkna kapacitet</a>
+                <a href="lcc-kalkylator.html" class="btn btn-white">💰 LCC-kalkylator</a>
+                <a href="kontakt.html" class="btn btn-white">📞 Boka konsultation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Tvättlösningar Sverige. Specialist på djurvård sedan 1984.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

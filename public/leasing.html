@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leasing & Finansiering | tvättlösningar.se</title>
+    <meta name="description" content="Flexibla finansieringslösningar för tvättsystem. Full Service Lease, kapacitetsbaserad prissättning eller traditionellt köp. Noll initial kostnad möjlig.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 2rem;
+            border-bottom: 1px solid #E0E4E8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(0, 120, 180, 0.15);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--primary-light);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .popular-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.25rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+            display: block;
+        }
+
+        .price-unit {
+            font-size: 1rem;
+            color: var(--text-mid);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0 0.75rem 2rem;
+            position: relative;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .comparison-table {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid #E0E4E8;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .check {
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .cross {
+            color: var(--text-light);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">tvättlösningar.se</a>
+            <a href="kontakt.html" class="btn btn-primary">Kontakta oss</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Flexibla Finansieringslösningar</h1>
+        <p>Välj den modell som passar er budget och verksamhet bäst. Från noll initial kostnad till full ägarskap.</p>
+    </section>
+
+    <main class="container">
+        <section class="section">
+            <div class="section-header">
+                <h2>Tre finansieringsmodeller</h2>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card popular">
+                    <div class="pricing-header">
+                        <span class="popular-badge">Mest populär</span>
+                        <h3>Full Service Lease</h3>
+                        <span class="price">12 000 kr<span class="price-unit">/mån</span></span>
+                        <p>Noll initial kostnad</p>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li>Ingen uppstartskostnad</li>
+                        <li>All utrustning ingår</li>
+                        <li>Service och reparationer inkluderat</li>
+                        <li>Garanterad drifttid</li>
+                        <li>Automatiska uppgraderingar efter 5-7 år</li>
+                        <li>Förutsägbar månadskostnad</li>
+                        <li>Perfekt för offentliga budgetar</li>
+                    </ul>
+
+                    <a href="kontakt.html" class="btn btn-primary">Begär offert</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Kapacitetsbaserad</h3>
+                        <span class="price">6 kr<span class="price-unit">/kg</span></span>
+                        <p>Betala per användning</p>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li>Ingen uppstartskostnad</li>
+                        <li>Vi äger utrustningen</li>
+                        <li>Kostnad följer användning</li>
+                        <li>Idealisk vid säsongsvariationer</li>
+                        <li>Service och underhåll ingår</li>
+                        <li>Ingen risk vid låg beläggning</li>
+                        <li>Transparent kostnadsspårning via Knivity</li>
+                    </ul>
+
+                    <a href="kontakt.html" class="btn btn-secondary">Begär offert</a>
+                </div>
+
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Traditionellt köp</h3>
+                        <span class="price">380 000 kr<span class="price-unit">engångsbelopp</span></span>
+                        <p>Full äganderätt</p>
+                    </div>
+
+                    <ul class="pricing-features">
+                        <li>Ni äger utrustningen direkt</li>
+                        <li>Servicepaket: 2 500 kr/mån</li>
+                        <li>Garanterad driftskostnad</li>
+                        <li>Fem års maskingaranti</li>
+                        <li>Möjlighet till avskrivning</li>
+                        <li>Payback: 2-3 år</li>
+                        <li>Lägsta totalkostnad över tid</li>
+                    </ul>
+
+                    <a href="kontakt.html" class="btn btn-secondary">Begär offert</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Jämför modellerna</h2>
+            </div>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Funktion</th>
+                            <th>Full Service Lease</th>
+                            <th>Kapacitetsbaserad</th>
+                            <th>Traditionellt köp</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Initial kostnad</strong></td>
+                            <td><span class="check">✓ 0 kr</span></td>
+                            <td><span class="check">✓ 0 kr</span></td>
+                            <td><span class="cross">380 000 kr</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Äganderätt</strong></td>
+                            <td><span class="cross">Vi äger</span></td>
+                            <td><span class="cross">Vi äger</span></td>
+                            <td><span class="check">✓ Ni äger</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Service ingår</strong></td>
+                            <td><span class="check">✓ Ja</span></td>
+                            <td><span class="check">✓ Ja</span></td>
+                            <td><span class="check">✓ Mot extra kostnad</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Förutsägbar budget</strong></td>
+                            <td><span class="check">✓ Fast månadskostnad</span></td>
+                            <td><span class="cross">Varierar med användning</span></td>
+                            <td><span class="check">✓ Ja</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Uppgraderingar</strong></td>
+                            <td><span class="check">✓ Automatiskt efter 5-7 år</span></td>
+                            <td><span class="check">✓ Ingår</span></td>
+                            <td><span class="cross">Extra kostnad</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Flexibilitet</strong></td>
+                            <td><span class="check">✓ Uppsägningstid 3 mån</span></td>
+                            <td><span class="check">✓ Högst flexibel</span></td>
+                            <td><span class="cross">Bunden till utrustning</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bäst för</strong></td>
+                            <td>Offentliga verksamheter</td>
+                            <td>Säsongsbaserade</td>
+                            <td>Stabil drift, lång sikt</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Vanliga frågor om finansiering</h2>
+            </div>
+
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div style="background: var(--white); padding: 2rem; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Kan vi byta från lease till köp senare?</h3>
+                    <p>Ja, efter 24 månader kan ni överta utrustningen till restvärde. Vi hjälper er beräkna vad som är mest lönsamt.</p>
+                </div>
+
+                <div style="background: var(--white); padding: 2rem; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Vad händer om vi vill säga upp leasing-avtalet?</h3>
+                    <p>Uppsägningstid är 3 månader. Vi hämtar utrustningen utan extra kostnad. Ingen dold bindningstid eller avgifter.</p>
+                </div>
+
+                <div style="background: var(--white); padding: 2rem; border-radius: 8px; margin-bottom: 1.5rem; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Ingår verkligen ALL service i leasingavtalet?</h3>
+                    <p>Ja, allt utom vandalisering och avsiktlig skadegörelse. Service, reparationer, reservdelar, årlig inspektion - allt ingår i månadskostnaden.</p>
+                </div>
+
+                <div style="background: var(--white); padding: 2rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);">
+                    <h3 style="color: var(--accent); margin-bottom: 1rem;">Hur beräknas priset för kapacitetsbaserad modell?</h3>
+                    <p>Vi mäter via Knivity hur många kg som tvättas varje månad. Ni får transparent rapport och faktureras per kg. Inget gissande, bara faktisk användning.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Osäker på vilken modell som passar er?</h2>
+            <p style="font-size: 1.125rem; opacity: 0.95; margin-bottom: 2rem;">Boka en kostnadsfri konsultation så hjälper vi er räkna på vad som blir mest lönsamt</p>
+
+            <a href="lcc-kalkylator.html" class="btn btn-primary" style="display: inline-block; width: auto; margin-right: 1rem;">💰 LCC-kalkylator</a>
+            <a href="kontakt.html" class="btn" style="background: var(--white); color: var(--primary); display: inline-block; width: auto;">📞 Boka konsultation</a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Tvättlösningar Sverige. Flexibla finansieringslösningar sedan 1984.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Bygg & Fastighet | tvättlösningar.se</title>
+    <meta name="description" content="Vi löser projektrisken med tvättsystem. Från första ritningen till lycklig överlämning. 99,2% leverans enligt plan.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+            --warning: #C74E3C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 2rem;
+            border-bottom: 1px solid #E0E4E8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-mid);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Challenges Grid */
+        .challenges-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .challenge-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .challenge-card h4 {
+            color: var(--accent);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .challenge-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .challenge-card li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        .challenge-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            color: var(--success);
+        }
+
+        .example-box {
+            background: var(--primary-light);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            margin-top: 1.5rem;
+        }
+
+        .example-box strong {
+            color: var(--primary);
+        }
+
+        /* Process Steps */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .process-step {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .process-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Why Choose */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .why-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .why-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .why-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 180, 0.3);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background: var(--primary-light);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        /* FAQ */
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-item h3 {
+            color: var(--accent);
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">tvättlösningar.se</a>
+            <a href="kontakt.html" class="btn btn-primary">Kontakta oss</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tvättlösningar för Bygg & Fastighet</h1>
+            <p>Vi löser projektrisken med tvättsystem. Från första ritningen till lycklig överlämning.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">99,2%</span>
+                    <span>Leverans enligt plan</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">40+</span>
+                    <span>År i branschen</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">312</span>
+                    <span>Projekt levererade</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Challenges Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Era tre största utmaningar – och våra lösningar</h2>
+                <p>Tvättlösningar är ofta en "mindre detalj" som blir ett stort problem. Vi gör det enkelt.</p>
+            </div>
+
+            <div class="challenges-grid">
+                <!-- Challenge 1 -->
+                <div class="challenge-card">
+                    <h3>1. Spänning mellan livscykelkostnad och initial investering</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Pressen att minimera byggkostnad (särskilt i konkurrensutsatta anbud)</li>
+                        <li>Svårt att visa långsiktigt värde för kunder/ägare</li>
+                        <li>Dolda driftskostnader upptäcks först senare</li>
+                        <li>Fastighetsägare bär driftskostnaden men byggare väljer utrustningen</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Totalkostnadsdokumentation:</strong> Transparenta 20-års LCC-kalkyler som ni kan visa kund/ägare</li>
+                        <li><strong>Värdeargument:</strong> Verktyg för att sälja kvalitet över pris</li>
+                        <li><strong>Förvaltningsgaranti:</strong> Vi garanterar driftskostnader mot ägare – tar bort er risk</li>
+                        <li><strong>Flexibla övertagandemodeller:</strong> Ägare kan överta service direkt eller via oss</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Byggentreprenör Skanska vann anbud genom att visa att vår lösning kostar 180 000 kr mer i byggskedet men sparar 850 000 kr över 15 år. Vår dokumentation gjorde argumentet trovärdigt.
+                    </div>
+                </div>
+
+                <!-- Challenge 2 -->
+                <div class="challenge-card">
+                    <h3>2. Koordineringskomplexitet</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Synkronisera tvättutrustning med byggschema</li>
+                        <li>Koordinera mellan VVS, el, ventilation, tvättleverantör</li>
+                        <li>Kommunikationsbrott mellan plats och leverantörer</li>
+                        <li>Ändringar och förseningar kaskadar</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Dedikerad projektledare</strong> från er tidiga fas till överlämning</li>
+                        <li><strong>Koordinering med alla yrkeskategorier</strong> – vi pratar "VVS-språk"</li>
+                        <li><strong>Integrerad BIM-modellering</strong> – tvättlösning inkluderad från start</li>
+                        <li><strong>Fasindelad leverans</strong> anpassad efter ERT byggschema</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Bostadsprojekt Järva Strand, 240 lägenheter. Byggschema försenades 6 veckor pga grund. Vår projektledare justerade leverans automatiskt, noll extra kostnad, noll förseningar på vår del.
+                    </div>
+                </div>
+
+                <!-- Challenge 3 -->
+                <div class="challenge-card">
+                    <h3>3. Boende-/användarbelåtenhet</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Buller och vibrationer genererar klagomål</li>
+                        <li>Kapacitet otillräcklig = köer och frustrerade boende</li>
+                        <li>Dålig användarvänlighet för varierande befolkningsgrupper</li>
+                        <li>Skador på byggnader från fukt/läckage</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Bulleranalyser</strong> redan i projekteringen (vi garanterar <35 dBA i angränsande lägenhet)</li>
+                        <li><strong>Användartester</strong> med er målgrupp innan val</li>
+                        <li><strong>Kapacitet dimensionerad på faktiska boendemönster</strong>, inte kvadratmeter</li>
+                        <li><strong>Förebyggande fuktsäkring</strong> som skyddar byggnad</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Seniorbostäder i Malmö – vi insisterade på större knappar och display vs. standard. Kostnad: +8 000 kr. Resultat: Noll klagomål på 3 år vs. 40+ i jämförbart projekt med standardlösning.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Vi stödjer er genom hela projektresan</h2>
+            </div>
+
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="process-icon">📋</div>
+                    <h3>Programskede</h3>
+                    <p><strong>Kostnadsfri konsultation</strong> redan i tidiga skisser</p>
+                    <p>Ni får: Lösningsskiss med budgetindikation (+/- 15%)</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-icon">🏗️</div>
+                    <h3>Projektering</h3>
+                    <p><strong>BIM-modeller</strong> (Revit/IFC) klara att importera</p>
+                    <p>Ni får: Fullständigt projekteringsunderlag + koordineringsmöte</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-icon">💰</div>
+                    <h3>Upphandling</h3>
+                    <p><strong>Transparenta offerter</strong> med ALL information uppredd</p>
+                    <p>Ni får: Bindande offert med 15-års LCC-kalkyl</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-icon">🚧</div>
+                    <h3>Byggskede</h3>
+                    <p><strong>Fasindelad leverans</strong> anpassad efter APD-plan</p>
+                    <p>Ni får: Installation enligt tidplan + dokumentation</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="process-icon">✅</div>
+                    <h3>Överlämning</h3>
+                    <p><strong>Komplett ÄTA-handling</strong> enligt BBR och branschstandard</p>
+                    <p>Ni får: Utbildning för drift + första årets service</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Varför byggbranschen väljer oss</h2>
+            </div>
+
+            <div class="why-grid">
+                <div class="why-card">
+                    <div class="why-icon">💬</div>
+                    <h3>Vi pratar ert språk</h3>
+                    <p>Förstår APD-planer, ÄTA-hantering, AMA-koder. Integrerar med BIM/Revit.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">👤</div>
+                    <h3>En kontakt hela vägen</h3>
+                    <p>Samma projektledare från förstudie till överlämning. Direktnummer, inga callcenters.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">📊</div>
+                    <h3>99,2% i tid</h3>
+                    <p>312 projekt levererade, 310 i tid och enligt spec. Track record som talar för sig.</p>
+                </div>
+
+                <div class="why-card">
+                    <div class="why-icon">🔒</div>
+                    <h3>Konkreta garantier</h3>
+                    <p>Leveransgaranti med likviderat skadestånd. Fem års maskingaranti. Driftskostnadsgaranti.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Era vanligaste frågor</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>"Vi vet inte än exakt vilka krav slutkunden kommer ha"</h3>
+                    <p>Helt normalt i tidiga fas. Vi erbjuder flexibla lösningar som kan justeras under projektering, standardpaket för snabb budget, och optioneringspriser där slutkund kan välja. Ni kan inkludera vår lösning i kalkyl redan dag 1 och justera senare utan att projektet påverkas.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>"Hur hanterar ni ändringar mitt i projektet?"</h3>
+                    <p>Ändringar är oundvikliga. Vi dokumenterar all kommunikation, ger snabb prisindikation inom 24h, och mindre ändringar (<5% av kontraktsvärde) ingår. Transparent ÄTA utan överraskningar. Genomsnitt: 8-12% ändringar i våra projekt vs. 20-30% branschsnitt.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>"Vad händer om ni försenar och kastar hela byggschema?"</h3>
+                    <p>Vi har likviderade skadestånd i kontrakt (vi betalar era kostnader vid försening), beredskapsplaner med plan B för leverans, och track record på 99,2% i tid senaste 5 åren. Ni får veta veckor i förväg om risk finns. Vårt rykte bygger på tillförlitlighet – vi levererar eller betalar.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h3>"Hur konkurrenskraftiga är era priser?"</h3>
+                    <p>Ärligt svar: Vi är sällan billigast i initial kostnad. Vi ÄR billigast i total ägandekostnad över 15-20 år, projektrisk (slipper problem = slipper fördyring), och koordineringskostnad (en kontakt vs. flera). Vi ger er LCC-kalkylator som låter er visa kund VARFÖR vår lösning är smartare ekonomiskt långsiktigt.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Redo att starta ert projekt?</h2>
+            <p style="font-size: 1.125rem; opacity: 0.95;">Kostnadsfri konsultation redan i programskedet</p>
+
+            <div class="cta-buttons">
+                <a href="volymberaknare.html" class="btn btn-white">📊 Beräkna kapacitet</a>
+                <a href="lcc-kalkylator.html" class="btn btn-white">💰 LCC-kalkylator</a>
+                <a href="kontakt.html" class="btn btn-white">📞 Boka möte</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Tvättlösningar Sverige. Partner till Sveriges byggbransch sedan 1984.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

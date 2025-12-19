@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCC-kalkylator - Jämför Tvättlösningar | tvättlösningar.se</title>
+    <meta name="description" content="Beräkna livscykelkostnad (LCC) för olika tvättlösningar. Jämför direktköp, leasing och funktionshyra över 10-15 år.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- jsPDF for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+            --warning: #C74E3C;
+            --border: #E0E4E8;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+        }
+
+        h4 {
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-xs);
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: var(--spacing-sm);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        /* Intro Section */
+        .intro {
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            text-align: center;
+        }
+
+        .intro p {
+            font-size: 1.125rem;
+            color: var(--text-mid);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .info-box {
+            background: var(--primary-light);
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .info-box strong {
+            display: block;
+            margin-bottom: var(--spacing-xs);
+            color: var(--primary);
+        }
+
+        /* Calculator Layout */
+        .calculator-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .alternative-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .alternative-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 8px 30px rgba(0, 120, 180, 0.15);
+        }
+
+        .alternative-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-sm) var(--spacing-md);
+            margin: calc(-1 * var(--spacing-md)) calc(-1 * var(--spacing-md)) var(--spacing-md);
+            border-radius: 6px 6px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .alternative-header h3 {
+            color: var(--white);
+            margin: 0;
+        }
+
+        .alternative-number {
+            background: var(--white);
+            color: var(--primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        /* Form Sections */
+        .form-section {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-section-header {
+            background: var(--bg-cream);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            margin-bottom: var(--spacing-sm);
+            border-left: 3px solid var(--accent);
+        }
+
+        .form-section-header h4 {
+            margin: 0;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .form-group {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+
+        .label-help {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-weight: 400;
+            display: block;
+            margin-top: 0.125rem;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+            background: var(--white);
+        }
+
+        input[type="number"] {
+            text-align: right;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 120, 180, 0.1);
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .input-suffix {
+            color: var(--text-mid);
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.875rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 180, 0.3);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-full {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Results Section */
+        .results {
+            background: var(--white);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .comparison-header {
+            background: var(--primary);
+            color: var(--white);
+            padding: var(--spacing-sm);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .comparison-cell {
+            padding: var(--spacing-sm);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .comparison-label {
+            font-weight: 500;
+            text-align: left;
+            padding-left: var(--spacing-sm);
+        }
+
+        .comparison-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .winner {
+            background: #E8F5F1;
+            border: 2px solid var(--success);
+            position: relative;
+        }
+
+        .winner::after {
+            content: '🏆';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+        }
+
+        .result-summary {
+            background: var(--primary-light);
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            margin-top: var(--spacing-md);
+        }
+
+        .result-summary h4 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .result-summary ul {
+            list-style: none;
+        }
+
+        .result-summary li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .result-summary li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            margin: var(--spacing-lg) 0;
+            padding: var(--spacing-md);
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .chart-bars {
+            display: flex;
+            gap: var(--spacing-md);
+            align-items: flex-end;
+            height: 300px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .chart-bar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .bar {
+            width: 100%;
+            background: linear-gradient(to top, var(--primary), var(--accent));
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+            min-height: 20px;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -30px;
+            width: 100%;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .bar-label {
+            margin-top: var(--spacing-sm);
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Export Section */
+        .export-section {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--bg-cream);
+            border-radius: 8px;
+            margin-top: var(--spacing-lg);
+        }
+
+        .export-buttons {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: center;
+            margin-top: var(--spacing-md);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .calculator-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-header:first-child {
+                display: none;
+            }
+
+            .chart-bars {
+                height: 250px;
+            }
+
+            .export-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media print {
+            .header-nav,
+            .export-section,
+            .btn {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .alternative-card,
+            .results,
+            .chart-container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        /* Tooltips */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+            color: var(--accent);
+            font-weight: 600;
+            margin-left: 0.25rem;
+        }
+
+        .tooltip:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--text-dark);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            z-index: 1000;
+            font-weight: 400;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be inserted here by header.js -->
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Intro -->
+        <section class="intro">
+            <h1>LCC-kalkylator för tvättlösningar</h1>
+            <p>Jämför den verkliga kostnaden över tid – inte bara inköpspriset</p>
+
+            <div class="info-box">
+                <strong>💡 Vad är livscykelkostnad (LCC)?</strong>
+                <p>LCC är den totala kostnaden för en investering över hela dess livslängd: inköp, installation, drift, underhåll, utbyten och avslut. Ofta är driftskostnader 2-3 gånger högre än inköpspriset över 10-15 år.</p>
+            </div>
+        </section>
+
+        <!-- Calculator Form -->
+        <div class="calculator-layout">
+            <!-- Alternative A -->
+            <div class="alternative-card">
+                <div class="alternative-header">
+                    <h3>Alternativ A</h3>
+                    <span class="alternative-number">A</span>
+                </div>
+
+                <form id="formA">
+                    <div class="form-group">
+                        <label for="nameA">Namn på lösning</label>
+                        <input type="text" id="nameA" placeholder="t.ex. KEN-system (direktköp)">
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h4>📊 Investeringskostnader (CapEx)</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="machinesA">
+                                Tvättmaskiner
+                                <span class="tooltip" data-tip="Antal × pris per maskin">ⓘ</span>
+                            </label>
+                            <div class="input-group">
+                                <input type="number" id="machinesA" value="190000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dryersA">Torktumlare/torkskåp</label>
+                            <div class="input-group">
+                                <input type="number" id="dryersA" value="145000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dosingA">Automatisk dosering</label>
+                            <div class="input-group">
+                                <input type="number" id="dosingA" value="35000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="installationA">Installation (VVS, el, montage)</label>
+                            <div class="input-group">
+                                <input type="number" id="installationA" value="85000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="infrastructureA">Infrastruktur (ventilation, avlopp)</label>
+                            <div class="input-group">
+                                <input type="number" id="infrastructureA" value="45000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otherCapexA">Övrigt (utbildning, driftsättning)</label>
+                            <div class="input-group">
+                                <input type="number" id="otherCapexA" value="37000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h4>💰 Årliga driftskostnader (OpEx)</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="electricityA">
+                                El per år
+                                <span class="tooltip" data-tip="kWh/kg × volym × elpris">ⓘ</span>
+                            </label>
+                            <div class="input-group">
+                                <input type="number" id="electricityA" value="16500" min="0" step="100">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="waterA">Vatten och avlopp per år</label>
+                            <div class="input-group">
+                                <input type="number" id="waterA" value="4100" min="0" step="100">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="chemicalsA">Kemikalier (tvättmedel) per år</label>
+                            <div class="input-group">
+                                <input type="number" id="chemicalsA" value="15100" min="0" step="100">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="serviceA">Service och underhåll per år</label>
+                            <div class="input-group">
+                                <input type="number" id="serviceA" value="28000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otherOpexA">Övrigt (licenser, reservdelar) per år</label>
+                            <div class="input-group">
+                                <input type="number" id="otherOpexA" value="14100" min="0" step="100">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h4>🔧 Utbyten över livstid</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="replacementsA">
+                                Total kostnad för utbyten
+                                <span class="label-help">Pumpar, uppdateringar, komponenter</span>
+                            </label>
+                            <div class="input-group">
+                                <input type="number" id="replacementsA" value="30000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h4>⏱️ Livslängd och restvärde</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lifespanA">Livslängd (antal år)</label>
+                            <div class="input-group">
+                                <input type="number" id="lifespanA" value="15" min="1" max="30" step="1">
+                                <span class="input-suffix">år</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="residualA">
+                                Restvärde efter livslängd
+                                <span class="label-help">Begagnatvärde vid försäljning</span>
+                            </label>
+                            <div class="input-group">
+                                <input type="number" id="residualA" value="55000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Alternative B -->
+            <div class="alternative-card">
+                <div class="alternative-header">
+                    <h3>Alternativ B</h3>
+                    <span class="alternative-number">B</span>
+                </div>
+
+                <form id="formB">
+                    <div class="form-group">
+                        <label for="nameB">Namn på lösning</label>
+                        <input type="text" id="nameB" placeholder="t.ex. Funktionshyra">
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h4>📊 Investeringskostnader (CapEx)</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="machinesB">Tvättmaskiner</label>
+                            <div class="input-group">
+                                <input type="number" id="machinesB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dryersB">Torktumlare/torkskåp</label>
+                            <div class="input-group">
+                                <input type="number" id="dryersB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dosingB">Automatisk dosering</label>
+                            <div class="input-group">
+                                <input type="number" id="dosingB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="installationB">Installation (VVS, el, montage)</label>
+                            <div class="input-group">
+                                <input type="number" id="installationB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="infrastructureB">Infrastruktur (ventilation, avlopp)</label>
+                            <div class="input-group">
+                                <input type="number" id="infrastructureB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otherCapexB">Övrigt (utbildning, driftsättning)</label>
+                            <div class="input-group">
+                                <input type="number" id="otherCapexB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h4>💰 Årliga driftskostnader (OpEx)</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="electricityB">El per år</label>
+                            <div class="input-group">
+                                <input type="number" id="electricityB" value="16500" min="0" step="100">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="waterB">Vatten och avlopp per år</label>
+                            <div class="input-group">
+                                <input type="number" id="waterB" value="4100" min="0" step="100">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="chemicalsB">Kemikalier (tvättmedel) per år</label>
+                            <div class="input-group">
+                                <input type="number" id="chemicalsB" value="0" min="0" step="100">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="serviceB">Service och underhåll per år</label>
+                            <div class="input-group">
+                                <input type="number" id="serviceB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="leaseB">
+                                Leaseavgift/Hyra per år
+                                <span class="label-help">All-inclusive månadskostnad × 12</span>
+                            </label>
+                            <div class="input-group">
+                                <input type="number" id="leaseB" value="168000" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="otherOpexB">Övrigt (licenser, reservdelar) per år</label>
+                            <div class="input-group">
+                                <input type="number" id="otherOpexB" value="0" min="0" step="100">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h4>🔧 Utbyten över livstid</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="replacementsB">Total kostnad för utbyten</label>
+                            <div class="input-group">
+                                <input type="number" id="replacementsB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-header">
+                            <h4>⏱️ Livslängd och restvärde</h4>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lifespanB">Livslängd (antal år)</label>
+                            <div class="input-group">
+                                <input type="number" id="lifespanB" value="15" min="1" max="30" step="1">
+                                <span class="input-suffix">år</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="residualB">Restvärde efter livslängd</label>
+                            <div class="input-group">
+                                <input type="number" id="residualB" value="0" min="0" step="1000">
+                                <span class="input-suffix">kr</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Calculate Button -->
+        <div style="text-align: center; margin-bottom: var(--spacing-lg);">
+            <button id="calculateBtn" class="btn btn-primary" style="padding: 1.25rem 3rem; font-size: 1.125rem;">
+                🧮 Beräkna LCC
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results" class="results" style="display: none;">
+            <div class="results-header">
+                <h2>Jämförelse: LCC över tid</h2>
+                <p style="color: var(--text-mid);">Total kostnad från installation till avslut</p>
+            </div>
+
+            <!-- Comparison Table -->
+            <div class="comparison-grid">
+                <div class="comparison-header">Kostnadsmått</div>
+                <div class="comparison-header" id="headerA">Alternativ A</div>
+                <div class="comparison-header" id="headerB">Alternativ B</div>
+
+                <div class="comparison-cell comparison-label">Total LCC</div>
+                <div class="comparison-cell" id="totalA"></div>
+                <div class="comparison-cell" id="totalB"></div>
+
+                <div class="comparison-cell comparison-label">LCC per år</div>
+                <div class="comparison-cell" id="perYearA"></div>
+                <div class="comparison-cell" id="perYearB"></div>
+
+                <div class="comparison-cell comparison-label">Initial investering</div>
+                <div class="comparison-cell" id="capexA"></div>
+                <div class="comparison-cell" id="capexB"></div>
+
+                <div class="comparison-cell comparison-label">Årlig driftskostnad</div>
+                <div class="comparison-cell" id="opexA"></div>
+                <div class="comparison-cell" id="opexB"></div>
+            </div>
+
+            <!-- Chart -->
+            <div class="chart-container">
+                <h3 style="text-align: center; margin-bottom: var(--spacing-md);">Total LCC-jämförelse</h3>
+                <div class="chart-bars">
+                    <div class="chart-bar">
+                        <div class="bar" id="barA">
+                            <span class="bar-value" id="barValueA"></span>
+                        </div>
+                        <div class="bar-label" id="barLabelA">Alternativ A</div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar" id="barB">
+                            <span class="bar-value" id="barValueB"></span>
+                        </div>
+                        <div class="bar-label" id="barLabelB">Alternativ B</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="result-summary">
+                <h4>📊 Sammanfattning och rekommendation</h4>
+                <div id="summaryText"></div>
+            </div>
+        </section>
+
+        <!-- Export Section -->
+        <section class="export-section" id="exportSection" style="display: none;">
+            <h3>Spara eller dela dina resultat</h3>
+            <p style="color: var(--text-mid); margin-bottom: var(--spacing-md);">
+                Exportera kalkylen för att dela med kollegor eller använda i beslutsunderlag
+            </p>
+            <div class="export-buttons">
+                <button class="btn btn-primary" onclick="exportToPDF()">📄 Ladda ner PDF</button>
+                <button class="btn btn-secondary" onclick="window.print()">🖨️ Skriv ut</button>
+                <button class="btn btn-secondary" onclick="copyResults()">📋 Kopiera till urklipp</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Get all form elements
+        const formA = document.getElementById('formA');
+        const formB = document.getElementById('formB');
+        const calculateBtn = document.getElementById('calculateBtn');
+        const resultsSection = document.getElementById('results');
+        const exportSection = document.getElementById('exportSection');
+
+        // Calculate button handler
+        calculateBtn.addEventListener('click', calculateLCC);
+
+        // Auto-calculate on input change
+        let autoCalculateTimer;
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', () => {
+                clearTimeout(autoCalculateTimer);
+                autoCalculateTimer = setTimeout(() => {
+                    if (resultsSection.style.display !== 'none') {
+                        calculateLCC();
+                    }
+                }, 500);
+            });
+        });
+
+        function calculateLCC() {
+            // Get Alternative A values
+            const altA = {
+                name: document.getElementById('nameA').value || 'Alternativ A',
+                capex: {
+                    machines: parseFloat(document.getElementById('machinesA').value) || 0,
+                    dryers: parseFloat(document.getElementById('dryersA').value) || 0,
+                    dosing: parseFloat(document.getElementById('dosingA').value) || 0,
+                    installation: parseFloat(document.getElementById('installationA').value) || 0,
+                    infrastructure: parseFloat(document.getElementById('infrastructureA').value) || 0,
+                    other: parseFloat(document.getElementById('otherCapexA').value) || 0
+                },
+                opex: {
+                    electricity: parseFloat(document.getElementById('electricityA').value) || 0,
+                    water: parseFloat(document.getElementById('waterA').value) || 0,
+                    chemicals: parseFloat(document.getElementById('chemicalsA').value) || 0,
+                    service: parseFloat(document.getElementById('serviceA').value) || 0,
+                    other: parseFloat(document.getElementById('otherOpexA').value) || 0
+                },
+                replacements: parseFloat(document.getElementById('replacementsA').value) || 0,
+                lifespan: parseFloat(document.getElementById('lifespanA').value) || 15,
+                residual: parseFloat(document.getElementById('residualA').value) || 0
+            };
+
+            // Get Alternative B values
+            const altB = {
+                name: document.getElementById('nameB').value || 'Alternativ B',
+                capex: {
+                    machines: parseFloat(document.getElementById('machinesB').value) || 0,
+                    dryers: parseFloat(document.getElementById('dryersB').value) || 0,
+                    dosing: parseFloat(document.getElementById('dosingB').value) || 0,
+                    installation: parseFloat(document.getElementById('installationB').value) || 0,
+                    infrastructure: parseFloat(document.getElementById('infrastructureB').value) || 0,
+                    other: parseFloat(document.getElementById('otherCapexB').value) || 0
+                },
+                opex: {
+                    electricity: parseFloat(document.getElementById('electricityB').value) || 0,
+                    water: parseFloat(document.getElementById('waterB').value) || 0,
+                    chemicals: parseFloat(document.getElementById('chemicalsB').value) || 0,
+                    service: parseFloat(document.getElementById('serviceB').value) || 0,
+                    lease: parseFloat(document.getElementById('leaseB').value) || 0,
+                    other: parseFloat(document.getElementById('otherOpexB').value) || 0
+                },
+                replacements: parseFloat(document.getElementById('replacementsB').value) || 0,
+                lifespan: parseFloat(document.getElementById('lifespanB').value) || 15,
+                residual: parseFloat(document.getElementById('residualB').value) || 0
+            };
+
+            // Calculate totals
+            const resultA = calculateAlternative(altA);
+            const resultB = calculateAlternative(altB);
+
+            // Display results
+            displayResults(altA, resultA, altB, resultB);
+
+            // Show results section
+            resultsSection.style.display = 'block';
+            exportSection.style.display = 'block';
+
+            // Scroll to results
+            resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function calculateAlternative(alt) {
+            // Total CapEx
+            const totalCapex = Object.values(alt.capex).reduce((sum, val) => sum + val, 0);
+
+            // Total annual OpEx
+            const totalOpex = Object.values(alt.opex).reduce((sum, val) => sum + val, 0);
+
+            // Total LCC = CapEx + (OpEx × years) + Replacements - Residual
+            const totalLCC = totalCapex + (totalOpex * alt.lifespan) + alt.replacements - alt.residual;
+
+            // LCC per year
+            const lccPerYear = totalLCC / alt.lifespan;
+
+            return {
+                totalCapex,
+                totalOpex,
+                totalLCC,
+                lccPerYear
+            };
+        }
+
+        function displayResults(altA, resultA, altB, resultB) {
+            // Store for PDF export
+            currentAltA = altA;
+            currentAltB = altB;
+            currentResultA = resultA;
+            currentResultB = resultB;
+
+            // Update headers
+            document.getElementById('headerA').textContent = altA.name;
+            document.getElementById('headerB').textContent = altB.name;
+
+            // Update comparison table
+            document.getElementById('totalA').innerHTML = formatCurrency(resultA.totalLCC);
+            document.getElementById('totalB').innerHTML = formatCurrency(resultB.totalLCC);
+
+            document.getElementById('perYearA').innerHTML = formatCurrency(resultA.lccPerYear);
+            document.getElementById('perYearB').innerHTML = formatCurrency(resultB.lccPerYear);
+
+            document.getElementById('capexA').innerHTML = formatCurrency(resultA.totalCapex);
+            document.getElementById('capexB').innerHTML = formatCurrency(resultB.totalCapex);
+
+            document.getElementById('opexA').innerHTML = formatCurrency(resultA.totalOpex);
+            document.getElementById('opexB').innerHTML = formatCurrency(resultB.totalOpex);
+
+            // Highlight winner
+            const cells = document.querySelectorAll('.comparison-cell');
+            cells.forEach(cell => cell.classList.remove('winner'));
+
+            if (resultA.totalLCC < resultB.totalLCC) {
+                document.getElementById('totalA').classList.add('winner');
+            } else {
+                document.getElementById('totalB').classList.add('winner');
+            }
+
+            // Update chart
+            const maxLCC = Math.max(resultA.totalLCC, resultB.totalLCC);
+            const heightA = (resultA.totalLCC / maxLCC) * 100;
+            const heightB = (resultB.totalLCC / maxLCC) * 100;
+
+            document.getElementById('barA').style.height = heightA + '%';
+            document.getElementById('barB').style.height = heightB + '%';
+
+            document.getElementById('barValueA').textContent = formatCurrency(resultA.totalLCC);
+            document.getElementById('barValueB').textContent = formatCurrency(resultB.totalLCC);
+
+            document.getElementById('barLabelA').textContent = altA.name;
+            document.getElementById('barLabelB').textContent = altB.name;
+
+            // Generate summary
+            generateSummary(altA, resultA, altB, resultB);
+        }
+
+        function generateSummary(altA, resultA, altB, resultB) {
+            const difference = Math.abs(resultA.totalLCC - resultB.totalLCC);
+            const percentDiff = ((difference / Math.max(resultA.totalLCC, resultB.totalLCC)) * 100).toFixed(1);
+            const winner = resultA.totalLCC < resultB.totalLCC ? altA : altB;
+            const loser = resultA.totalLCC < resultB.totalLCC ? altB : altA;
+            const winnerResult = resultA.totalLCC < resultB.totalLCC ? resultA : resultB;
+            const loserResult = resultA.totalLCC < resultB.totalLCC ? resultB : resultA;
+
+            let summaryHTML = '<ul>';
+
+            summaryHTML += `<li><strong>${winner.name}</strong> har lägst total LCC med <strong>${formatCurrency(winnerResult.totalLCC)}</strong></li>`;
+            summaryHTML += `<li>Detta är <strong>${formatCurrency(difference)}</strong> billigare än ${loser.name} (${percentDiff}% skillnad)</li>`;
+
+            if (winnerResult.totalCapex > loserResult.totalCapex) {
+                summaryHTML += `<li>⚠️ ${winner.name} har högre initial investering (+${formatCurrency(winnerResult.totalCapex - loserResult.totalCapex)}), men lägre driftskostnader kompenserar över tid</li>`;
+            }
+
+            if (winnerResult.totalOpex < loserResult.totalOpex) {
+                const yearlyDiff = loserResult.totalOpex - winnerResult.totalOpex;
+                summaryHTML += `<li>💡 ${winner.name} sparar <strong>${formatCurrency(yearlyDiff)}/år</strong> i driftskostnader</li>`;
+            }
+
+            const breakEven = calculateBreakEven(altA, resultA, altB, resultB);
+            if (breakEven > 0 && breakEven < Math.max(altA.lifespan, altB.lifespan)) {
+                summaryHTML += `<li>📊 Break-even punkt: Efter ca ${Math.ceil(breakEven)} år har ${winner.name} betalat tillbaka sin högre initialkostnad</li>`;
+            }
+
+            summaryHTML += '</ul>';
+
+            document.getElementById('summaryText').innerHTML = summaryHTML;
+        }
+
+        function calculateBreakEven(altA, resultA, altB, resultB) {
+            const capexDiff = Math.abs(resultA.totalCapex - resultB.totalCapex);
+            const opexDiff = Math.abs(resultA.totalOpex - resultB.totalOpex);
+
+            if (opexDiff === 0) return -1;
+
+            return capexDiff / opexDiff;
+        }
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('sv-SE', {
+                style: 'currency',
+                currency: 'SEK',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+
+        function copyResults() {
+            const altAName = document.getElementById('nameA').value || 'Alternativ A';
+            const altBName = document.getElementById('nameB').value || 'Alternativ B';
+
+            const totalA = document.getElementById('totalA').textContent;
+            const totalB = document.getElementById('totalB').textContent;
+
+            const text = `LCC-Kalkylering Tvättlösningar\n\n` +
+                `${altAName}: ${totalA}\n` +
+                `${altBName}: ${totalB}\n\n` +
+                `Genererad från tvättlösningar.se`;
+
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Resultatet kopierat till urklipp!');
+            });
+        }
+
+        // Export to PDF
+        function exportToPDF() {
+            if (!currentAltA || !currentAltB || !currentResultA || !currentResultB) {
+                alert('Vänligen beräkna först innan du exporterar till PDF');
+                return;
+            }
+
+            // Load PDF generator if not already loaded
+            if (typeof generateLCCReport === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'pdf-generator.js';
+                script.onload = () => {
+                    generateLCCReport(currentAltA, currentResultA, currentAltB, currentResultB);
+                };
+                document.head.appendChild(script);
+            } else {
+                generateLCCReport(currentAltA, currentResultA, currentAltB, currentResultB);
+            }
+        }
+
+        // Store current calculation for PDF export
+        let currentAltA, currentAltB, currentResultA, currentResultB;
+
+        // Initialize - calculate if there's data
+        window.addEventListener('load', () => {
+            // Optional: Auto-calculate with default values on load
+            // calculateLCC();
+        });
+    </script>
+
+    <!-- Header Navigation -->
+    <script src="header.js"></script>
+
+    <!-- PDF Generator -->
+    <script src="pdf-generator.js"></script>
+</body>
+</html>

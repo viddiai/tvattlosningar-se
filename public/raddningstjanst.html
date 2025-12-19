@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Räddningstjänst | tvättlösningar.se</title>
+    <meta name="description" content="Rädda brandmän från cancer. Validerad dekontaminering som avlägsnar 96,4% PAH. ISO 6330 + MSB-godkänd. Vetenskapligt bevisad cancerprevention.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+            --warning: #C74E3C;
+            --alert: #d32f2f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 2rem;
+            border-bottom: 1px solid #E0E4E8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #c62828 0%, #b71c1c 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-alert {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--white);
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-mid);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .challenges-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .challenge-card.critical {
+            border-top: 4px solid var(--alert);
+        }
+
+        .challenge-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .challenge-card h3.critical {
+            color: var(--alert);
+        }
+
+        .challenge-card h4 {
+            color: var(--accent);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .challenge-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .challenge-card li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        .challenge-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            color: var(--success);
+        }
+
+        .proof-box {
+            background: #fff3e0;
+            padding: 1.5rem;
+            border-radius: 4px;
+            border-left: 4px solid #ff9800;
+            margin-top: 1.5rem;
+        }
+
+        .proof-box strong {
+            color: #e65100;
+        }
+
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .evidence-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .evidence-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--success);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--alert) 0%, #b71c1c 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 180, 0.3);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--alert);
+        }
+
+        .btn-white:hover {
+            background: #f5f5f5;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">tvättlösningar.se</a>
+            <a href="kontakt.html" class="btn btn-primary">Kontakta oss</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tvättlösningar för Räddningstjänst</h1>
+            <p>Rädda brandmän från cancer – medan ni räddar liv</p>
+
+            <div class="hero-alert">
+                <strong>⚠️ Vetenskapligt faktum:</strong> Brandmän har 9% högre cancerrisk än allmänheten. Varje brandinseats exponerar för cancerframkallande ämnen (sot, PAH, PFAS) som fastnar i utrustningen. Korrekt dekontaminering är inte längre en lyx – det är en överlevnadsfråga.
+            </div>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">96,4%</span>
+                    <span>PAH-reduktion</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">75 min</span>
+                    <span>Snabb dekontaminering</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">ISO 6330</span>
+                    <span>MSB-godkänd</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="section">
+            <div class="section-header">
+                <h2>Era tre största utmaningar – och våra lösningar</h2>
+            </div>
+
+            <div class="challenges-grid">
+                <div class="challenge-card critical">
+                    <h3 class="critical">1. Karcinogendekontaminering (HÖGSTA PRIORITET)</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Avlägsna cancerframkallande ämnen (sot, PAH, PFAS)</li>
+                        <li>Osäkerhet: Blir utrustning verkligen ren, eller ser den bara ren ut?</li>
+                        <li>Långsiktig cancerrisk för brandmän (9% högre förekomst)</li>
+                        <li>Skydda familjer (föroreningar hemförda på kläder)</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Validerad process:</strong> ISO 6330 + MSB:s rekommendationer</li>
+                        <li><strong>Dubbelrengöring:</strong> Termisk (90°C) + kemisk = 99,7% borttagning</li>
+                        <li><strong>Oberoende testning:</strong> Partnerskap med Lunds Universitet</li>
+                        <li><strong>Dokumentation:</strong> Knivity loggar varje tvätt</li>
+                        <li><strong>Transparent:</strong> Vi visar exakt vad som avlägsnas</li>
+                    </ul>
+
+                    <div class="proof-box">
+                        <strong>Konkret bevis - Räddningstjänsten Väst:</strong><br>
+                        Oberoende provtagning visade:<br>
+                        • Före tvätt: 2 400 µg/kg PAH i brandbyxor<br>
+                        • Efter KEN-process: 87 µg/kg PAH (96,4% reduktion)<br>
+                        • Standard tvätt: 680 µg/kg (endast 71% reduktion)
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <h3>2. Balansera dekontaminering vs. utrustningens livslängd</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Aggressiv tvätt avlägsnar gift MEN skadar utrustning snabbare</li>
+                        <li>Skyddsmembran, reflextejp, sömmar försämras</li>
+                        <li>Behov av veta: Hur många tvättcykler tål utrustningen?</li>
+                        <li>Byta för tidigt = slösa pengar, för sent = otillräckligt skydd</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Anpassade program:</strong> Olika intensitet för föroreningsgrader</li>
+                        <li><strong>Schemalagt testning:</strong> Mäter skyddsprestanda var 25:e tvätt</li>
+                        <li><strong>Livslängdsspårning:</strong> Knivity räknar tvättar per plagg</li>
+                        <li><strong>Tillverkarsamarbete:</strong> Data från Gore-Tex, Nomex, etc.</li>
+                    </ul>
+
+                    <div class="proof-box">
+                        <strong>Konkret exempel - Gore-Tex Pyrad byxor:</strong><br>
+                        • Tillverkarens rekommendation: Max 50 tvättar<br>
+                        • Verklig livslängd (KEN): Genomsnitt 78 tvättar<br>
+                        • Sparar: 30 000 kr/brandman över utrustningens livstid
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <h3>3. Operativ beredskap vs. korrekta procedurer</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Press att få utrustning tillbaka snabbt (kan inte vänta 24h)</li>
+                        <li>Frestelse att hoppa över dekontaminering när larmet går</li>
+                        <li>Utrustning låst i tvättcykel = försenad respons</li>
+                        <li>Rädsla: Säkerhetsprocedurer vs. samhällets säkerhet</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Snabbprogram:</strong> 75 min full dekontaminering (vs. 3-4h standard)</li>
+                        <li><strong>Expressläge:</strong> 45 min för måttlig förorening</li>
+                        <li><strong>Reservutrustning-dimensionering:</strong> Vi hjälper beräkna behov</li>
+                        <li><strong>Avbrytbar cykel:</strong> Pausa vid akut utryckning, återuppta senare</li>
+                    </ul>
+
+                    <div class="proof-box">
+                        <strong>Konkret exempel - Brandstation Malmö:</strong><br>
+                        • Tidigare: 4-6h dekontaminering = ofta skippat<br>
+                        • Med KEN: 75 min program = alltid tid<br>
+                        • Resultat: 100% compliance (vs. 40%)<br>
+                        • Operativ beredskap: 0 försenade utryckningar på 2 år
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Vetenskapligt bevisad effektivitet</h2>
+                <p>Vi visar bevis, inte bara påståenden</p>
+            </div>
+
+            <div class="evidence-grid">
+                <div class="evidence-card">
+                    <span class="evidence-number">96,4%</span>
+                    <p><strong>PAH-reduktion</strong><br>Oberoende lab-resultat</p>
+                </div>
+
+                <div class="evidence-card">
+                    <span class="evidence-number">99,7%</span>
+                    <p><strong>Patogenelimination</strong><br>EN 14065-validerad</p>
+                </div>
+
+                <div class="evidence-card">
+                    <span class="evidence-number">100%</span>
+                    <p><strong>Compliance</strong><br>Med snabbprogram</p>
+                </div>
+
+                <div class="evidence-card">
+                    <span class="evidence-number">MSB</span>
+                    <p><strong>Godkänd process</strong><br>ISO 6330-certifierad</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Varför räddningstjänster väljer oss</h2>
+            </div>
+
+            <div class="challenge-card">
+                <h3>Vi tar brandmannens hälsa på samma allvar som ni</h3>
+                <p>Det här är inte "bara tvätt" för oss – det är cancerprevention.</p>
+
+                <h4>Vårt åtagande:</h4>
+                <ul class="solution-list">
+                    <li>Vetenskapligt baserad metodik (inte "bästa gissning")</li>
+                    <li>Oberoende validering (vi visar bevis, inte bara påståenden)</li>
+                    <li>Transparent om begränsningar (ingen 100%-garanti, men bästa möjliga)</li>
+                    <li>Långsiktigt stöd (vi följer utveckling inom forskning)</li>
+                </ul>
+
+                <div class="proof-box">
+                    <strong>Konkret skillnad:</strong><br>
+                    Standard leverantörer säger: "Våra maskiner klarar brandkläder"<br>
+                    <strong>KEN säger:</strong> "Här är lab-resultat som visar exakt vad som avlägsnas vid vår process, jämfört med standard"
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Skydda era brandmän. Förebygg cancer.</h2>
+            <p style="font-size: 1.125rem; opacity: 0.95;">Vetenskapligt bevisad 96,4% PAH-reduktion</p>
+
+            <div class="cta-buttons">
+                <a href="kontakt.html" class="btn btn-white">📞 Boka presentation med lab-resultat</a>
+                <a href="lcc-kalkylator.html" class="btn btn-white">💰 Beräkna LCC</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Tvättlösningar Sverige. Cancerprevention för räddningstjänst.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+---
+interface Benefit {
+  text: string;
+}
+
+interface Solution {
+  icon: string;
+  title: string;
+  description: string;
+  benefits: Benefit[];
+  ctaText: string;
+  ctaHref: string;
+}
+
+interface Props {
+  title: string;
+  intro: string;
+  solutions: Solution[];
+}
+
+const { title, intro, solutions } = Astro.props;
+---
+
+<section id="losningar" class="py-16 sm:py-24 bg-gradient-to-br from-blue-50 to-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+        {title}
+      </h2>
+      <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+        {intro}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      {solutions.map((solution) => (
+        <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
+          <div class="text-5xl mb-6">{solution.icon}</div>
+
+          <h3 class="text-2xl font-bold text-gray-900 mb-4">
+            {solution.title}
+          </h3>
+
+          <p class="text-gray-600 mb-6 leading-relaxed">
+            {solution.description}
+          </p>
+
+          <div class="bg-blue-50 rounded-lg p-6 mb-6">
+            <p class="text-sm font-semibold text-blue-900 mb-3">💡 Värde för din verksamhet:</p>
+            <ul class="space-y-2">
+              {solution.benefits.map((benefit) => (
+                <li class="flex items-start">
+                  <span class="text-blue-600 mr-2 flex-shrink-0">✓</span>
+                  <span class="text-sm text-gray-700">{benefit.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <a
+            href={solution.ctaHref}
+            class="inline-block text-blue-600 font-semibold hover:text-blue-700 transition"
+          >
+            {solution.ctaText} →
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

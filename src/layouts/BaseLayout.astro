@@ -1,0 +1,155 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const { title, description, canonical, ogImage } = Astro.props;
+const canonicalURL = canonical || new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = ogImage || new URL('/images/og/default.jpg', Astro.site);
+---
+
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- SEO -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImageURL} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageURL} />
+  </head>
+  <body class="bg-white text-gray-900 antialiased">
+    <!-- Navigation will go here -->
+    <nav class="bg-white shadow-sm">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+          <div class="flex-shrink-0">
+            <a href="/" class="text-2xl font-bold text-blue-600">
+              tvättlösningar.se
+            </a>
+          </div>
+          <div class="hidden md:flex space-x-8">
+            <a href="/vard-och-hygien" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              Vård & Hygien
+            </a>
+            <a href="/bygg-och-fastighet" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              Bygg & Fastighet
+            </a>
+            <a href="/sport-och-fritid" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              Sport & Fritid
+            </a>
+            <a href="/djurhallning" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              Djurhållning
+            </a>
+            <a href="/raddningstjanst" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              Räddningstjänst
+            </a>
+            <a href="/leasing" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              Leasing
+            </a>
+            <a href="/blogg" class="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium">
+              Blogg
+            </a>
+          </div>
+          <div>
+            <a
+              href="#kontakt"
+              class="bg-blue-600 text-white px-6 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition"
+            >
+              Boka gratis rådgivning
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main>
+      <slot />
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white mt-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <!-- Kolumn 1: Branschsidor -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Branschsidor</h3>
+            <ul class="space-y-2">
+              <li><a href="/vard-och-hygien" class="text-gray-400 hover:text-white">Vård & Hygien</a></li>
+              <li><a href="/bygg-och-fastighet" class="text-gray-400 hover:text-white">Bygg & Fastighet</a></li>
+              <li><a href="/sport-och-fritid" class="text-gray-400 hover:text-white">Sport & Fritid</a></li>
+              <li><a href="/djurhallning" class="text-gray-400 hover:text-white">Djurhållning</a></li>
+              <li><a href="/raddningstjanst" class="text-gray-400 hover:text-white">Räddningstjänst</a></li>
+            </ul>
+          </div>
+
+          <!-- Kolumn 2: Resurser -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Resurser</h3>
+            <ul class="space-y-2">
+              <li><a href="/verktyg/roi-kalkylator" class="text-gray-400 hover:text-white">ROI-kalkylator</a></li>
+              <li><a href="/guider" class="text-gray-400 hover:text-white">Nedladdningsbara guider</a></li>
+              <li><a href="/blogg" class="text-gray-400 hover:text-white">Blogg</a></li>
+            </ul>
+          </div>
+
+          <!-- Kolumn 3: Information -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Information</h3>
+            <ul class="space-y-2">
+              <li><a href="/om" class="text-gray-400 hover:text-white">Om tvättlösningar.se</a></li>
+              <li><a href="/kontakt" class="text-gray-400 hover:text-white">Kontakta oss</a></li>
+              <li><a href="/integritetspolicy" class="text-gray-400 hover:text-white">Integritetspolicy</a></li>
+            </ul>
+          </div>
+
+          <!-- Kolumn 4: Nyhetsbrev -->
+          <div>
+            <h3 class="text-lg font-semibold mb-4">Nyhetsbrev</h3>
+            <p class="text-gray-400 text-sm mb-4">Få expertråd och tips direkt i inkorgen</p>
+            <form class="space-y-2">
+              <input
+                type="email"
+                placeholder="Din e-post"
+                class="w-full px-4 py-2 rounded-md text-gray-900"
+              />
+              <button
+                type="submit"
+                class="w-full bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition"
+              >
+                Prenumerera
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Längst ner -->
+        <div class="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
+          <p>&copy; {new Date().getFullYear()} tvättlösningar.se. En kunskapsresurs för professionella tvättlösningar.</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

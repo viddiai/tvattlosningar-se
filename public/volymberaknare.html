@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volymberäknare för Vården - Hur många maskiner behöver ni? | tvättlösningar.se</title>
+    <meta name="description" content="Beräkna hur många tvättmaskiner och torktumlare ert äldreboende eller sjukhus behöver. Få konkret rekommendation på 3 minuter.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+            --warning: #C74E3C;
+            --border: #E0E4E8;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 3vw, 2.25rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        /* Intro */
+        .intro {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .intro p {
+            font-size: 1.125rem;
+            color: var(--text-mid);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .info-box {
+            background: var(--primary-light);
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            margin-bottom: var(--spacing-lg);
+            text-align: left;
+        }
+
+        /* Progress Steps */
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+            z-index: 1;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--white);
+            border: 2px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--spacing-xs);
+            font-weight: 700;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+
+        .step.active .step-number {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+
+        .step.completed .step-number {
+            background: var(--success);
+            border-color: var(--success);
+            color: var(--white);
+        }
+
+        .step-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .step.active .step-label {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Form Card */
+        .form-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .step-content {
+            display: none;
+        }
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-size: 1rem;
+        }
+
+        .label-help {
+            font-size: 0.875rem;
+            color: var(--text-light);
+            font-weight: 400;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            font-size: 1.125rem;
+            font-family: 'Work Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"] {
+            text-align: right;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(0, 120, 180, 0.1);
+        }
+
+        .radio-group {
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .radio-option {
+            position: relative;
+            background: var(--bg-cream);
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            padding: var(--spacing-md);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option:hover {
+            border-color: var(--accent);
+            background: var(--white);
+        }
+
+        .radio-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-content {
+            border-left: 4px solid var(--accent);
+            padding-left: calc(var(--spacing-sm) - 4px);
+        }
+
+        .radio-option input[type="radio"]:checked ~ * {
+            color: var(--primary);
+        }
+
+        .radio-option.selected {
+            background: var(--primary-light);
+            border-color: var(--accent);
+        }
+
+        .radio-content {
+            transition: all 0.3s ease;
+        }
+
+        .radio-title {
+            font-weight: 600;
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .radio-description {
+            font-size: 0.875rem;
+            color: var(--text-mid);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover:not(:disabled) {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 180, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background: var(--text-light);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .button-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            justify-content: space-between;
+            margin-top: var(--spacing-lg);
+        }
+
+        /* Results */
+        .results {
+            background: var(--white);
+            border-radius: 8px;
+            padding: var(--spacing-lg);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            display: none;
+        }
+
+        .results.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .result-highlight {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .result-highlight h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .result-highlight p {
+            font-size: 1.125rem;
+            opacity: 0.9;
+        }
+
+        .equipment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .equipment-card {
+            background: var(--bg-cream);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--border);
+        }
+
+        .equipment-icon {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .equipment-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'DM Serif Display', serif;
+        }
+
+        .equipment-label {
+            color: var(--text-mid);
+            font-size: 1rem;
+        }
+
+        .details-section {
+            background: var(--primary-light);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .details-section h4 {
+            color: var(--primary);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .details-grid {
+            display: grid;
+            gap: var(--spacing-sm);
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: var(--spacing-xs) 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-label {
+            color: var(--text-mid);
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .recommendation-box {
+            background: var(--white);
+            border: 2px solid var(--success);
+            border-radius: 8px;
+            padding: var(--spacing-md);
+            margin-top: var(--spacing-md);
+        }
+
+        .recommendation-box h4 {
+            color: var(--success);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .recommendation-box ul {
+            list-style: none;
+        }
+
+        .recommendation-box li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .recommendation-box li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Export */
+        .export-section {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-lg);
+            border-top: 2px solid var(--border);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .equipment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .progress-steps {
+                font-size: 0.75rem;
+            }
+
+            .step-number {
+                width: 32px;
+                height: 32px;
+            }
+        }
+
+        @media print {
+            .header,
+            .button-group,
+            .export-section {
+                display: none;
+            }
+
+            body {
+                background: white;
+            }
+
+            .form-card,
+            .results {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be inserted here by header.js -->
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Intro -->
+        <section class="intro">
+            <h1>Volymberäknare för Vården</h1>
+            <p>Få reda på hur många tvättmaskiner och torktumlare ni verkligen behöver</p>
+
+            <div class="info-box">
+                <strong>⏱️ Tar bara 3 minuter</strong>
+                <p>Svara på några enkla frågor om er verksamhet så får ni en konkret rekommendation anpassad för just era behov.</p>
+            </div>
+        </section>
+
+        <!-- Progress Steps -->
+        <div class="progress-steps">
+            <div class="progress-line" id="progressLine"></div>
+            <div class="step active" data-step="1">
+                <div class="step-number">1</div>
+                <div class="step-label">Verksamhet</div>
+            </div>
+            <div class="step" data-step="2">
+                <div class="step-number">2</div>
+                <div class="step-label">Kapacitet</div>
+            </div>
+            <div class="step" data-step="3">
+                <div class="step-number">3</div>
+                <div class="step-label">Användning</div>
+            </div>
+            <div class="step" data-step="4">
+                <div class="step-number">4</div>
+                <div class="step-label">Resultat</div>
+            </div>
+        </div>
+
+        <!-- Form Card -->
+        <div class="form-card">
+            <!-- Step 1: Verksamhetstyp -->
+            <div class="step-content active" data-step="1">
+                <h3>Vilken typ av vårdinrättning driver ni?</h3>
+                <p class="label-help">Detta påverkar hur mycket tvätt som genereras per plats</p>
+
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="facilityType" value="nursing_home" data-kg="4.0">
+                        <div class="radio-content">
+                            <span class="radio-title">🏥 Äldreboende</span>
+                            <span class="radio-description">Typiskt 3-5 kg tvätt per plats och dygn</span>
+                        </div>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="facilityType" value="hospital" data-kg="6.0">
+                        <div class="radio-content">
+                            <span class="radio-title">🏥 Sjukhus/Akutvård</span>
+                            <span class="radio-description">Typiskt 5-7 kg tvätt per plats och dygn</span>
+                        </div>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="facilityType" value="clinic" data-kg="2.5">
+                        <div class="radio-content">
+                            <span class="radio-title">🩺 Vårdmottagning/Klinik</span>
+                            <span class="radio-description">Typiskt 2-3 kg tvätt per dag</span>
+                        </div>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="facilityType" value="assisted_living" data-kg="3.0">
+                        <div class="radio-content">
+                            <span class="radio-title">🏡 Serviceboende</span>
+                            <span class="radio-description">Typiskt 2.5-3.5 kg tvätt per plats och dygn</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" disabled>← Föregående</button>
+                    <button class="btn btn-primary" id="step1Next" disabled>Nästa →</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Kapacitet -->
+            <div class="step-content" data-step="2">
+                <h3>Hur stor är er verksamhet?</h3>
+
+                <div class="form-group">
+                    <label for="capacity">
+                        Antal platser/vårdplatser
+                        <span class="label-help">För kliniker: uppskatta antal patienter per dag</span>
+                    </label>
+                    <input type="number" id="capacity" min="1" max="500" value="60">
+                </div>
+
+                <div class="form-group">
+                    <label>Upplever ni säsongsvariation eller toppar?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="peakLoad" value="1.0">
+                            <div class="radio-content">
+                                <span class="radio-title">Nej, ganska jämnt över året</span>
+                                <span class="radio-description">Normal dimensionering</span>
+                            </div>
+                        </label>
+
+                        <label class="radio-option">
+                            <input type="radio" name="peakLoad" value="1.3" checked>
+                            <div class="radio-content">
+                                <span class="radio-title">Ja, vissa perioder är mer belastade</span>
+                                <span class="radio-description">+30% kapacitet för influensasäsong m.m.</span>
+                            </div>
+                        </label>
+
+                        <label class="radio-option">
+                            <input type="radio" name="peakLoad" value="1.5">
+                            <div class="radio-content">
+                                <span class="radio-title">Ja, stora variationer</span>
+                                <span class="radio-description">+50% kapacitet för utbrott och toppar</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" id="step2Prev">← Föregående</button>
+                    <button class="btn btn-primary" id="step2Next">Nästa →</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Användning -->
+            <div class="step-content" data-step="3">
+                <h3>Hur snabbt behöver tvättade textilier vara tillbaka?</h3>
+
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="turnaround" value="same_day">
+                        <div class="radio-content">
+                            <span class="radio-title">⚡ Samma dag (akutvård)</span>
+                            <span class="radio-description">Högre kapacitet behövs, flera tvättcykler per dag</span>
+                        </div>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="turnaround" value="next_day" checked>
+                        <div class="radio-content">
+                            <span class="radio-title">📅 Nästa dag (standard)</span>
+                            <span class="radio-description">Normal kapacitet räcker</span>
+                        </div>
+                    </label>
+
+                    <label class="radio-option">
+                        <input type="radio" name="turnaround" value="flexible">
+                        <div class="radio-content">
+                            <span class="radio-title">🕐 Flexibelt, 2-3 dagar OK</span>
+                            <span class="radio-description">Lägre kapacitet kan räcka</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="hoursPerDay">Hur många timmar per dag kan ni tvätta?</label>
+                    <select id="hoursPerDay">
+                        <option value="8">8 timmar (dagtid)</option>
+                        <option value="12">12 timmar (dag + kväll)</option>
+                        <option value="16" selected>16 timmar (utökad drift)</option>
+                        <option value="24">24 timmar (dygnet runt)</option>
+                    </select>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" id="step3Prev">← Föregående</button>
+                    <button class="btn btn-primary" id="step3Calculate">Beräkna min kapacitet →</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results -->
+        <div class="results" id="results">
+            <div class="result-header">
+                <h2>Din rekommenderade tvättlösning</h2>
+                <p style="color: var(--text-mid);">Baserat på <span id="summaryFacility"></span> med <span id="summaryCapacity"></span></p>
+            </div>
+
+            <div class="result-highlight">
+                <h2 id="recommendationTitle">Er verksamhet behöver:</h2>
+                <p>Här är vår expertrekommendation</p>
+            </div>
+
+            <div class="equipment-grid">
+                <div class="equipment-card">
+                    <div class="equipment-icon">🌀</div>
+                    <div class="equipment-number" id="washersCount">2</div>
+                    <div class="equipment-label">Tvättmaskiner</div>
+                </div>
+
+                <div class="equipment-card">
+                    <div class="equipment-icon">💨</div>
+                    <div class="equipment-number" id="dryersCount">2</div>
+                    <div class="equipment-label">Torktumlare</div>
+                </div>
+            </div>
+
+            <div class="details-section">
+                <h4>📊 Beräkningsunderlag</h4>
+                <div class="details-grid">
+                    <div class="detail-row">
+                        <span class="detail-label">Uppskattad tvättvolym per dag:</span>
+                        <span class="detail-value" id="dailyVolume">240 kg</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Tvättvolym per vecka:</span>
+                        <span class="detail-value" id="weeklyVolume">1680 kg</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Tvättvolym per år:</span>
+                        <span class="detail-value" id="yearlyVolume">87 360 kg</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Rekommenderad maskinstorlek:</span>
+                        <span class="detail-value" id="machineSize">18 kg</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Antal tvättcykler per dag:</span>
+                        <span class="detail-value" id="cyclesPerDay">14 cykler</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recommendation-box">
+                <h4>💡 Våra rekommendationer</h4>
+                <ul id="recommendationsList">
+                    <li>Dimensionera för toppbelastning – inte genomsnitt</li>
+                    <li>Ha redundans: Om en maskin går sönder måste vården fortsätta</li>
+                    <li>Överväg automatisk dosering för jämn kvalitet</li>
+                </ul>
+            </div>
+
+            <div class="export-section">
+                <h3>Nästa steg</h3>
+                <p style="color: var(--text-mid); margin-bottom: var(--spacing-md);">
+                    Vill du ha ett konkret anbud baserat på denna beräkning?
+                </p>
+                <div style="display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap;">
+                    <button class="btn btn-primary" onclick="window.print()">🖨️ Skriv ut resultat</button>
+                    <a href="lcc-kalkylator.html" class="btn btn-secondary">💰 Beräkna LCC-kostnad</a>
+                    <a href="vard-hygien-landing.html#contact" class="btn btn-secondary">📞 Boka rådgivning</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // State
+        let currentStep = 1;
+        const formData = {
+            facilityType: null,
+            kgPerDay: 0,
+            capacity: 60,
+            peakLoad: 1.3,
+            turnaround: 'next_day',
+            hoursPerDay: 16
+        };
+
+        // Elements
+        const steps = document.querySelectorAll('.step');
+        const stepContents = document.querySelectorAll('.step-content');
+        const progressLine = document.getElementById('progressLine');
+        const resultsSection = document.getElementById('results');
+
+        // Step 1: Facility type selection
+        document.querySelectorAll('input[name="facilityType"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                formData.facilityType = e.target.value;
+                formData.kgPerDay = parseFloat(e.target.dataset.kg);
+
+                // Visual feedback
+                document.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('selected'));
+                e.target.closest('.radio-option').classList.add('selected');
+
+                // Enable next button
+                document.getElementById('step1Next').disabled = false;
+            });
+        });
+
+        document.getElementById('step1Next').addEventListener('click', () => goToStep(2));
+
+        // Step 2: Capacity
+        document.getElementById('capacity').addEventListener('input', (e) => {
+            formData.capacity = parseInt(e.target.value) || 60;
+        });
+
+        document.querySelectorAll('input[name="peakLoad"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                formData.peakLoad = parseFloat(e.target.value);
+                document.querySelectorAll('input[name="peakLoad"]').forEach(r => {
+                    r.closest('.radio-option').classList.remove('selected');
+                });
+                e.target.closest('.radio-option').classList.add('selected');
+            });
+        });
+
+        document.getElementById('step2Prev').addEventListener('click', () => goToStep(1));
+        document.getElementById('step2Next').addEventListener('click', () => goToStep(3));
+
+        // Step 3: Usage
+        document.querySelectorAll('input[name="turnaround"]').forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                formData.turnaround = e.target.value;
+                document.querySelectorAll('input[name="turnaround"]').forEach(r => {
+                    r.closest('.radio-option').classList.remove('selected');
+                });
+                e.target.closest('.radio-option').classList.add('selected');
+            });
+        });
+
+        document.getElementById('hoursPerDay').addEventListener('change', (e) => {
+            formData.hoursPerDay = parseInt(e.target.value);
+        });
+
+        document.getElementById('step3Prev').addEventListener('click', () => goToStep(2));
+        document.getElementById('step3Calculate').addEventListener('click', calculateResults);
+
+        // Navigation
+        function goToStep(stepNumber) {
+            currentStep = stepNumber;
+
+            // Update steps
+            steps.forEach((step, index) => {
+                step.classList.remove('active', 'completed');
+                if (index + 1 < stepNumber) {
+                    step.classList.add('completed');
+                } else if (index + 1 === stepNumber) {
+                    step.classList.add('active');
+                }
+            });
+
+            // Update content
+            stepContents.forEach(content => {
+                content.classList.remove('active');
+                if (parseInt(content.dataset.step) === stepNumber) {
+                    content.classList.add('active');
+                }
+            });
+
+            // Update progress line
+            const progress = ((stepNumber - 1) / (steps.length - 1)) * 100;
+            progressLine.style.width = progress + '%';
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Calculate Results
+        function calculateResults() {
+            // Daily volume in kg
+            const dailyVolume = formData.capacity * formData.kgPerDay * formData.peakLoad;
+            const weeklyVolume = dailyVolume * 7;
+            const yearlyVolume = dailyVolume * 365;
+
+            // Turnaround multiplier
+            let turnaroundMultiplier = 1.0;
+            if (formData.turnaround === 'same_day') {
+                turnaroundMultiplier = 1.4; // Need more capacity for same-day
+            } else if (formData.turnaround === 'flexible') {
+                turnaroundMultiplier = 0.8; // Can manage with less
+            }
+
+            // Adjusted daily volume
+            const adjustedDaily = dailyVolume * turnaroundMultiplier;
+
+            // Machine size selection (based on facility size)
+            let machineSize = 18; // Default 18 kg
+            if (adjustedDaily > 400) {
+                machineSize = 23;
+            } else if (adjustedDaily < 150) {
+                machineSize = 11;
+            }
+
+            // Cycles per machine per day (based on hours available)
+            // Assume 1 hour per cycle
+            const cyclesPerMachinePerDay = formData.hoursPerDay * 0.75; // 75% utilization
+
+            // Calculate number of washers needed
+            const capacityPerMachine = machineSize * cyclesPerMachinePerDay;
+            let washersNeeded = Math.ceil(adjustedDaily / capacityPerMachine);
+
+            // Minimum 2 for redundancy in healthcare
+            washersNeeded = Math.max(2, washersNeeded);
+
+            // Dryers (typically 1:1 ratio, but slightly less capacity OK)
+            let dryersNeeded = washersNeeded;
+            if (washersNeeded > 2) {
+                dryersNeeded = Math.max(2, washersNeeded - 1);
+            }
+
+            // Total cycles needed per day
+            const totalCyclesPerDay = Math.ceil(adjustedDaily / machineSize);
+
+            // Update UI
+            document.getElementById('summaryFacility').textContent = getFacilityName(formData.facilityType);
+            document.getElementById('summaryCapacity').textContent = `${formData.capacity} platser`;
+
+            document.getElementById('washersCount').textContent = washersNeeded;
+            document.getElementById('dryersCount').textContent = dryersNeeded;
+
+            document.getElementById('dailyVolume').textContent = Math.round(dailyVolume) + ' kg';
+            document.getElementById('weeklyVolume').textContent = Math.round(weeklyVolume) + ' kg';
+            document.getElementById('yearlyVolume').textContent = Math.round(yearlyVolume).toLocaleString('sv-SE') + ' kg';
+            document.getElementById('machineSize').textContent = machineSize + ' kg';
+            document.getElementById('cyclesPerDay').textContent = totalCyclesPerDay + ' cykler';
+
+            // Generate recommendations
+            generateRecommendations(washersNeeded, dryersNeeded, formData, adjustedDaily);
+
+            // Show results
+            goToStep(4);
+            resultsSection.classList.add('active');
+            resultsSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getFacilityName(type) {
+            const names = {
+                'nursing_home': 'äldreboende',
+                'hospital': 'sjukhus/akutvård',
+                'clinic': 'vårdmottagning',
+                'assisted_living': 'serviceboende'
+            };
+            return names[type] || 'vårdinrättning';
+        }
+
+        function generateRecommendations(washers, dryers, data, dailyVolume) {
+            const recommendations = [];
+
+            // Redundancy
+            if (washers === 2) {
+                recommendations.push('✓ Två maskiner ger er redundans – vården kan fortsätta även om en maskin är ur drift');
+            } else {
+                recommendations.push(`✓ ${washers} maskiner ger er tillräcklig kapacitet även vid toppar`);
+            }
+
+            // Peak load
+            if (data.peakLoad > 1.2) {
+                recommendations.push('✓ Vi har dimensionerat för era toppbelastningar (influensa, utbrott)');
+            }
+
+            // Turnaround
+            if (data.turnaround === 'same_day') {
+                recommendations.push('✓ Kapaciteten räcker för samma-dags-tvättning vid behov');
+            }
+
+            // Automation
+            if (dailyVolume > 200) {
+                recommendations.push('✓ Vid er volym rekommenderar vi starkt automatisk dosering för jämn kvalitet och lägre kemikaliekostnad');
+            }
+
+            // Hygiene
+            if (data.facilityType === 'hospital' || data.facilityType === 'nursing_home') {
+                recommendations.push('✓ Maskiner med certifierade hygiencykler (EN 14065) är nödvändiga för er verksamhetstyp');
+            }
+
+            // Space utilization
+            if (washers > 3) {
+                recommendations.push('✓ Överväg tvättmaskin-tork-kombinationer för att spara plats');
+            }
+
+            // Energy
+            recommendations.push('✓ Välj energieffektiva maskiner – de sparar 20-30% på elkostnaden över livstiden');
+
+            // Display
+            const list = document.getElementById('recommendationsList');
+            list.innerHTML = recommendations.map(r => `<li>${r}</li>`).join('');
+        }
+
+        // Initialize: Auto-select first peak load option
+        document.querySelector('input[name="peakLoad"][value="1.3"]').closest('.radio-option').classList.add('selected');
+        document.querySelector('input[name="turnaround"][value="next_day"]').closest('.radio-option').classList.add('selected');
+    </script>
+
+    <!-- Header Navigation -->
+    <script src="header.js"></script>
+</body>
+</html>

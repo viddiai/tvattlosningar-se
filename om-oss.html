@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om oss - tvättlösningar.se | KEN Tvättlösningar</title>
+    <meta name="description" content="KEN Tvättlösningar - Experter på tvättsystem för vård och omsorg. Över 30 års erfarenhet av hygieniska tvättlösningar.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            color: #1A2833;
+            background: #FAFBFC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #005281 0%, #0078B4 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .content-section:nth-child(even) {
+            background: white;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #005281;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4A5A66;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            color: #0078B4;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #4A5A66;
+            font-weight: 500;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #0078B4;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-title {
+            font-size: 1.5rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .value-description {
+            color: #4A5A66;
+            line-height: 1.6;
+        }
+
+        /* Story Section */
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #1A2833;
+        }
+
+        .story-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .story-highlight {
+            background: #E6F2F8;
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+            border-left: 4px solid #0078B4;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #005281 0%, #0078B4 100%);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            color: #005281;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-role {
+            color: #7A8A96;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-bio {
+            color: #4A5A66;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #005281 0%, #0078B4 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #005281;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #005281;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .stats-grid,
+            .values-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be injected here by header.js -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Om KEN Tvättlösningar</h1>
+            <p>Experter på hygieniska tvättsystem för vård och omsorg sedan 1990</p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Års erfarenhet</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Installationer</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Nöjda kunder</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Vår Historia</h2>
+            <p class="section-subtitle">Från lokal aktör till rikstäckande expert på tvättlösningar</p>
+
+            <div class="story-content">
+                <p>
+                    KEN Tvättlösningar grundades 1990 med en tydlig vision: att göra hygienisk tvätthantering enkel,
+                    säker och kostnadseffektiv för vårdsektorn. Vad som började som en liten verksamhet med fokus på
+                    äldreboenden i Stockholmsregionen har vuxit till en rikstäckande expert med hundratals installationer
+                    över hela Sverige.
+                </p>
+
+                <div class="story-highlight">
+                    <strong>Vår mission:</strong> Att säkerställa att varje vårdtagare har tillgång till rent textil –
+                    varje dag, utan avkall på miljö eller ekonomi.
+                </div>
+
+                <p>
+                    Under åren har vi specialiserat oss på de unika krav som vårdsektorn ställer. Vi förstår vikten av
+                    hygienstandard enligt EN 14065, kapacitetsplanering för oregelbundna belastningar och livscykelkostnader
+                    som påverkar både budget och miljö.
+                </p>
+
+                <p>
+                    Idag hjälper vi sjukhus, äldreboenden, vårdmottagningar och serviceboenden över hela landet att välja
+                    rätt tvättlösning – från behovsanalys till installation och kontinuerlig support.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Våra Värderingar</h2>
+            <p class="section-subtitle">Det som driver oss varje dag</p>
+
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3 class="value-title">Patientsäkerhet först</h3>
+                    <p class="value-description">
+                        Hygien och säkerhet är aldrig något vi kompromissar med. Alla våra lösningar uppfyller
+                        och överträffar branschens strängaste krav.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3 class="value-title">Expertis & Utbildning</h3>
+                    <p class="value-description">
+                        Vi delar med oss av vår kunskap. Genom guider, verktyg och personlig rådgivning hjälper
+                        vi er att fatta välgrundade beslut.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">Långsiktiga Partnerskap</h3>
+                    <p class="value-description">
+                        Vi är inte bara en leverantör – vi är er partner. Från dag ett till år tjugo står vi vid
+                        er sida med support och underhåll.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3 class="value-title">Miljöansvar</h3>
+                    <p class="value-description">
+                        Energieffektivitet och hållbarhet är centralt i allt vi gör. Bra för miljön – och för
+                        er driftsekonomi.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">💰</div>
+                    <h3 class="value-title">Transparens & Ärlighet</h3>
+                    <p class="value-description">
+                        Inga dolda kostnader. Vi är öppna med priser, driftskostnader och livscykelkostnader från
+                        första mötet.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3 class="value-title">Innovation</h3>
+                    <p class="value-description">
+                        Vi följer teknikutvecklingen noga och erbjuder alltid de senaste lösningarna inom hygien,
+                        automation och energieffektivitet.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Vårt Team</h2>
+            <p class="section-subtitle">Experter som brinner för tvättlösningar</p>
+
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-avatar">👨‍💼</div>
+                    <h3 class="team-name">Lars Andersson</h3>
+                    <p class="team-role">VD & Grundare</p>
+                    <p class="team-bio">
+                        30+ års erfarenhet av tvättsystem. Specialiserad på strategisk rådgivning och
+                        livscykelkostnadsanalys för stora vårdorganisationer.
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">👩‍💼</div>
+                    <h3 class="team-name">Maria Johansson</h3>
+                    <p class="team-role">Teknisk Chef</p>
+                    <p class="team-bio">
+                        Expert på hygienstandard och certifieringar. Ansvarar för att alla installationer
+                        uppfyller EN 14065 och branschkrav.
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">👨‍🔧</div>
+                    <h3 class="team-name">Erik Nilsson</h3>
+                    <p class="team-role">Installationschef</p>
+                    <p class="team-bio">
+                        20 års erfarenhet av installation och service. Ser till att varje projekt levereras
+                        i tid och fungerar perfekt från dag ett.
+                    </p>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-avatar">👩‍💻</div>
+                    <h3 class="team-name">Anna Bergström</h3>
+                    <p class="team-role">Kundansvarig</p>
+                    <p class="team-bio">
+                        Er kontaktperson genom hela resan. Från första mötet till långsiktig support –
+                        Anna finns alltid tillgänglig.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Redo att börja?</h2>
+            <p class="cta-description">
+                Låt oss hjälpa er att hitta den perfekta tvättlösningen för er verksamhet
+            </p>
+            <div class="cta-buttons">
+                <a href="kontakt.html" class="btn btn-primary">📞 Kontakta oss</a>
+                <a href="vard-hygien-landing.html" class="btn btn-secondary">🏠 Tillbaka till startsidan</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="header.js"></script>
+    <script src="config.js"></script>
+    <script src="analytics.js"></script>
+
+    <script>
+        // Track page view
+        if (typeof trackPageView !== 'undefined') {
+            trackPageView('Om oss');
+        }
+    </script>
+</body>
+</html>

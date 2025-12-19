@@ -1,0 +1,146 @@
+[debug] [2025-12-17T12:04:59.114Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.118Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.120Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.196Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.197Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.198Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.199Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.832Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.839Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.840Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.911Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.912Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.913Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:04:59.914Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:05:17.158Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:05:17.161Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:05:17.162Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:05:17.231Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:05:17.232Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:05:17.234Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:05:17.235Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:17:57.639Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:17:57.643Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:17:57.645Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:17:57.715Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:17:57.716Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:17:57.717Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:17:57.718Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:24:09.205Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:24:09.206Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:24:16.453Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:24:16.455Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:24:16.457Z] >>> [apiv2][query] POST https://auth.firebase.tools/attest [none]
+[debug] [2025-12-17T12:24:16.457Z] >>> [apiv2][body] POST https://auth.firebase.tools/attest {"session_id":"eabd4f22-43ae-4c69-9b27-0edbcd427876"}
+[debug] [2025-12-17T12:24:16.900Z] <<< [apiv2][status] POST https://auth.firebase.tools/attest 200
+[debug] [2025-12-17T12:24:16.901Z] <<< [apiv2][body] POST https://auth.firebase.tools/attest {"token":"AMWmhMDleuVSvi1ttCDomTUlCWh-3NZ4LdL0txXVzEs"}
+[debug] [2025-12-17T12:27:30.836Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:27:30.839Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:27:30.841Z] >>> [apiv2][query] POST https://accounts.google.com/o/oauth2/token [none]
+[debug] [2025-12-17T12:27:30.841Z] >>> [apiv2][body] POST https://accounts.google.com/o/oauth2/token [omitted]
+[debug] [2025-12-17T12:27:31.027Z] <<< [apiv2][status] POST https://accounts.google.com/o/oauth2/token 200
+[debug] [2025-12-17T12:27:31.027Z] <<< [apiv2][body] POST https://accounts.google.com/o/oauth2/token [omitted]
+[debug] [2025-12-17T12:27:39.369Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:27:39.369Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T12:27:39.371Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:27:39.371Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T12:27:39.372Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:39.372Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:39.372Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2025-12-17T12:27:40.082Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2025-12-17T12:27:40.082Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2025-12-17T12:27:48.064Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:27:48.064Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T12:27:48.067Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:27:48.067Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T12:27:48.068Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:48.068Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:48.069Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/tvattlosningar-se/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-12-17T12:27:48.069Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/tvattlosningar-se/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/tvattlosningar-se
+[debug] [2025-12-17T12:27:49.059Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/tvattlosningar-se/services/cloudresourcemanager.googleapis.com 403
+[debug] [2025-12-17T12:27:49.059Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/tvattlosningar-se/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2025-12-17T12:27:49.060Z] Unable to check that https://cloudresourcemanager.googleapis.com is enabled on tvattlosningar-se. Calls to it will fail if it is not enabled
+[debug] [2025-12-17T12:27:49.060Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:49.060Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:49.060Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/tvattlosningar-se [none]
+[debug] [2025-12-17T12:27:50.161Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/tvattlosningar-se 403
+[debug] [2025-12-17T12:27:50.161Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/tvattlosningar-se {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2025-12-17T12:27:50.163Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:50.163Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:50.163Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2025-12-17T12:27:50.163Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"tvattlosningar-se","name":"Tvättlösningar Sverige"}
+[debug] [2025-12-17T12:27:50.433Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
+[debug] [2025-12-17T12:27:50.433Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"field [display_name] has issue [project display name contains invalid characters]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"display_name","description":"project display name contains invalid characters"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2025-12-17T12:27:56.286Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:27:56.286Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T12:27:56.288Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T12:27:56.289Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T12:27:56.290Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:56.290Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:56.290Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/tvattlosningar-se/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-12-17T12:27:56.290Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/tvattlosningar-se/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/tvattlosningar-se
+[debug] [2025-12-17T12:27:57.255Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/tvattlosningar-se/services/cloudresourcemanager.googleapis.com 403
+[debug] [2025-12-17T12:27:57.255Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/tvattlosningar-se/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2025-12-17T12:27:57.255Z] Unable to check that https://cloudresourcemanager.googleapis.com is enabled on tvattlosningar-se. Calls to it will fail if it is not enabled
+[debug] [2025-12-17T12:27:57.255Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:57.255Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:57.255Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/tvattlosningar-se [none]
+[debug] [2025-12-17T12:27:58.172Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/tvattlosningar-se 403
+[debug] [2025-12-17T12:27:58.172Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/tvattlosningar-se {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2025-12-17T12:27:58.172Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:58.172Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:58.172Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2025-12-17T12:27:58.172Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"tvattlosningar-se","name":"Tvattlosningar Sverige"}
+[debug] [2025-12-17T12:27:58.472Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 200
+[debug] [2025-12-17T12:27:58.472Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"name":"operations/create_project.global.7544220069626146804"}
+[debug] [2025-12-17T12:27:58.473Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:58.473Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:58.473Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 [none]
+[debug] [2025-12-17T12:27:59.224Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 200
+[debug] [2025-12-17T12:27:59.224Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 {"name":"operations/create_project.global.7544220069626146804"}
+[debug] [2025-12-17T12:27:59.725Z] [Project Creation Poller] Retrying task index 0
+[debug] [2025-12-17T12:27:59.725Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:59.725Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:27:59.725Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 [none]
+[debug] [2025-12-17T12:27:59.919Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 200
+[debug] [2025-12-17T12:27:59.919Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 {"name":"operations/create_project.global.7544220069626146804"}
+[debug] [2025-12-17T12:28:00.920Z] [Project Creation Poller] Retrying task index 0
+[debug] [2025-12-17T12:28:00.920Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:28:00.920Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:28:00.920Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 [none]
+[debug] [2025-12-17T12:28:01.117Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 200
+[debug] [2025-12-17T12:28:01.117Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/operations/create_project.global.7544220069626146804 {"name":"operations/create_project.global.7544220069626146804","metadata":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.ProjectCreationStatus","gettable":true,"ready":true},"done":true,"response":{"@type":"type.googleapis.com/google.cloudresourcemanager.v1.Project","projectNumber":"954520365680","projectId":"tvattlosningar-se","lifecycleState":"ACTIVE","name":"Tvattlosningar Sverige","createTime":"2025-12-17T12:27:59.550690Z","parent":{"type":"organization","id":"561888088430"}}}
+[debug] [2025-12-17T12:28:01.118Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:28:01.118Z] Checked if tokens are valid: true, expires at: 1765978050027
+[debug] [2025-12-17T12:28:01.118Z] >>> [apiv2][query] POST https://firebase.googleapis.com/v1beta1/projects/tvattlosningar-se:addFirebase [none]
+[debug] [2025-12-17T12:28:02.350Z] <<< [apiv2][status] POST https://firebase.googleapis.com/v1beta1/projects/tvattlosningar-se:addFirebase 403
+[debug] [2025-12-17T12:28:02.350Z] <<< [apiv2][body] POST https://firebase.googleapis.com/v1beta1/projects/tvattlosningar-se:addFirebase {"error":{"code":403,"message":"The caller does not have permission","status":"PERMISSION_DENIED"}}
+[debug] [2025-12-17T12:28:02.350Z] Request to https://firebase.googleapis.com/v1beta1/projects/tvattlosningar-se:addFirebase had HTTP Error: 403, The caller does not have permission
+[debug] [2025-12-17T13:35:34.588Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.591Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:34.591Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.592Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:34.601Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.602Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:34.655Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.655Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:34.656Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.656Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:34.657Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.658Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:34.659Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.660Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:34.904Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.907Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:34.908Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:34.908Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:35.048Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:35.048Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:35.126Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:35.126Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:35.128Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:35.128Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:35.131Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:35.131Z] > authorizing via signed-in user (stefan@peakmarketing.io)
+[debug] [2025-12-17T13:35:35.132Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-17T13:35:35.132Z] > authorizing via signed-in user (stefan@peakmarketing.io)

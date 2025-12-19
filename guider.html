@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guider & Resurser - tvättlösningar.se | KEN Tvättlösningar</title>
+    <meta name="description" content="Kostnadsfria guider och resurser om tvättlösningar för vård och omsorg. Expert-tips om hygienstandard, kapacitetsplanering och LCC.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            color: #1A2833;
+            background: #FAFBFC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #005281 0%, #0078B4 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .content-section:nth-child(even) {
+            background: white;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #005281;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4A5A66;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Featured Guide */
+        .featured-guide {
+            background: linear-gradient(135deg, #E6F2F8 0%, #FFFFFF 100%);
+            border-radius: 12px;
+            padding: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 4rem;
+        }
+
+        .featured-content h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #005281;
+            margin-bottom: 1rem;
+        }
+
+        .featured-content p {
+            color: #4A5A66;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .featured-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .featured-list li {
+            padding: 0.5rem 0;
+            color: #1A2833;
+        }
+
+        .featured-list li::before {
+            content: "✓";
+            color: #2D9B81;
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+
+        .featured-image {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .featured-image .icon {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+        }
+
+        .featured-image .pages {
+            color: #7A8A96;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Guides Grid */
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .guide-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .guide-title {
+            font-size: 1.5rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .guide-description {
+            color: #4A5A66;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            line-height: 1.6;
+        }
+
+        .guide-meta {
+            display: flex;
+            gap: 1.5rem;
+            color: #7A8A96;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #E0E4E8;
+        }
+
+        .guide-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #005281;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0078B4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 180, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #005281;
+            border: 2px solid #005281;
+        }
+
+        .btn-secondary:hover {
+            background: #005281;
+            color: white;
+        }
+
+        /* Resources Section */
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .resource-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #0078B4;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-title {
+            font-size: 1.25rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .resource-description {
+            color: #4A5A66;
+            margin-bottom: 1.25rem;
+            line-height: 1.6;
+        }
+
+        .resource-link {
+            color: #0078B4;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #005281 0%, #0078B4 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .featured-guide {
+                grid-template-columns: 1fr;
+            }
+
+            .guides-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be injected here by header.js -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Guider & Resurser</h1>
+            <p>Kostnadsfri expertkunskap om tvättlösningar för vård och omsorg</p>
+        </div>
+    </section>
+
+    <!-- Featured Guide Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="featured-guide">
+                <div class="featured-content">
+                    <h2>📖 Vårdens Kompletta Tvättguide</h2>
+                    <p>
+                        Vår mest populära guide - en komplett handbok för beslutsfattare inom vård och omsorg.
+                        Allt du behöver veta om tvättlösningar på ett ställe.
+                    </p>
+                    <ul class="featured-list">
+                        <li>Hygienstandard och certifieringar (EN 14065)</li>
+                        <li>Kapacitetsplanering för olika vårdtyper</li>
+                        <li>Livscykelkostnadsanalys (LCC)</li>
+                        <li>Checklistor för upphandling</li>
+                        <li>Installation och drift</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showGuideDownload()">
+                        📥 Ladda ner guide (PDF)
+                    </button>
+                </div>
+                <div class="featured-image">
+                    <div class="icon">📄</div>
+                    <div class="pages">15 sidor • PDF-format</div>
+                    <p style="color: #4A5A66; font-size: 0.9rem;">Komplett guide med praktiska exempel och mallar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topic Guides Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Tematiska Guider</h2>
+            <p class="section-subtitle">Fördjupningar inom specifika områden</p>
+
+            <div class="guides-grid">
+                <div class="guide-card">
+                    <div class="guide-icon">🧪</div>
+                    <h3 class="guide-title">Hygienstandard & Certifiering</h3>
+                    <p class="guide-description">
+                        Allt om EN 14065, ISO 15883 och andra standarder för hygienisk tvätthantering inom vården.
+                        Inklusive valideringskrav och dokumentation.
+                    </p>
+                    <div class="guide-meta">
+                        <span>📄 8 sidor</span>
+                        <span>⏱️ 10 min läsning</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showGuideDownload('Hygienstandard & Certifiering')">
+                        Ladda ner
+                    </button>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-icon">📊</div>
+                    <h3 class="guide-title">Kapacitetsplanering</h3>
+                    <p class="guide-description">
+                        Hur du dimensionerar rätt för din verksamhet. Inklusive tvättvolymberäkningar, toppbelastning
+                        och redundans för olika vårdtyper.
+                    </p>
+                    <div class="guide-meta">
+                        <span>📄 10 sidor</span>
+                        <span>⏱️ 12 min läsning</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showGuideDownload('Kapacitetsplanering')">
+                        Ladda ner
+                    </button>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-icon">💰</div>
+                    <h3 class="guide-title">Livscykelkostnader (LCC)</h3>
+                    <p class="guide-description">
+                        Komplett guide till LCC-kalkylering. Jämför CapEx vs OpEx, beräkna total ägandekostnad
+                        och undvik kostsamma misstag vid upphandling.
+                    </p>
+                    <div class="guide-meta">
+                        <span>📄 12 sidor</span>
+                        <span>⏱️ 15 min läsning</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showGuideDownload('LCC-Guide')">
+                        Ladda ner
+                    </button>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-icon">✅</div>
+                    <h3 class="guide-title">Upphandlingschecklista</h3>
+                    <p class="guide-description">
+                        Steg-för-steg checklista för upphandling av tvättsystem. Från behovsanalys till
+                        leverantörsvärdering och kontraktsuppföljning.
+                    </p>
+                    <div class="guide-meta">
+                        <span>📄 6 sidor</span>
+                        <span>⏱️ 8 min läsning</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showGuideDownload('Upphandlingschecklista')">
+                        Ladda ner
+                    </button>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-icon">🔧</div>
+                    <h3 class="guide-title">Installation & Integration</h3>
+                    <p class="guide-description">
+                        Praktisk guide för installation av tvättsystem. El, vatten, ventilation, zonsseparering
+                        och integration med befintlig infrastruktur.
+                    </p>
+                    <div class="guide-meta">
+                        <span>📄 9 sidor</span>
+                        <span>⏱️ 11 min läsning</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showGuideDownload('Installation & Integration')">
+                        Ladda ner
+                    </button>
+                </div>
+
+                <div class="guide-card">
+                    <div class="guide-icon">🌱</div>
+                    <h3 class="guide-title">Hållbarhet & Energi</h3>
+                    <p class="guide-description">
+                        Optimera för miljö och ekonomi. Energieffektiva lösningar, vattenbesparingar och
+                        miljöcertifieringar för moderna tvättsystem.
+                    </p>
+                    <div class="guide-meta">
+                        <span>📄 7 sidor</span>
+                        <span>⏱️ 9 min läsning</span>
+                    </div>
+                    <button class="btn btn-secondary" onclick="showGuideDownload('Hållbarhet & Energi')">
+                        Ladda ner
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Tools Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Interaktiva Verktyg</h2>
+            <p class="section-subtitle">Gör beräkningar och analyser direkt i browsern</p>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📊</div>
+                    <h3 class="resource-title">Volymberäknare</h3>
+                    <p class="resource-description">
+                        Räkna ut hur många maskiner ni behöver baserat på verksamhetstyp, kapacitet och
+                        toppbelastning. Få direkt rekommendation.
+                    </p>
+                    <a href="volymberaknare.html" class="resource-link">
+                        Använd verktyget →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">💰</div>
+                    <h3 class="resource-title">LCC-Kalkylator</h3>
+                    <p class="resource-description">
+                        Jämför livscykelkostnader mellan olika alternativ. Inkluderar CapEx, OpEx, energi,
+                        underhåll och restvärde.
+                    </p>
+                    <a href="lcc-kalkylator.html" class="resource-link">
+                        Använd verktyget →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">✅</div>
+                    <h3 class="resource-title">Beredskapsquiz</h3>
+                    <p class="resource-description">
+                        Testa er beredskap inför upphandling. 10 frågor som ger personliga rekommendationer
+                        baserat på era svar.
+                    </p>
+                    <a href="beredskapsquiz.html" class="resource-link">
+                        Gör quizet →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Resources Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Övriga Resurser</h2>
+            <p class="section-subtitle">Användbara länkar och dokument</p>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📋</div>
+                    <h3 class="resource-title">Branschstandarder</h3>
+                    <p class="resource-description">
+                        Länkar till officiella standarder: EN 14065, ISO 15883, SOSFS 2015:10 och andra
+                        relevanta föreskrifter.
+                    </p>
+                    <a href="#" class="resource-link" onclick="event.preventDefault(); alert('Länkar till standarddokument kommer här');">
+                        Se standarder →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📖</div>
+                    <h3 class="resource-title">Fallstudier</h3>
+                    <p class="resource-description">
+                        Läs om verkliga installationer och hur andra vårdorganisationer löst sina
+                        tvättutmaningar.
+                    </p>
+                    <a href="#" class="resource-link" onclick="event.preventDefault(); alert('Fallstudier kommer här');">
+                        Läs fallstudier →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">🎥</div>
+                    <h3 class="resource-title">Videogenomgångar</h3>
+                    <p class="resource-description">
+                        Videoguider där vi visar hur olika system fungerar, installation och underhåll.
+                    </p>
+                    <a href="#" class="resource-link" onclick="event.preventDefault(); alert('Videoguider kommer här');">
+                        Se videos →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">❓</div>
+                    <h3 class="resource-title">FAQ</h3>
+                    <p class="resource-description">
+                        Svar på vanliga frågor om tvättsystem, hygienstandard, installation, kostnader
+                        och underhåll.
+                    </p>
+                    <a href="vard-hygien-landing.html#faq" class="resource-link">
+                        Läs FAQ →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📝</div>
+                    <h3 class="resource-title">Mallar & Formulär</h3>
+                    <p class="resource-description">
+                        Nedladdningsbara mallar för behovsanalys, kravspecifikation och
+                        leverantörsutvärdering.
+                    </p>
+                    <a href="#" class="resource-link" onclick="event.preventDefault(); alert('Mallar kommer här');">
+                        Hämta mallar →
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">💬</div>
+                    <h3 class="resource-title">Webinars</h3>
+                    <p class="resource-description">
+                        Delta i våra kostnadsfria webinars om tvättlösningar, hygien och
+                        upphandlingsprocesser.
+                    </p>
+                    <a href="#" class="resource-link" onclick="event.preventDefault(); alert('Webinar-schema kommer här');">
+                        Se kommande webinars →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Behöver du personlig rådgivning?</h2>
+            <p class="cta-description">
+                Våra experter hjälper dig att hitta rätt lösning för just er verksamhet
+            </p>
+            <button class="btn btn-primary" style="background: white; color: #005281;" onclick="showConsultationBooking()">
+                📞 Boka gratis rådgivning
+            </button>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="header.js"></script>
+    <script src="config.js"></script>
+    <script src="analytics.js"></script>
+    <script src="lead-capture.js"></script>
+
+    <script>
+        // Track page view
+        if (typeof trackPageView !== 'undefined') {
+            trackPageView('Guider');
+        }
+
+        // Guide download handler
+        function showGuideDownload(guideName = 'Vårdens Kompletta Tvättguide') {
+            if (typeof LeadCaptureModal !== 'undefined') {
+                const modal = new LeadCaptureModal({
+                    title: `Ladda ner: ${guideName}`,
+                    description: 'Fyll i dina uppgifter så skickar vi guiden direkt till din e-post.',
+                    submitButtonText: 'Ladda ner guide',
+                    downloadType: guideName,
+                    onSubmit: async function(formData) {
+                        // Track download request
+                        if (typeof trackDownload !== 'undefined') {
+                            trackDownload('Guide', guideName);
+                        }
+
+                        // Submit to backend
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        const response = await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                ...formData,
+                                source: 'guide_download',
+                                downloadType: guideName
+                            })
+                        });
+
+                        if (response.ok) {
+                            // Show success and trigger PDF download
+                            if (guideName === 'Vårdens Kompletta Tvättguide') {
+                                window.open('generate-guide-pdf.html', '_blank');
+                            }
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                modal.show();
+            }
+        }
+
+        // Consultation booking handler
+        function showConsultationBooking() {
+            if (typeof LeadCaptureModal !== 'undefined') {
+                const modal = new LeadCaptureModal({
+                    title: 'Boka gratis rådgivning',
+                    description: 'Våra experter kontaktar er inom 24 timmar för att boka ett möte.',
+                    submitButtonText: 'Boka rådgivning',
+                    requirePhone: true,
+                    onSubmit: async function(formData) {
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        const response = await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                ...formData,
+                                source: 'consultation_booking'
+                            })
+                        });
+
+                        if (response.ok && typeof trackLeadCapture !== 'undefined') {
+                            trackLeadCapture('Consultation', true);
+                        }
+
+                        return response.ok;
+                    }
+                });
+                modal.show();
+            }
+        }
+
+        // Track guide card clicks
+        document.querySelectorAll('.guide-card .btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const guideName = this.closest('.guide-card').querySelector('.guide-title').textContent;
+                if (typeof trackEvent !== 'undefined') {
+                    trackEvent('Guides', 'Guide Download Clicked', guideName);
+                }
+            });
+        });
+
+        // Track tool clicks
+        document.querySelectorAll('.resource-link').forEach(link => {
+            link.addEventListener('click', function() {
+                const resourceName = this.closest('.resource-card').querySelector('.resource-title').textContent;
+                if (typeof trackEvent !== 'undefined') {
+                    trackEvent('Resources', 'Resource Clicked', resourceName);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Sport & Fritidsanläggningar | tvättlösningar.se</title>
+    <meta name="description" content="Klarar era volymer. Överlever er intensitet. Beprövat i 140+ idrottsanläggningar. Industrial-grade system för extrema tvättvolymer.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --success: #2D9B81;
+            --warning: #C74E3C;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .header {
+            background: var(--white);
+            padding: 2rem;
+            border-bottom: 1px solid #E0E4E8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a472a 0%, #2d5f3d 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-mid);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .challenges-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .challenge-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .challenge-card h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.75rem;
+        }
+
+        .challenge-card h4 {
+            color: var(--accent);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .challenge-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .challenge-card li {
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+        }
+
+        .challenge-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--warning);
+            font-weight: bold;
+        }
+
+        .solution-list li::before {
+            content: '✓';
+            color: var(--success);
+        }
+
+        .example-box {
+            background: var(--primary-light);
+            padding: 1.5rem;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            margin-top: 1.5rem;
+        }
+
+        .example-box strong {
+            color: var(--primary);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: var(--white);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 120, 180, 0.3);
+        }
+
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-white:hover {
+            background: var(--primary-light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.popular {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .price-unit {
+            font-size: 1rem;
+            color: var(--text-mid);
+            font-weight: 400;
+        }
+
+        .footer {
+            background: var(--text-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 1.5rem;
+            }
+
+            .container {
+                padding: 3rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">tvättlösningar.se</a>
+            <a href="kontakt.html" class="btn btn-primary">Kontakta oss</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Tvättlösningar för Sport & Fritidsanläggningar</h1>
+            <p>Klarar era volymer. Överlever er intensitet.</p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">140+</span>
+                    <span>Idrottsanläggningar</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">12-15 år</span>
+                    <span>Genomsnittlig livslängd</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">45 min</span>
+                    <span>Snabbprogram</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="section">
+            <div class="section-header">
+                <h2>Era tre största utmaningar – och våra lösningar</h2>
+            </div>
+
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <h3>1. Hög volym, hög intensitet</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Extrema tvättvolymer (50-300 handdukar/dag, tusentals på turneringsdagar)</li>
+                        <li>Kraftig nedsmutsning (svett, kroppsoljer, klorvatten)</li>
+                        <li>Snabba omsättningstider (2-3h från smutsigt till rent)</li>
+                        <li>Standardutrustning går sönder efter 6-12 månader</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Industrial-grade maskiner</strong> dimensionerade för 3× normal användning</li>
+                        <li><strong>Accelererade program:</strong> 45-min full cykel (tvätt + tork)</li>
+                        <li><strong>Kapacitetsbuffert:</strong> System designat för era toppar, inte genomsnitt</li>
+                        <li><strong>Beprövad hållbarhet:</strong> 12-15 år livslängd (vs. 3-5 för standard)</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Eriksdalsbadet, Stockholm: 180 handdukar/dag vardagar, 400+ helger. Vårt system kört utan större haveri i 8 år. Tidigare lösning höll 18 månader.
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <h3>2. Hygien och infektionskontroll</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Hög risk för smittspridning (täta omklädningsrum, fuktig miljö)</li>
+                        <li>Fotsvamp, ringorm, andra kontaminationer</li>
+                        <li>Ett utbrott = stängd anläggning = katastrofa</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Termisk desinfektion:</strong> 75-90°C program eliminerar 99,999% patogener</li>
+                        <li><strong>Validerad process:</strong> Testresultat enligt EN 14065 (samma som sjukhus)</li>
+                        <li><strong>Knivity spårning:</strong> Dokumentation vid eventuellt utbrott</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Idrottshall Malmö hade återkommande fotsvamputbrott (12 fall/år). Efter installation: 0 fall på 3 år.
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <h3>3. Hantering av toppbelastning</h3>
+
+                    <h4>Utmaningen:</h4>
+                    <ul>
+                        <li>Helg- och kvällstoppar (5× vardagsvolym)</li>
+                        <li>Turneringar och evenemang (10× normal volym på 1 dag)</li>
+                        <li>Utrustningshaveri när ni behöver den MEST = katastrof</li>
+                    </ul>
+
+                    <h4>Vår lösning:</h4>
+                    <ul class="solution-list">
+                        <li><strong>Överspänningskapacitet:</strong> Dimensionerat för toppscenario + 20% marginal</li>
+                        <li><strong>Modularitet:</strong> Flera mindre maskiner (flexibilitet + redundans)</li>
+                        <li><strong>Expressläge:</strong> Snabbprogram 30 min för akuta behov</li>
+                        <li><strong>Prioriterad service:</strong> <4h respons vid haveri</li>
+                    </ul>
+
+                    <div class="example-box">
+                        <strong>Konkret exempel:</strong> Scandinavium ishall, Göteborg: Normal dag 80 kg, match 600 kg. Vårt system klarar båda. 0 dagar kapacitetsbrist på 6 år.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Varför idrottsanläggningar väljer oss</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏊</div>
+                    <h3>Simhallar</h3>
+                    <p>Hanterar klorerade textilier, extremt fukt, höga volymer</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏒</div>
+                    <h3>Ishallar</h3>
+                    <p>Stora spelardräkter, tight tidschema mellan matcher</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Gymanläggningar</h3>
+                    <p>Konstant flöde, snabba omsättningar</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚽</div>
+                    <h3>Multi-sport</h3>
+                    <p>Varierande behov, flexibilitet nyckeln</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <h2>Ekonomi som funkar för offentliga budgetar</h2>
+                <p>Vi vet att 70% av svenska idrottsanläggningar är kommunala = snäva budgetar</p>
+            </div>
+
+            <div class="pricing-grid">
+                <div class="pricing-card popular">
+                    <h3>Full Service Lease</h3>
+                    <div class="price">12 000 kr<span class="price-unit">/mån</span></div>
+                    <ul class="solution-list">
+                        <li>Inkluderar: utrustning, service, reparationer</li>
+                        <li>Förutsägbar budget utan överraskningar</li>
+                        <li>Uppgraderingar ingår efter 5-7 år</li>
+                        <li>Mest populär för kommunala anläggningar</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Kapacitetsbaserad</h3>
+                    <div class="price">6 kr<span class="price-unit">/kg</span></div>
+                    <ul class="solution-list">
+                        <li>Vi äger och sköter utrustning</li>
+                        <li>Kostnad följer användning</li>
+                        <li>Perfekt vid säsongsvariationer</li>
+                        <li>Ingen risk vid låg beläggning</li>
+                    </ul>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Traditionellt köp</h3>
+                    <div class="price">380 000 kr<span class="price-unit">engångsbelopp</span></div>
+                    <ul class="solution-list">
+                        <li>Ni äger utrustning</li>
+                        <li>Servicepaket 2 500 kr/mån</li>
+                        <li>Garanterad driftskostnad</li>
+                        <li>Payback: 2-3 år</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Redo att uppgradera era tvättlösningar?</h2>
+            <p style="font-size: 1.125rem; opacity: 0.95;">Beprövat i 140+ idrottsanläggningar</p>
+
+            <div class="cta-buttons">
+                <a href="volymberaknare.html" class="btn btn-white">📊 Beräkna kapacitet</a>
+                <a href="lcc-kalkylator.html" class="btn btn-white">💰 LCC-kalkylator</a>
+                <a href="kontakt.html" class="btn btn-white">📞 Boka konsultation</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Tvättlösningar Sverige. Partner till sport och fritid sedan 1984.</p>
+    </footer>
+
+    <script src="header.js"></script>
+    <script src="analytics.js"></script>
+</body>
+</html>

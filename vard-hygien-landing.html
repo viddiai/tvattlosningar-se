@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Vård & Hygien – Guide för Beslutsfattare | tvättlösningar.se</title>
+    <meta name="description" content="Expertråd om tvättlösningar för sjukhus och äldreboenden. Lär dig om hygienstandard, kapacitetsplanering och livscykelkostnader. Gratis verktyg och guider.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005281;
+            --primary-light: #E6F2F8;
+            --accent: #0078B4;
+            --text-dark: #1A2833;
+            --text-mid: #4A5A66;
+            --text-light: #7A8A96;
+            --bg-cream: #FAF9F7;
+            --white: #FFFFFF;
+            --warning: #C74E3C;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
+            --spacing-xl: 6rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary);
+        }
+
+        h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            margin-bottom: var(--spacing-sm);
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 100%);
+            overflow: hidden;
+            padding: var(--spacing-lg) var(--spacing-md);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(45, 155, 129, 0.08) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 2px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-md);
+            animation: slideInDown 0.6s ease-out;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-description {
+            font-size: clamp(1.125rem, 2vw, 1.375rem);
+            color: var(--text-mid);
+            max-width: 800px;
+            margin-bottom: var(--spacing-lg);
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-group {
+            display: flex;
+            gap: var(--spacing-sm);
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.125rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(10, 77, 60, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(45, 155, 129, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Problem Recognition */
+        .problems {
+            background: var(--white);
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+            font-size: 1.25rem;
+            color: var(--text-mid);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .problem-card {
+            background: var(--bg-cream);
+            padding: var(--spacing-md);
+            border-left: 4px solid var(--warning);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateX(8px);
+            box-shadow: -8px 8px 0 var(--primary-light);
+        }
+
+        .problem-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+            display: block;
+        }
+
+        .problem-card h3 {
+            font-size: 1.375rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .problem-card p {
+            color: var(--text-mid);
+            line-height: 1.7;
+        }
+
+        /* Solutions */
+        .solutions {
+            background: var(--primary-light);
+            position: relative;
+        }
+
+        .solution-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-lg);
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+            background: var(--white);
+            padding: var(--spacing-lg);
+            border-radius: 4px;
+        }
+
+        .solution-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .solution-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .solution-icon-wrapper {
+            width: 120px;
+            height: 120px;
+            background: var(--primary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .solution-benefits {
+            background: var(--primary-light);
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            margin-top: var(--spacing-md);
+        }
+
+        .solution-benefits ul {
+            list-style: none;
+            margin-top: var(--spacing-sm);
+        }
+
+        .solution-benefits li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .solution-benefits li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Tools Section */
+        .tools {
+            background: var(--white);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .tool-card {
+            background: var(--bg-cream);
+            padding: var(--spacing-md);
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .tool-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(10, 77, 60, 0.15);
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .tool-time {
+            display: inline-block;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-top: var(--spacing-sm);
+            padding: 0.25rem 0.75rem;
+            background: var(--white);
+            border-radius: 20px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--bg-cream);
+        }
+
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+            margin-top: var(--spacing-lg);
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: var(--spacing-sm);
+            border-left: 4px solid var(--primary);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: var(--spacing-md);
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease;
+            font-family: 'Work Sans', sans-serif;
+        }
+
+        .faq-question:hover {
+            background: var(--primary-light);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 var(--spacing-md);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 800px;
+            padding: 0 var(--spacing-md) var(--spacing-md);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: var(--spacing-xl) var(--spacing-md);
+        }
+
+        .final-cta h2 {
+            color: var(--white);
+        }
+
+        .final-cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .final-cta-benefits {
+            list-style: none;
+            margin: var(--spacing-md) 0;
+            font-size: 1.125rem;
+        }
+
+        .final-cta-benefits li {
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .final-cta-benefits li::before {
+            content: '✓ ';
+            font-weight: bold;
+        }
+
+        .btn-light {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-light:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .solution-item {
+                grid-template-columns: 1fr;
+            }
+
+            .solution-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .cta-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be inserted here by header.js -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">Vård & Hygien</span>
+            <h1>Tvättlösningar som uppfyller vårdens hygienkrav – utan att spräcka budgeten</h1>
+            <p class="hero-description">
+                Som ansvarig för en vårdinrättning vet du att tvätthanteringen är kritisk för patientsäkerheten.
+                Samtidigt pressar budgeten. Här får du expertkunskap om hur du väljer en tvättlösning som ger både
+                hygienisk trygghet och ekonomisk kontroll – från en leverantör som förstår vårdens komplexa krav.
+            </p>
+            <div class="cta-group">
+                <a href="volymberaknare.html" class="btn btn-primary">Beräkna din kapacitet</a>
+                <a href="#" class="btn btn-secondary" onclick="event.preventDefault(); showGuideDownload();">Ladda ner vårdens tvättguide</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Recognition Section -->
+    <section class="problems">
+        <div class="container">
+            <h2 style="text-align: center;">Känner du igen dig i något av detta?</h2>
+            <p class="section-intro">
+                Många beslutsfattare inom vården möter dessa utmaningar när de ska välja tvättlösning:
+            </p>
+            <div class="problems-grid">
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">🔬</span>
+                    <h3>Osäkerhet kring hygienstandarder</h3>
+                    <p>Vilka EN-standarder och certifieringar måste systemet verkligen uppfylla? Informationen är splittrad och svår att tolka.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">🦠</span>
+                    <h3>Rädsla för smittspridning</h3>
+                    <p>Hur vet du att systemet verkligen eliminerar patogener? Ett fel kan få allvarliga konsekvenser för patientsäkerheten.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">💸</span>
+                    <h3>Dolda kostnader som chockerar</h3>
+                    <p>Underhåll och energi blev dubbelt så dyrt som du räknade med. Budgeten håller inte – och ingen tog upp detta vid upphandlingen.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">⚠️</span>
+                    <h3>Kapacitet som inte räcker vid toppar</h3>
+                    <p>Vid influensasäsong står systemet inte ut. Tvätten blir en flaskhals – och patientvården påverkas direkt.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">🔧</span>
+                    <h3>Komplex integration med befintliga system</h3>
+                    <p>Ventilation, avlopp, IT-system – hur får du allt att fungera tillsammans? Koordineringen mellan leverantörer blir en mardröm.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">👥</span>
+                    <h3>Ständigt behov av personalutbildning</h3>
+                    <p>Hög personalomsättning betyder konstant utbildning. Systemet måste vara intuitivt nog att alla klarar det – även under stress.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">🏢</span>
+                    <h3>Leverantörer som inte förstår vården</h3>
+                    <p>De flesta leverantörer säljer samma system till alla branscher. Men vården har unika krav som kräver specialkunskap.</p>
+                </div>
+                <div class="problem-card fade-in">
+                    <span class="problem-icon">🏥</span>
+                    <h3>Installation som stör pågående vård</h3>
+                    <p>Hur installerar du ett nytt system utan att skapa driftstopp? Patientvården kan inte vänta medan tvättrummet byggs om.</p>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: var(--spacing-lg); font-size: 1.25rem; color: var(--text-mid);">
+                Du är inte ensam om dessa utmaningar. Här är vad du behöver veta för att göra rätt val.
+            </p>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions">
+        <div class="container">
+            <h2 style="text-align: center;">Tre områden där rätt tvättlösning skapar verkligt värde</h2>
+            <p class="section-intro">
+                Baserat på vårdarverfarenhet och direktkontakt med beslutsfattare inom vården vet vi vad som faktiskt spelar roll.
+                Här är de tre områden där rätt tvättlösning gör störst skillnad:
+            </p>
+
+            <div style="margin-top: var(--spacing-xl);">
+                <div class="solution-item fade-in">
+                    <div>
+                        <div class="solution-icon-wrapper">🛡️</div>
+                        <h3>Hygien och smittskydd du kan lita på</h3>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--text-mid); line-height: 1.8;">
+                            Vårdarverfarenhet betyder att vi vet exakt vad som krävs för att uppfylla vårdens hygienkrav.
+                            Inte bara på pappret – utan i praktiken, dag efter dag.
+                        </p>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--text-mid); line-height: 1.8;">
+                            Med beprövade hygiencykler som följer EN 14065 och EN ISO 15883 får du dokumenterad eliminering
+                            av patogener, spårbarhet för varje tvättcykel och system anpassade för den svenska vårdsektorn.
+                        </p>
+                        <div class="solution-benefits">
+                            <strong>💡 Värde för din verksamhet:</strong>
+                            <ul>
+                                <li>Minska infektionsrisker och skydda patienter</li>
+                                <li>Undvik böter och varningar från tillsynsmyndigheter</li>
+                                <li>Dokumentation som håller vid revision</li>
+                                <li>Trygghet för personal och ledning</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="background: var(--primary-light); height: 400px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8rem;">
+                        🔬
+                    </div>
+                </div>
+
+                <div class="solution-item fade-in">
+                    <div>
+                        <div class="solution-icon-wrapper">📊</div>
+                        <h3>Förutsägbar ekonomi över hela livscykeln</h3>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--text-mid); line-height: 1.8;">
+                            Det största misstaget vid upphandling? Att bara titta på inköpspriset. Verklig kostnad handlar om
+                            livscykelkostnad (LCC) – och där vinner ofta ett annat alternativ.
+                        </p>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--text-mid); line-height: 1.8;">
+                            Vi ger dig transparent LCC-kalkyl redan från start med alla kostnader synliga: Inköp, installation,
+                            energi, underhåll, service. Funktionshyra-alternativet inkluderar allt till en fast månadskostnad.
+                        </p>
+                        <div class="solution-benefits">
+                            <strong>💡 Värde för din verksamhet:</strong>
+                            <ul>
+                                <li>Budget som stämmer – inga överraskningar om 3 år</li>
+                                <li>Enklare ekonomistyrning med fast månadskostnad</li>
+                                <li>Rätt val från början (inte billigaste som blir dyrast)</li>
+                                <li>Frigör kapital för kärnverksamheten</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="background: var(--primary-light); height: 400px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8rem;">
+                        💰
+                    </div>
+                </div>
+
+                <div class="solution-item fade-in">
+                    <div>
+                        <div class="solution-icon-wrapper">🤝</div>
+                        <h3>Smidig integration och minimal störning</h3>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--text-mid); line-height: 1.8;">
+                            Installation av tvättsystem i vårdmiljö är komplext. Det kräver koordinering mellan VVS, el,
+                            ventilation, IT – och allt medan patientvården fortsätter.
+                        </p>
+                        <p style="margin-bottom: var(--spacing-md); color: var(--text-mid); line-height: 1.8;">
+                            Med direktkontakt får du en partner som tar helhetsansvar, koordinerar med alla parter, planerar
+                            installation efter er verksamhet och tillhandahåller utbildning för all personal.
+                        </p>
+                        <div class="solution-benefits">
+                            <strong>💡 Värde för din verksamhet:</strong>
+                            <ul>
+                                <li>Patientvården går vidare utan avbrott</li>
+                                <li>En kontaktperson istället för tio olika leverantörer</li>
+                                <li>Personal som vet hur systemet fungerar från dag ett</li>
+                                <li>Mindre stress för dig som beslutsfattare</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="background: var(--primary-light); height: 400px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 8rem;">
+                        🏥
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools">
+        <div class="container">
+            <h2 style="text-align: center;">Börja planera din lösning – kostnadsfritt</h2>
+            <p class="section-intro">
+                Använd våra verktyg för att få klarhet i vad din verksamhet faktiskt behöver.
+                Alla verktyg är kostnadsfria och ger dig konkreta svar direkt.
+            </p>
+            <div class="tools-grid">
+                <div class="tool-card fade-in">
+                    <span class="tool-icon">📊</span>
+                    <h3>Volymberäknare för vården</h3>
+                    <p style="color: var(--text-mid); margin-bottom: var(--spacing-sm);">
+                        Hur många maskiner behöver ni egentligen? Få ett konkret svar baserat på era sängplatser,
+                        omsättning och verksamhetstyp.
+                    </p>
+                    <span class="tool-time">⏱️ Tar 3 minuter</span>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="volymberaknare.html" class="btn btn-primary" style="width: 100%; text-align: center;">Beräkna din kapacitet</a>
+                    </div>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <span class="tool-icon">💰</span>
+                    <h3>LCC-kalkylator: Jämför dina alternativ</h3>
+                    <p style="color: var(--text-mid); margin-bottom: var(--spacing-sm);">
+                        Se den verkliga kostnaden över 10 år. Jämför direktköp, leasing och funktionshyra –
+                        och se vilket alternativ som faktiskt är mest lönsamt.
+                    </p>
+                    <span class="tool-time">⏱️ Tar 4 minuter</span>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="lcc-kalkylator.html" class="btn btn-primary" style="width: 100%; text-align: center;">Räkna på livscykelkostnad</a>
+                    </div>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <span class="tool-icon">✅</span>
+                    <h3>Beredskapsquiz för vårdinköp</h3>
+                    <p style="color: var(--text-mid); margin-bottom: var(--spacing-sm);">
+                        Är ni redo för upphandlingen? Gör vårt test på 2 minuter och få en personlig rapport
+                        med vad ni bör tänka på.
+                    </p>
+                    <span class="tool-time">⏱️ Tar 2 minuter</span>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="beredskapsquiz.html" class="btn btn-primary" style="width: 100%; text-align: center;">Gör testet nu</a>
+                    </div>
+                </div>
+
+                <div class="tool-card fade-in">
+                    <span class="tool-icon">📄</span>
+                    <h3>Vårdens kompletta tvättguide</h3>
+                    <p style="color: var(--text-mid); margin-bottom: var(--spacing-sm);">
+                        Ladda ner vår omfattande guide (PDF, 15 sidor) med allt du behöver veta för att göra rätt val.
+                        Inklusive checklista och mallar.
+                    </p>
+                    <span class="tool-time">⏱️ Gratis nedladdning</span>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="#" class="btn btn-primary" style="width: 100%; text-align: center;" onclick="event.preventDefault(); showGuideDownload();">Ladda ner guiden</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 style="text-align: center;">Vanliga frågor om tvättlösningar inom vården</h2>
+            <p class="section-intro">
+                Här är svaren på de vanligaste frågorna vi får från beslutsfattare inom sjukhus, äldreboenden och vårdmottagningar.
+            </p>
+            <div class="faq-list">
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Vilka hygienstandarder måste vårt tvättsystem uppfylla?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="color: var(--text-mid); line-height: 1.8;">
+                            För vårdinrättningar i Sverige gäller primärt EN 14065 (hygienisk tvätteriprocess) och EN ISO 15883
+                            (desinfektion). Dessa standarder säkerställer att tvättprocessen eliminerar patogener effektivt.
+                            <br><br>
+                            Utöver detta ska systemet klara Socialstyrelsens krav för vårdhygien och ofta även specifika kommunala
+                            eller regionala riktlinjer. Vi hjälper er att identifiera exakt vilka standarder som gäller för just er
+                            verksamhetstyp och säkerställer att systemet uppfyller dem.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Hur dimensionerar vi rätt kapacitet för vårt äldreboende/sjukhus?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="color: var(--text-mid); line-height: 1.8;">
+                            Som tumregel räknar vi med 3-4 kg tvätt per sängplats och dygn för äldreboende, och 5-7 kg för akutsjukhus.
+                            Men det är viktigt att dimensionera för topp-scenario, inte snitt.
+                            <br><br>
+                            Kapacitet beror på flera faktorer: antal sängplatser/vårdplatser, vårdtyp (akutvård kräver mer än äldreboende),
+                            omsättningshastighet (hur snabbt ska tvätt vara tillbaka?), och toppbelastning (influensasäsong, magsjukeutbrott).
+                            <br><br>
+                            Använd gärna vår volymberäknare för att få en konkret rekommendation baserad på er verksamhet.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Vad kostar en komplett tvättlösning för ett äldreboende med 50 platser?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="color: var(--text-mid); line-height: 1.8;">
+                            För ett äldreboende med 50 platser kan du räkna med:
+                            <br><br>
+                            <strong>Direktköp:</strong> 400 000 - 600 000 kr (maskiner + installation) + löpande driftskostnader<br>
+                            <strong>Funktionshyra:</strong> 8 000 - 12 000 kr/månad (allt inkluderat: maskiner, installation, underhåll, service)<br>
+                            <strong>Leasing:</strong> 10 000 - 15 000 kr/månad + separata servicekostnader
+                            <br><br>
+                            Exakt pris beror på kapacitet och automatiseringsnivå, befintlig infrastruktur, serviceavtalets omfattning
+                            och geografiskt läge. Viktigt: Titta på total livscykelkostnad över 10 år, inte bara initial investering.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Funktionshyra, leasing eller direktköp – vad är bäst för oss?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="color: var(--text-mid); line-height: 1.8;">
+                            <strong>Funktionshyra</strong> (mest populärt inom vården): Fast månadskostnad som inkluderar allt,
+                            inget kapitalbindande, leverantören ansvarar för allt underhåll. Passar offentliga verksamheter med
+                            begränsade budgetar.
+                            <br><br>
+                            <strong>Leasing:</strong> Lägre månadskostnad än funktionshyra, ni äger utrustningen efter avtalsperiod,
+                            service och underhåll tillkommer. Passar privata vårdföretag som vill äga.
+                            <br><br>
+                            <strong>Direktköp:</strong> Högst initial kostnad, lägst totalkostnad på lång sikt (15+ år),
+                            ni ansvarar för allt underhåll. Passar stora organisationer med kapital och egen driftpersonal.
+                            <br><br>
+                            Vår erfarenhet: 70% av våra vårdkunder väljer funktionshyra för förutsägbarheten.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in">
+                    <button class="faq-question">
+                        Hur lång tid tar installationen och påverkar det vår verksamhet?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p style="color: var(--text-mid); line-height: 1.8;">
+                            <strong>Tidsåtgång:</strong> Förinstallation (VVS, el, ventilation) 1-2 veckor, själva maskininställningen
+                            1-3 dagar, provkörning och utbildning 1-2 dagar. Total tid från start till drift: 2-4 veckor.
+                            <br><br>
+                            <strong>Påverkan på verksamheten:</strong> Vi planerar installation för att minimera störning genom att
+                            göra förberedande arbete före maskinleverans, installera ofta under helger eller lågsäsong, erbjuda
+                            temporär lösning vid behov och genomföra stegvis övergång från gammalt till nytt system.
+                            <br><br>
+                            För vården är det kritiskt att patientvården inte påverkas. Vi har erfarenhet av att installera i
+                            känsliga miljöer och planerar alltid utifrån er verksamhet först.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-content">
+            <h2>Redo att ta nästa steg?</h2>
+            <p style="font-size: 1.25rem; margin-bottom: var(--spacing-md);">
+                Boka ett kostnadsfritt rådgivningssamtal med en expert som förstår vårdens krav.
+            </p>
+            <ul class="final-cta-benefits">
+                <li>Ingen försäljning, bara ärlig rådgivning</li>
+                <li>30 minuters samtal med vårdexpert</li>
+                <li>Konkreta nästa steg för ert projekt</li>
+            </ul>
+            <a href="#" class="btn btn-light" onclick="event.preventDefault(); showConsultationBooking();">Boka gratis rådgivning</a>
+            <p style="margin-top: var(--spacing-md); font-size: 0.875rem; opacity: 0.9;">
+                Föredrar du mejl? Skriv till expert@tvattlosningar.se
+            </p>
+        </div>
+    </section>
+
+    <!-- Configuration -->
+    <script src="config.js"></script>
+
+    <!-- Header Navigation -->
+    <script src="header.js"></script>
+
+    <!-- Analytics -->
+    <script src="analytics.js"></script>
+
+    <!-- Lead Capture Script -->
+    <script src="lead-capture.js"></script>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open clicked item if it wasn't active
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Lead Capture Functions
+        function showGuideDownload() {
+            // Track CTA click
+            if (typeof trackCTAClick !== 'undefined') {
+                trackCTAClick('Download Guide', 'Tools Section');
+            }
+
+            showLeadCaptureModal({
+                title: 'Ladda ner Vårdens Tvättguide',
+                subtitle: 'Få vår kompletta guide (PDF, 15 sidor) med allt du behöver veta för att göra rätt val',
+                icon: '📄',
+                submitText: 'Skicka guiden till mig',
+                successTitle: 'Tack för ditt intresse!',
+                successMessage: 'Vi har skickat guiden till din e-post. Kolla även i skräpposten om du inte ser den inom några minuter.',
+                requireCompany: true,
+                requirePhone: false,
+                downloadType: 'vard-hygien-guide',
+                source: 'landing-page-vard',
+                // downloadUrl: 'path/to/guide.pdf', // Uncomment when PDF is ready
+                onSubmit: async (data) => {
+                    // Store lead data
+                    console.log('Guide download lead:', data);
+
+                    // Save to localStorage
+                    const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+                    leads.push(data);
+                    localStorage.setItem('leads', JSON.stringify(leads));
+
+                    // Send to backend/CRM
+                    try {
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(data)
+                        });
+
+                        // Track successful lead capture
+                        if (typeof trackLeadCapture !== 'undefined') {
+                            trackLeadCapture('vard-hygien-guide', true);
+                        }
+                    } catch (error) {
+                        console.error('Failed to send to backend:', error);
+                        // Still allow form to complete even if backend fails
+                    }
+
+                    // Simulate API call delay for UX
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            });
+        }
+
+        function showConsultationBooking() {
+            // Track CTA click
+            if (typeof trackCTAClick !== 'undefined') {
+                trackCTAClick('Book Consultation', 'Final CTA');
+            }
+
+            showLeadCaptureModal({
+                title: 'Boka Gratis Rådgivning',
+                subtitle: 'Få 30 minuters samtal med en vårdexpert utan kostnad eller förpliktelser',
+                icon: '📞',
+                submitText: 'Boka mitt samtal',
+                successTitle: 'Bokningsförfrågan mottagen!',
+                successMessage: 'Vi kontaktar dig inom 24 timmar för att boka en tid som passar dig. Håll utkik efter ett samtal eller mejl från oss.',
+                requireCompany: true,
+                requirePhone: true,
+                downloadType: 'consultation-booking',
+                source: 'landing-page-vard',
+                onSubmit: async (data) => {
+                    // Store booking data
+                    console.log('Consultation booking:', data);
+
+                    // Save to localStorage
+                    const leads = JSON.parse(localStorage.getItem('leads') || '[]');
+                    leads.push(data);
+                    localStorage.setItem('leads', JSON.stringify(leads));
+
+                    // Send to backend/CRM and booking system
+                    try {
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(data)
+                        });
+
+                        // Track successful booking
+                        if (typeof trackLeadCapture !== 'undefined') {
+                            trackLeadCapture('consultation-booking', true);
+                        }
+                    } catch (error) {
+                        console.error('Failed to send to backend:', error);
+                    }
+
+                    // Simulate API call delay for UX
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
+            });
+        }
+    </script>
+</body>
+</html>

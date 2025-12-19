@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Vårdcentraler & Kliniker | tvättlösningar.se</title>
+    <meta name="description" content="Kompakta och effektiva tvättsystem för vårdcentraler och kliniker. Perfekt för mindre volymer med högsta hygienstandard.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            color: #1A2833;
+            background: #FAFBFC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0078B4 0%, #47B3E5 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🏥';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.1;
+            right: -5rem;
+            top: -5rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #0078B4;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #0078B4;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 3rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: -3rem;
+            position: relative;
+            z-index: 2;
+            border-radius: 8px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #0078B4;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #4A5A66;
+            font-size: 0.95rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #005281;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4A5A66;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #0078B4;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-title {
+            font-size: 1.25rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .benefit-description {
+            color: #4A5A66;
+            line-height: 1.6;
+        }
+
+        /* Solutions Grid */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #0078B4;
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .solution-description {
+            color: #4A5A66;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .solution-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solution-features li {
+            padding: 0.5rem 0;
+            color: #1A2833;
+            font-size: 0.95rem;
+        }
+
+        .solution-features li::before {
+            content: "✓";
+            color: #0078B4;
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+
+        /* Highlight Section */
+        .highlight {
+            background: linear-gradient(135deg, #E6F2F8 0%, #FFFFFF 100%);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .highlight-content h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #005281;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .highlight-list li {
+            padding: 0.75rem 0;
+            color: #1A2833;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .highlight-list li::before {
+            content: "✓";
+            color: #0078B4;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .highlight-cta {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .highlight-cta h4 {
+            color: #005281;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-cta p {
+            color: #4A5A66;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0078B4 0%, #47B3E5 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .benefits-grid,
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .stats {
+                margin-top: -2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be injected here by header.js -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🏥 Vårdcentraler & Kliniker</div>
+                <h1>Kompakt hygien för mindre volymer</h1>
+                <p>
+                    Perfekt dimensionerade tvättsystem för vårdcentraler och kliniker – enkel drift,
+                    låg platsåtgång och full hygienstandard.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="showConsultationBooking()">
+                        📞 Boka rådgivning
+                    </button>
+                    <a href="volymberaknare.html" class="btn btn-secondary">
+                        📊 Beräkna behov
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="content-section" style="padding-top: 5rem;">
+        <div class="container">
+            <div class="stats">
+                <div class="stats-grid">
+                    <div>
+                        <div class="stat-number">2-3 kg</div>
+                        <div class="stat-label">Tvätt per dag</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">1-2</div>
+                        <div class="stat-label">Maskiner räcker</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">< 5 m²</div>
+                        <div class="stat-label">Golvyta behövs</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">EN 14065</div>
+                        <div class="stat-label">Certifiering</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Perfekt för er verksamhet</h2>
+            <p class="section-subtitle">Anpassade lösningar för vårdcentraler och mindre kliniker</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">📐</div>
+                    <h3 class="benefit-title">Minimal platsåtgång</h3>
+                    <p class="benefit-description">
+                        Kompakta maskiner som passar även i små utrymmen. Perfekt för lokaler där
+                        varje kvadratmeter räknas.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+                    <h3 class="benefit-title">Låg investering</h3>
+                    <p class="benefit-description">
+                        Mindre volymer = lägre investeringskostnad. Komplett system från ca 150 000 kr
+                        inklusive installation.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 class="benefit-title">Snabb genomströmning</h3>
+                    <p class="benefit-description">
+                        Korta tvättcykler (45-60 min) perfekt för när ni behöver tvätta mellan
+                        patientbesök eller inför operationer.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🧪</div>
+                    <h3 class="benefit-title">Medicinteknisk hygien</h3>
+                    <p class="benefit-description">
+                        Full EN 14065-certifiering även för små maskiner. Lika hög hygienstandard
+                        som på stora sjukhus.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">👥</div>
+                    <h3 class="benefit-title">Enkel för personalen</h3>
+                    <p class="benefit-description">
+                        Intuitiva kontroller och förprogrammerade cykler. Ingen specialutbildning
+                        krävs för daglig drift.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🔇</div>
+                    <h3 class="benefit-title">Tyst drift</h3>
+                    <p class="benefit-description">
+                        Moderna maskiner som inte stör patientbesök eller personal. Perfekt för
+                        placering nära vårdlokaler.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="content-section" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Våra paketlösningar</h2>
+            <p class="section-subtitle">Färdiga lösningar för olika verksamhetstyper</p>
+
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🏥</div>
+                    <h3 class="solution-title">Vårdcentral Basic</h3>
+                    <p class="solution-description">
+                        Grundlösning för mindre vårdcentraler med begränsad tvättvolym.
+                    </p>
+                    <ul class="solution-features">
+                        <li>1 tvättmaskin (8 kg)</li>
+                        <li>1 torktumlare (8 kg)</li>
+                        <li>EN 14065 certifiering</li>
+                        <li>Grundläggande dosering</li>
+                        <li>Serviceavtal (kontorstid)</li>
+                        <li><strong>Från ca 150 000 kr</strong></li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">🏥</div>
+                    <h3 class="solution-title">Vårdcentral Standard</h3>
+                    <p class="solution-description">
+                        Rekommenderat paket för normala vårdcentraler och mindre kliniker.
+                    </p>
+                    <ul class="solution-features">
+                        <li>2 tvättmaskiner (8-11 kg)</li>
+                        <li>1 torktumlare (11 kg)</li>
+                        <li>Automatisk dosering</li>
+                        <li>Digital styrning och loggning</li>
+                        <li>Prioriterad service</li>
+                        <li><strong>Från ca 280 000 kr</strong></li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">🏥</div>
+                    <h3 class="solution-title">Klinik Premium</h3>
+                    <p class="solution-description">
+                        För specialistkliniker med högre krav på kapacitet och spårbarhet.
+                    </p>
+                    <ul class="solution-features">
+                        <li>2-3 tvättmaskiner (11 kg)</li>
+                        <li>2 torktumlare (11 kg)</li>
+                        <li>Avancerat styrsystem</li>
+                        <li>Full spårbarhet och rapportering</li>
+                        <li>24/7 support och fjärrövervakning</li>
+                        <li><strong>Från ca 420 000 kr</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight">
+                <div class="highlight-content">
+                    <h3>Vad ingår i paketen?</h3>
+                    <ul class="highlight-list">
+                        <li>Behovsanalys och dimensionering</li>
+                        <li>Leverans och professionell installation</li>
+                        <li>Hygienvalidering enligt EN 14065</li>
+                        <li>Utbildning för personal (2-4 timmar)</li>
+                        <li>1 års serviceavtal inkluderat</li>
+                        <li>Dokumentation och certifikat</li>
+                        <li>Support via telefon och e-post</li>
+                        <li>Tillval: Förlängd garanti och utökat serviceavtal</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-cta">
+                    <h4>📊 Gratis behovsanalys</h4>
+                    <p>
+                        Vi hjälper er att dimensionera rätt och beräkna total ägandekostnad
+                        för just er verksamhet.
+                    </p>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="showConsultationBooking()">
+                        Boka kostnadsfri analys
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Vem passar det för?</h2>
+            <p class="section-subtitle">Exempel på verksamheter som använder våra lösningar</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🩺</div>
+                    <h3 class="benefit-title">Vårdcentraler</h3>
+                    <p class="benefit-description">
+                        Tvätt av undersökningsdukar, personalhandduk ar, patientrockar och mindre
+                        textilier. Perfekt för daglig användning.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🦷</div>
+                    <h3 class="benefit-title">Tandvårdskliniker</h3>
+                    <p class="benefit-description">
+                        Handduk ar, förkläden och annan kliniktextil. Liten volym men viktigt med
+                        hygienisk tvätthantering.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💉</div>
+                    <h3 class="benefit-title">Vaccinationskliniker</h3>
+                    <p class="benefit-description">
+                        Hantering av textil för vaccination och undersökning. Extra viktigt under
+                        kampanjer och högsäsong.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🩹</div>
+                    <h3 class="benefit-title">Sårvårdsmottagningar</h3>
+                    <p class="benefit-description">
+                        Höga hygieniska krav för textilier som används vid sårvård. EN 14065
+                        certifiering är ett måste.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">👶</div>
+                    <h3 class="benefit-title">BVC/MVC</h3>
+                    <p class="benefit-description">
+                        Tvätt av filtar, handduk ar och undersökningstextil för barn- och
+                        mödravårdscentraler.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏥</div>
+                    <h3 class="benefit-title">Privatkliniker</h3>
+                    <p class="benefit-description">
+                        Specialistkliniker inom ortopedi, dermatologi, ögon m.fl. som behöver
+                        egen tvätthantering.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Vill ni veta mer?</h2>
+            <p class="cta-description">
+                Kontakta oss för en kostnadsfri behovsanalys och offert
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="showConsultationBooking()">
+                    📞 Boka rådgivning
+                </button>
+                <button class="btn btn-secondary" onclick="showGuideDownload()">
+                    📄 Ladda ner guide
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="header.js"></script>
+    <script src="config.js"></script>
+    <script src="analytics.js"></script>
+    <script src="lead-capture.js"></script>
+
+    <script>
+        // Track page view
+        if (typeof trackPageView !== 'undefined') {
+            trackPageView('Vårdcentraler');
+        }
+
+        // Guide download handler
+        function showGuideDownload() {
+            if (typeof LeadCaptureModal !== 'undefined') {
+                const modal = new LeadCaptureModal({
+                    title: 'Ladda ner: Vårdens Tvättguide',
+                    description: 'Få vår kompletta guide om tvättlösningar för vårdcentraler.',
+                    submitButtonText: 'Ladda ner guide',
+                    downloadType: 'Vårdcentral Guide',
+                    onSubmit: async function(formData) {
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        const response = await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                ...formData,
+                                source: 'vardcentral_guide',
+                                downloadType: 'Vårdcentral Guide'
+                            })
+                        });
+
+                        if (response.ok) {
+                            window.open('generate-guide-pdf.html', '_blank');
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                modal.show();
+            }
+        }
+
+        // Consultation booking handler
+        function showConsultationBooking() {
+            if (typeof LeadCaptureModal !== 'undefined') {
+                const modal = new LeadCaptureModal({
+                    title: 'Boka rådgivning för vårdcentral',
+                    description: 'Vi kontaktar er inom 24 timmar för att boka ett möte.',
+                    submitButtonText: 'Boka rådgivning',
+                    requirePhone: true,
+                    onSubmit: async function(formData) {
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        const response = await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                ...formData,
+                                source: 'vardcentral_consultation'
+                            })
+                        });
+
+                        if (response.ok && typeof trackLeadCapture !== 'undefined') {
+                            trackLeadCapture('Vårdcentral Consultation', true);
+                        }
+
+                        return response.ok;
+                    }
+                });
+                modal.show();
+            }
+        }
+    </script>
+</body>
+</html>

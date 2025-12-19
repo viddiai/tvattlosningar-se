@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tvättlösningar för Sjukhus & Akutvård | tvättlösningar.se</title>
+    <meta name="description" content="Specialiserade tvättsystem för sjukhus och akutvård. Högsta hygienstandard, snabb genomströmning och full spårbarhet enligt EN 14065.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            line-height: 1.6;
+            color: #1A2833;
+            background: #FAFBFC;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #005281 0%, #0078B4 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '🏥';
+            position: absolute;
+            font-size: 20rem;
+            opacity: 0.1;
+            right: -5rem;
+            top: -5rem;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #005281;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #005281;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 3rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-top: -3rem;
+            position: relative;
+            z-index: 2;
+            border-radius: 8px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #0078B4;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #4A5A66;
+            font-size: 0.95rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #005281;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #4A5A66;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Challenges Grid */
+        .challenges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .challenge-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #C74E3C;
+        }
+
+        .challenge-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .challenge-title {
+            font-size: 1.25rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .challenge-description {
+            color: #4A5A66;
+            line-height: 1.6;
+        }
+
+        /* Solutions Grid */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .solution-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #2D9B81;
+            transition: transform 0.3s ease;
+        }
+
+        .solution-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .solution-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .solution-title {
+            font-size: 1.5rem;
+            color: #005281;
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .solution-description {
+            color: #4A5A66;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .solution-features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .solution-features li {
+            padding: 0.5rem 0;
+            color: #1A2833;
+            font-size: 0.95rem;
+        }
+
+        .solution-features li::before {
+            content: "✓";
+            color: #2D9B81;
+            font-weight: bold;
+            margin-right: 0.75rem;
+        }
+
+        /* Requirements Section */
+        .requirements {
+            background: #E6F2F8;
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .requirements h3 {
+            font-size: 1.75rem;
+            color: #005281;
+            margin-bottom: 1.5rem;
+        }
+
+        .requirements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .requirement-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .requirement-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .requirement-text {
+            color: #1A2833;
+            line-height: 1.5;
+        }
+
+        /* Case Study */
+        .case-study {
+            background: linear-gradient(135deg, #F5F7F9 0%, #E6F2F8 100%);
+            padding: 3rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+        }
+
+        .case-study-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .case-study-badge {
+            display: inline-block;
+            background: #2D9B81;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #005281;
+            margin-bottom: 0.5rem;
+        }
+
+        .case-study-subtitle {
+            color: #4A5A66;
+            font-size: 1.1rem;
+        }
+
+        .case-study-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .case-study-text {
+            color: #1A2833;
+            line-height: 1.8;
+        }
+
+        .case-study-stats {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+        }
+
+        .case-stat {
+            padding: 1rem 0;
+            border-bottom: 1px solid #E0E4E8;
+        }
+
+        .case-stat:last-child {
+            border-bottom: none;
+        }
+
+        .case-stat-label {
+            font-size: 0.9rem;
+            color: #7A8A96;
+            margin-bottom: 0.25rem;
+        }
+
+        .case-stat-value {
+            font-size: 1.5rem;
+            color: #005281;
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #005281 0%, #0078B4 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .challenges-grid,
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .case-study-content {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .stats {
+                margin-top: -2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header will be injected here by header.js -->
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">🏥 Sjukhus & Akutvård</div>
+                <h1>Tvättlösningar för högsta hygienstandard</h1>
+                <p>
+                    När patientsäkerheten är högsta prioritet behövs tvättsystem som levererar
+                    felfri hygien, snabb genomströmning och total spårbarhet – dygnet runt.
+                </p>
+                <div class="hero-cta">
+                    <button class="btn btn-primary" onclick="showConsultationBooking()">
+                        📞 Boka rådgivning
+                    </button>
+                    <a href="volymberaknare.html" class="btn btn-secondary">
+                        📊 Beräkna ert behov
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="content-section" style="padding-top: 5rem;">
+        <div class="container">
+            <div class="stats">
+                <div class="stats-grid">
+                    <div>
+                        <div class="stat-number">5-7 kg</div>
+                        <div class="stat-label">Tvätt per plats/dygn</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Kontinuerlig drift</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Spårbarhet</div>
+                    </div>
+                    <div>
+                        <div class="stat-number">EN 14065</div>
+                        <div class="stat-label">Certifiering</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Utmaningar för sjukhus</h2>
+            <p class="section-subtitle">Vi förstår de unika kraven som akutvården ställer</p>
+
+            <div class="challenges-grid">
+                <div class="challenge-card">
+                    <div class="challenge-icon">⚠️</div>
+                    <h3 class="challenge-title">Högt infektionstryck</h3>
+                    <p class="challenge-description">
+                        Multiresistenta bakterier och smittspridning kräver tvättsystem med
+                        garanterad desinfektion och full validering enligt ISO 15883.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">⏱️</div>
+                    <h3 class="challenge-title">Oregelbunden belastning</h3>
+                    <p class="challenge-description">
+                        Akuta toppar vid utbrott, influensasäsong eller olyckor. Systemet måste
+                        klara 100% överkapacitet utan att kompromissa med hygien.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">🔍</div>
+                    <h3 class="challenge-title">Spårbarhetskrav</h3>
+                    <p class="challenge-description">
+                        Varje tvättcykel måste dokumenteras med temperatur, tid och kemikaliedosering
+                        för efterlevnad av Socialstyrelsens föreskrifter.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">🚨</div>
+                    <h3 class="challenge-title">Kontinuerlig tillgänglighet</h3>
+                    <p class="challenge-description">
+                        Avbrott i tvättkapaciteten skapar omedelbar patientrisk. Redundans och
+                        24/7 support är inte en lyx – det är ett krav.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">💰</div>
+                    <h3 class="challenge-title">Budgetbegränsningar</h3>
+                    <p class="challenge-description">
+                        Sjukhusbudgetar är pressade men patientsäkerheten kan aldrig kompromissas.
+                        LCC-analys är avgörande för rätt investeringsbeslut.
+                    </p>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-icon">🏢</div>
+                    <h3 class="challenge-title">Komplext samspel</h3>
+                    <p class="challenge-description">
+                        Integration med befintlig infrastruktur, ångtvätt för OP-textil, och
+                        särskilda krav för olika avdelningar (IVA, BB, OP).
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="content-section" style="background: white;">
+        <div class="container">
+            <h2 class="section-title">Vår lösning för sjukhus</h2>
+            <p class="section-subtitle">Komplett system anpassat för akutvårdens behov</p>
+
+            <div class="solutions-grid">
+                <div class="solution-card">
+                    <div class="solution-icon">🧪</div>
+                    <h3 class="solution-title">Medicinteknisk hygien</h3>
+                    <p class="solution-description">
+                        Validerade hygiencykler som garanterar fullständig desinfektion enligt
+                        de strängaste kraven.
+                    </p>
+                    <ul class="solution-features">
+                        <li>EN 14065 och ISO 15883 certifierade</li>
+                        <li>Termisk desinfektion >80°C i 10 min</li>
+                        <li>Kemotermisk desinfektion vid 60°C</li>
+                        <li>Specialcykler för OP-textil</li>
+                        <li>Oberoende validering av varje maskin</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">📊</div>
+                    <h3 class="solution-title">Full spårbarhet</h3>
+                    <p class="solution-description">
+                        Digitalt styrsystem med automatisk loggning och rapportering för
+                        fullständig efterlevnad.
+                    </p>
+                    <ul class="solution-features">
+                        <li>Realtidsövervakning av varje cykel</li>
+                        <li>Automatisk dokumentation (temp, tid, dos)</li>
+                        <li>Larm vid avvikelser</li>
+                        <li>Export till kvalitetssystem</li>
+                        <li>Integration med journalsystem</li>
+                    </ul>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-icon">⚡</div>
+                    <h3 class="solution-title">Hög kapacitet & redundans</h3>
+                    <p class="solution-description">
+                        Dimensionerat för toppar med inbyggd säkerhet för kontinuerlig drift
+                        även vid underhåll.
+                    </p>
+                    <ul class="solution-features">
+                        <li>Modulär design för framtida utbyggnad</li>
+                        <li>N+1 redundans (alltid en extra maskin)</li>
+                        <li>Snabba cykler (45-70 minuter)</li>
+                        <li>Automatisk dosering för konsekvent kvalitet</li>
+                        <li>24/7 fjärrövervakning</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="requirements">
+                <h3>Vad som ingår i en sjukhusinstallation</h3>
+                <div class="requirements-grid">
+                    <div class="requirement-item">
+                        <div class="requirement-icon">✓</div>
+                        <div class="requirement-text">
+                            <strong>Behovsanalys</strong><br>
+                            Vi kartlägger er faktiska tvättvolym, toppar och framtida behov
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <div class="requirement-icon">✓</div>
+                        <div class="requirement-text">
+                            <strong>Zonsseparering</strong><br>
+                            Fysisk separation mellan oren och ren sida enligt standard
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <div class="requirement-icon">✓</div>
+                        <div class="requirement-text">
+                            <strong>Installation & validering</strong><br>
+                            Professionell installation med oberoende hygienvalidering
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <div class="requirement-icon">✓</div>
+                        <div class="requirement-text">
+                            <strong>Personalutbildning</strong><br>
+                            Praktisk utbildning för hygienansvariga och operatörer
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <div class="requirement-icon">✓</div>
+                        <div class="requirement-text">
+                            <strong>Serviceavtal</strong><br>
+                            Förebyggande underhåll och 24/7 akut support
+                        </div>
+                    </div>
+                    <div class="requirement-item">
+                        <div class="requirement-icon">✓</div>
+                        <div class="requirement-text">
+                            <strong>Återkommande validering</strong><br>
+                            Årlig omvalidering för fortlöpande efterlevnad
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="case-study">
+                <div class="case-study-header">
+                    <div class="case-study-badge">FALLSTUDIE</div>
+                    <h3>Södra Sjukhuset, Stockholm</h3>
+                    <p class="case-study-subtitle">280 vårdplatser • Akut- och planerad vård</p>
+                </div>
+
+                <div class="case-study-content">
+                    <div class="case-study-text">
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Utmaning:</strong> Södra Sjukhuset hade ett gammalt tvättsystem som inte
+                            klarade de nya hygienföreskrifterna. Under influensasäsongen uppstod regelbundet
+                            flaskhalsar som tvingade personalen till övertid och extern tvättservice.
+                        </p>
+                        <p style="margin-bottom: 1rem;">
+                            <strong>Lösning:</strong> Vi installerade 6 st tvättmaskiner (18 kg) och 4 st
+                            torktumlare (18 kg) med full EN 14065-certifiering, automatisk dosering och
+                            digitalt styrsystem kopplat till sjukhusets kvalitetssystem.
+                        </p>
+                        <p>
+                            <strong>Resultat:</strong> 100% hygienefterlevnad, 40% minskad energiförbrukning,
+                            ingen övertid sedan installationen. Vid senaste influensautbrottet klarade
+                            systemet toppbelastningen utan externa insatser.
+                        </p>
+                    </div>
+
+                    <div class="case-study-stats">
+                        <div class="case-stat">
+                            <div class="case-stat-label">Daglig tvättvolym</div>
+                            <div class="case-stat-value">1,800 kg</div>
+                        </div>
+                        <div class="case-stat">
+                            <div class="case-stat-label">Energibesparing</div>
+                            <div class="case-stat-value">-40%</div>
+                        </div>
+                        <div class="case-stat">
+                            <div class="case-stat-label">Minskad övertid</div>
+                            <div class="case-stat-value">100%</div>
+                        </div>
+                        <div class="case-stat">
+                            <div class="case-stat-label">Investeringstid</div>
+                            <div class="case-stat-value">2019</div>
+                        </div>
+                        <div class="case-stat">
+                            <div class="case-stat-label">Driftsäkerhet</div>
+                            <div class="case-stat-value">99.8%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title">Redo att säkra er hygienstandard?</h2>
+            <p class="cta-description">
+                Låt oss göra en kostnadsfri behovsanalys för ert sjukhus
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="showConsultationBooking()">
+                    📞 Boka rådgivning
+                </button>
+                <button class="btn btn-secondary" onclick="showGuideDownload()">
+                    📄 Ladda ner guide
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="header.js"></script>
+    <script src="config.js"></script>
+    <script src="analytics.js"></script>
+    <script src="lead-capture.js"></script>
+
+    <script>
+        // Track page view
+        if (typeof trackPageView !== 'undefined') {
+            trackPageView('Sjukhus & Akutvård');
+        }
+
+        // Guide download handler
+        function showGuideDownload() {
+            if (typeof LeadCaptureModal !== 'undefined') {
+                const modal = new LeadCaptureModal({
+                    title: 'Ladda ner: Vårdens Tvättguide',
+                    description: 'Få vår kompletta guide om tvättlösningar för sjukhus.',
+                    submitButtonText: 'Ladda ner guide',
+                    downloadType: 'Sjukhus Guide',
+                    onSubmit: async function(formData) {
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        const response = await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                ...formData,
+                                source: 'sjukhus_guide',
+                                downloadType: 'Sjukhus Guide'
+                            })
+                        });
+
+                        if (response.ok) {
+                            window.open('generate-guide-pdf.html', '_blank');
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+                modal.show();
+            }
+        }
+
+        // Consultation booking handler
+        function showConsultationBooking() {
+            if (typeof LeadCaptureModal !== 'undefined') {
+                const modal = new LeadCaptureModal({
+                    title: 'Boka rådgivning för sjukhus',
+                    description: 'Vi kontaktar er inom 24 timmar för att boka ett möte.',
+                    submitButtonText: 'Boka rådgivning',
+                    requirePhone: true,
+                    onSubmit: async function(formData) {
+                        const apiUrl = window.TVATT_CONFIG ? window.TVATT_CONFIG.getApiUrl() : 'http://localhost:3000';
+                        const response = await fetch(`${apiUrl}/api/leads`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                ...formData,
+                                source: 'sjukhus_consultation'
+                            })
+                        });
+
+                        if (response.ok && typeof trackLeadCapture !== 'undefined') {
+                            trackLeadCapture('Sjukhus Consultation', true);
+                        }
+
+                        return response.ok;
+                    }
+                });
+                modal.show();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ProblemRecognition from '../components/ProblemRecognition.astro';
+import SolutionAreas from '../components/SolutionAreas.astro';
+import FAQ from '../components/FAQ.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+
+const pageTitle = "Tvättlösningar för Vård & Hygien – Guide för Beslutsfattare | tvättlösningar.se";
+const pageDescription = "Expertråd om tvättlösningar för sjukhus och äldreboenden. Lär dig om hygienstandard, kapacitetsplanering och livscykelkostnader. Gratis verktyg och guider.";
+
+const problems = [
+  {
+    icon: "🔬",
+    title: "Osäkerhet kring hygienstandarder",
+    description: "Vilka EN-standarder och certifieringar måste systemet verkligen uppfylla? Informationen är splittrad och svår att tolka."
+  },
+  {
+    icon: "🦠",
+    title: "Rädsla för smittspridning",
+    description: "Hur vet du att systemet verkligen eliminerar patogener? Ett fel kan få allvarliga konsekvenser för patientsäkerheten."
+  },
+  {
+    icon: "💸",
+    title: "Dolda kostnader som chockerar",
+    description: "Underhåll och energi blev dubbelt så dyrt som du räknade med. Budgeten håller inte – och ingen tog upp detta vid upphandlingen."
+  },
+  {
+    icon: "⚠️",
+    title: "Kapacitet som inte räcker vid toppar",
+    description: "Vid influensasäsong står systemet inte ut. Tvätten blir en flaskhals – och patientvården påverkas direkt."
+  },
+  {
+    icon: "🔧",
+    title: "Komplex integration med befintliga system",
+    description: "Ventilation, avlopp, IT-system – hur får du allt att fungera tillsammans? Koordineringen mellan leverantörer blir en mardröm."
+  },
+  {
+    icon: "👥",
+    title: "Ständigt behov av personalutbildning",
+    description: "Hög personalomsättning betyder konstant utbildning. Systemet måste vara intuitivt nog att alla klarar det – även under stress."
+  },
+  {
+    icon: "🏢",
+    title: "Leverantörer som inte förstår vården",
+    description: "De flesta leverantörer säljer samma system till alla branscher. Men vården har unika krav som kräver specialkunskap."
+  },
+  {
+    icon: "🏥",
+    title: "Installation som stör pågående vård",
+    description: "Hur installerar du ett nytt system utan att skapa driftstopp? Patientvården kan inte vänta medan tvättrummet byggs om."
+  }
+];
+
+const solutions = [
+  {
+    icon: "🛡️",
+    title: "Hygien och smittskydd du kan lita på",
+    description: "Vårdarvserfarenhet betyder att vi vet exakt vad som krävs för att uppfylla vårdens hygienkrav. Inte bara på pappret – utan i praktiken, dag efter dag. Med beprövade hygiencykler som följer EN 14065 och EN ISO 15883 får du dokumenterad eliminering av patogener, spårbarhet för varje tvättcykel och system anpassade för den svenska vårdsektorn med 96-97% driftsäkerhet.",
+    benefits: [
+      { text: "Minska infektionsrisker och skydda patienter" },
+      { text: "Undvik böter och varningar från tillsynsmyndigheter" },
+      { text: "Dokumentation som håller vid revision" },
+      { text: "Trygghet för personal och ledning" }
+    ],
+    ctaText: "Läs mer om hygienstandarder",
+    ctaHref: "/guider/vardguiden"
+  },
+  {
+    icon: "💰",
+    title: "Förutsägbar ekonomi över hela livscykeln",
+    description: "Det största misstaget vid upphandling? Att bara titta på inköpspriset. Verklig kostnad handlar om livscykelkostnad (LCC). Vi ger dig transparent LCC-kalkyl redan från start med alla kostnader synliga: inköp, installation, energi, underhåll och service. Funktionshyra-alternativet är populärt inom vården eftersom det inkluderar allt till en fast månadskostnad.",
+    benefits: [
+      { text: "Budget som stämmer – inga överraskningar om 3 år" },
+      { text: "Enklare ekonomistyrning med fast månadskostnad" },
+      { text: "Rätt val från början (inte billigaste som blir dyrast)" },
+      { text: "Frigör kapital för kärnverksamheten" }
+    ],
+    ctaText: "Beräkna din livscykelkostnad",
+    ctaHref: "/verktyg/roi-kalkylator"
+  },
+  {
+    icon: "🤝",
+    title: "Smidig integration och minimal störning",
+    description: "Installation av tvättsystem i vårdmiljö är komplext. Det kräver koordinering mellan VVS, el, ventilation, IT – och allt medan patientvården fortsätter. Med direktkontakt får du en partner som tar helhetsansvar. Vi koordinerar med alla parter så du slipper springa mellan leverantörer, planerar installation efter er verksamhet och ger utbildning för all personal.",
+    benefits: [
+      { text: "Patientvården går vidare utan avbrott" },
+      { text: "En kontaktperson istället för tio olika leverantörer" },
+      { text: "Personal som vet hur systemet fungerar från dag ett" },
+      { text: "Mindre stress för dig som beslutsfattare" }
+    ],
+    ctaText: "Boka samtal för att diskutera installation",
+    ctaHref: "#kontakt"
+  }
+];
+
+const faqItems = [
+  {
+    question: "Vilka hygienstandarder måste vårt tvättsystem uppfylla?",
+    answer: "För vårdinrättningar i Sverige gäller primärt EN 14065 (hygienisk tvätteriprocess) och EN ISO 15883 (desinfektion). Dessa standarder säkerställer att tvättprocessen eliminerar patogener effektivt.<br><br>Utöver detta ska systemet klara Socialstyrelsens krav för vårdhygien och ofta även specifika kommunala eller regionala riktlinjer. Vi hjälper er att identifiera exakt vilka standarder som gäller för just er verksamhetstyp och säkerställer att systemet uppfyller dem."
+  },
+  {
+    question: "Hur dimensionerar vi rätt kapacitet för vårt äldreboende/sjukhus?",
+    answer: "Som tumregel räknar vi med 3-4 kg tvätt per sängplats och dygn för äldreboende, och 5-7 kg för akutsjukhus. Men det är viktigt att dimensionera för topp-scenario, inte snitt.<br><br>Kapacitet beror på flera faktorer: antal sängplatser/vårdplatser, vårdtyp (akutvård kräver mer än äldreboende), omsättningshastighet och toppbelastning (influensasäsong, magsjukeutbrott).<br><br><a href='/verktyg/volymberaknare-vard' class='text-blue-600 hover:underline'>→ Beräkna kapacitet för din verksamhet</a>"
+  },
+  {
+    question: "Vad kostar en komplett tvättlösning för ett äldreboende med 50 platser?",
+    answer: "För ett äldreboende med 50 platser kan du räkna med:<br><br><strong>Direktköp:</strong> 400 000 - 600 000 kr (maskiner + installation) + löpande driftskostnader<br><strong>Funktionshyra:</strong> 8 000 - 12 000 kr/månad (allt inkluderat: maskiner, installation, underhåll, service)<br><strong>Leasing:</strong> 10 000 - 15 000 kr/månad + separata servicekostnader<br><br>Viktigt: Titta på total livscykelkostnad över 10 år, inte bara initial investering.<br><br><a href='/verktyg/roi-kalkylator' class='text-blue-600 hover:underline'>→ Jämför alternativen med vår LCC-kalkylator</a>"
+  },
+  {
+    question: "Hur integrerar tvättsystemet med våra befintliga VVS- och ventilationssystem?",
+    answer: "Integration kräver samordning mellan flera system:<br><br><strong>VVS:</strong> Tvättmaskiner behöver tillräckligt vattentryck (ofta 2-4 bar) och avlopp som klarar stora mängder vatten.<br><strong>Ventilation:</strong> Torktumlare genererar mycket fukt och värme. Ventilationssystemet måste klara 400-800 m³/h per torktumlare.<br><strong>El:</strong> Professionella maskiner kräver 3-fas 400V.<br><br>Vår styrka är direktkontakt – vi tar helhetsansvaret för koordineringen så att du slipper springa mellan olika leverantörer."
+  },
+  {
+    question: "Vilken automationsnivå är lämplig för vår personal?",
+    answer: "Det beror på personalens tekniska vana och omsättning:<br><br><strong>Grundnivå (manuell):</strong> Personal väljer program manuellt. Passar små enheter med erfaren personal.<br><strong>Mellannivå (förvald program):</strong> Färdiga program för olika tvättbehov. Mest populärt inom vården – enkelt att lära, svårt att göra fel.<br><strong>Hög automation:</strong> Automatisk kemikaliedosering och digital spårning. Rekommenderas för större verksamheter.<br><br>Vår rekommendation för vården: Mellannivå med automatisk dosering. Det ger rätt balans mellan enkelhet och kontroll."
+  },
+  {
+    question: "Hur jämför vi offerter när leverantörerna räknar olika?",
+    answer: "Detta är en av de största utmaningarna vid upphandling. Vad du MÅSTE jämföra:<br><br>• Total livscykelkostnad (10 år), inte bara inköpspris<br>• Vad som ingår: Installation, utbildning, service, reservdelar?<br>• Energiförbrukning (kWh per kg tvätt)<br>• Vattenförbrukning (liter per kg tvätt)<br>• Garantitid och vad den täcker<br>• Responstid vid service och support<br>• Certifieringar och hygienstandard<br><br><a href='/guider/vardguiden' class='text-blue-600 hover:underline'>→ Ladda ner upphandlingsguiden med jämförelsemodell</a>"
+  },
+  {
+    question: "Vad ska ingå i serviceavtalet?",
+    answer: "Ett bra serviceavtal för vården bör inkludera:<br><br><strong>Obligatoriskt:</strong><br>• Förebyggande underhåll (minst 1-2 gånger/år)<br>• Akut felsökning och reparation<br>• Reservdelar inkluderade (eller tydlig prislista)<br>• Responstid specificerad (vi rekommenderar max 24h för vården)<br>• Tillgänglighet till telefonsupport<br><br><strong>Rekommenderat:</strong><br>• Fjärrövervakning<br>• Hygienvalidering och dokumentation<br>• Regelbunden uppföljning<br>• Utbildning vid personalomsättning"
+  },
+  {
+    question: "Funktionshyra, leasing eller direktköp – vad är bäst för oss?",
+    answer: "<strong>Funktionshyra</strong> (mest populärt inom vården - 70% av våra kunder):<br>Fast månadskostnad som inkluderar allt, inget kapitalbindande, leverantören ansvarar för allt underhåll.<br><br><strong>Leasing:</strong><br>Lägre månadskostnad än funktionshyra, ni äger utrustningen efter avtalsperiod, service och underhåll tillkommer.<br><br><strong>Direktköp:</strong><br>Högst initial kostnad, lägst totalkostnad på lång sikt (15+ år), ni ansvarar för allt underhåll.<br><br><a href='/verktyg/roi-kalkylator' class='text-blue-600 hover:underline'>→ Jämför alternativen i vår kalkylator</a>"
+  },
+  {
+    question: "Hur lång tid tar installationen och påverkar det vår verksamhet?",
+    answer: "<strong>Tidsåtgång:</strong><br>• Förinstallation (VVS, el, ventilation): 1-2 veckor<br>• Själva maskininställningen: 1-3 dagar<br>• Provkörning och utbildning: 1-2 dagar<br>• Total tid från start till drift: 2-4 veckor<br><br>Vi planerar installation för att minimera störning genom att göra förberedande arbete före maskinleverans, installera under helger eller lågsäsong, och erbjuda temporär lösning vid behov."
+  },
+  {
+    question: "Vilken utbildning behöver vår personal?",
+    answer: "Vi tillhandahåller tre nivåer:<br><br><strong>1. Grundutbildning för operatörer (2-3 timmar):</strong> Daglig användning, programval, dosering, enkel felsökning, hygienrutiner. Språkanpassad vid behov.<br><br><strong>2. Fördjupad utbildning för ansvariga (halv dag):</strong> Systemöversikt, underhåll, rapportering, spårning, optimering.<br><br><strong>3. Uppdateringsutbildning:</strong> Vid personalomsättning (ingår ofta i serviceavtal) och systemuppdateringar.<br><br>Alla utbildningar dokumenteras och material lämnas för framtida referens."
+  },
+  {
+    question: "Vad kostar det att driva systemet per år?",
+    answer: "Årlig driftskostnad för ett medelstort äldreboende (50 platser, 3 maskiner):<br><br>• Energi: 30 000 - 45 000 kr<br>• Vatten: 8 000 - 12 000 kr<br>• Kemikalier: 15 000 - 25 000 kr<br>• Service/underhåll: 20 000 - 40 000 kr (om ej funktionshyra)<br>• <strong>Total: 73 000 - 122 000 kr/år</strong><br><br>Vid funktionshyra (allt inkl): 96 000 - 144 000 kr/år<br><br>Viktigt: Energieffektiva maskiner sparar 30-40% energi jämfört med äldre modeller.<br><br><a href='/verktyg/roi-kalkylator' class='text-blue-600 hover:underline'>→ Räkna på din verkliga driftskostnad</a>"
+  },
+  {
+    question: "Hur snabbt kan ni åtgärda akuta fel?",
+    answer: "<strong>Vår service-SLA för vårdkunder:</strong><br><br>• Akuta fel (systemet helt stoppat): Besök inom 24 timmar<br>• Icke-akuta fel (delvis funktion): Besök inom 48 timmar<br>• Telefonsupport: Tillgänglig vardagar 07:00-17:00, akut linje utanför kontorstid<br><br><strong>Fjärrövervakning:</strong> Många problem upptäcks och åtgärdas innan systemet går sönder. Vi ser avvikelser i realtid.<br><br>För vården är driftsäkerhet kritisk – därför prioriterar vi alltid vårdkunder vid akuta situationer."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} canonical="https://tvattlosningar.se/vard-och-hygien/" ogImage="/images/og/vard-och-hygien.jpg">
+  <Hero
+    title="Tvättlösningar som uppfyller vårdens hygienkrav – utan att spräcka budgeten"
+    subtitle="Som ansvarig för en vårdinrättning vet du att tvätthanteringen är kritisk för patientsäkerheten. Samtidigt pressar budgeten. Här får du expertkunskap om hur du väljer en tvättlösning som ger både hygienisk trygghet och ekonomisk kontroll – från en leverantör som förstår vårdens komplexa krav."
+    primaryCTA={{ text: "Beräkna din kapacitet", href: "/verktyg/volymberaknare-vard" }}
+    secondaryCTA={{ text: "Ladda ner vårdens tvättguide", href: "/guider/vardguiden" }}
+  />
+
+  <ProblemRecognition
+    title="Känner du igen dig i något av detta?"
+    intro="Många beslutsfattare inom vården möter dessa utmaningar när de ska välja tvättlösning:"
+    problems={problems}
+    closingText="Du är inte ensam om dessa utmaningar. Här är vad du behöver veta för att göra rätt val."
+  />
+
+  <SolutionAreas
+    title="Tre områden där rätt tvättlösning skapar verkligt värde"
+    intro="Baserat på vårdarvserfarenhet och direktkontakt med beslutsfattare inom vården vet vi vad som faktiskt spelar roll. Här är de tre områden där rätt tvättlösning gör störst skillnad:"
+    solutions={solutions}
+  />
+
+  <!-- Verktyg & Resurser sektion -->
+  <section id="verktyg" class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          Börja planera din lösning – kostnadsfritt
+        </h2>
+        <p class="text-lg text-gray-600">
+          Använd våra verktyg för att få klarhet i vad din verksamhet faktiskt behöver. Alla verktyg är kostnadsfria och ger dig konkreta svar direkt.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Volymberäknare -->
+        <div class="bg-gradient-to-br from-blue-50 to-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
+          <div class="text-4xl mb-4">📊</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">
+            Volymberäknare för vården
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Hur många maskiner behöver ni egentligen? Få ett konkret svar baserat på era sängplatser, omsättning och verksamhetstyp.
+          </p>
+          <div class="bg-blue-50 rounded-lg p-4 mb-4">
+            <p class="text-sm font-semibold text-blue-900 mb-2">Vad du får:</p>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>• Rekommenderad kapacitet (antal maskiner + kg)</li>
+              <li>• Uppskattad investering</li>
+              <li>• Jämförelse mellan olika systemlösningar</li>
+            </ul>
+          </div>
+          <p class="text-sm text-gray-500 mb-4">⏱️ Tar 3 minuter</p>
+          <a href="/verktyg/volymberaknare-vard" class="inline-block bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition">
+            Beräkna din kapacitet
+          </a>
+        </div>
+
+        <!-- ROI-kalkylator -->
+        <div class="bg-gradient-to-br from-green-50 to-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
+          <div class="text-4xl mb-4">💰</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">
+            LCC-kalkylator: Jämför dina alternativ
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Se den verkliga kostnaden över 10 år. Jämför direktköp, leasing och funktionshyra – och se vilket alternativ som faktiskt är mest lönsamt.
+          </p>
+          <div class="bg-green-50 rounded-lg p-4 mb-4">
+            <p class="text-sm font-semibold text-green-900 mb-2">Vad du får:</p>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>• Total ägandekostnad över 5/10 år</li>
+              <li>• Månadskostnad för varje alternativ</li>
+              <li>• Interaktiv graf som visar kostnadsutvecklingen</li>
+              <li>• PDF-rapport att dela med ekonomiavdelningen</li>
+            </ul>
+          </div>
+          <p class="text-sm text-gray-500 mb-4">⏱️ Tar 4 minuter</p>
+          <a href="/verktyg/roi-kalkylator" class="inline-block bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition">
+            Räkna på livscykelkostnad
+          </a>
+        </div>
+
+        <!-- Beredskapsquiz -->
+        <div class="bg-gradient-to-br from-purple-50 to-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
+          <div class="text-4xl mb-4">✅</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">
+            Beredskapsquiz för vårdinköp
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Är ni redo för upphandlingen? Gör vårt test på 2 minuter och få en personlig rapport med vad ni bör tänka på.
+          </p>
+          <div class="bg-purple-50 rounded-lg p-4 mb-4">
+            <p class="text-sm font-semibold text-purple-900 mb-2">Vad du får:</p>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>• Din beredskapspoäng (0-100)</li>
+              <li>• Områden där ni är väl förberedda</li>
+              <li>• Konkreta rekommendationer för nästa steg</li>
+              <li>• Checklista att använda i upphandlingsprocessen</li>
+            </ul>
+          </div>
+          <p class="text-sm text-gray-500 mb-4">⏱️ Tar 2 minuter</p>
+          <a href="/verktyg/beredskapsquiz?industry=vard" class="inline-block bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+            Gör testet nu
+          </a>
+        </div>
+
+        <!-- Nedladdningsbar guide -->
+        <div class="bg-gradient-to-br from-orange-50 to-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
+          <div class="text-4xl mb-4">📄</div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">
+            Vårdens kompletta tvättguide
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Ladda ner vår omfattande guide (PDF, 15 sidor) med allt du behöver veta för att göra rätt val.
+          </p>
+          <div class="bg-orange-50 rounded-lg p-4 mb-4">
+            <p class="text-sm font-semibold text-orange-900 mb-2">Guiden innehåller:</p>
+            <ul class="text-sm text-gray-700 space-y-1">
+              <li>• Hygienstandarder förklarade (EN 14065, ISO 15883)</li>
+              <li>• Steg-för-steg kapacitetsplanering</li>
+              <li>• Checklista för upphandling</li>
+              <li>• Vanliga misstag att undvika</li>
+              <li>• Frågor att ställa till leverantörer</li>
+              <li>• Mallar för kravspecifikation</li>
+            </ul>
+          </div>
+          <a href="/guider/vardguiden" class="inline-block bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-700 transition">
+            Ladda ner guiden (gratis)
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <FAQ
+    title="Vanliga frågor om tvättlösningar inom vården"
+    intro="Här är svaren på de vanligaste frågorna vi får från beslutsfattare inom sjukhus, äldreboenden och vårdmottagningar."
+    items={faqItems}
+    closingText="Har du fler frågor? Boka ett kostnadsfritt samtal med en expert som förstår vårdens specifika behov."
+    ctaText="Kontakta en vårdexpert"
+    ctaHref="#kontakt"
+  />
+
+  <FinalCTA
+    title="Redo att ta nästa steg?"
+    description="Boka ett kostnadsfritt rådgivningssamtal med en expert som förstår vårdens krav."
+    benefits={[
+      "Förstå vilka hygienkrav som gäller för just er verksamhet",
+      "Räkna på verklig livscykelkostnad (inte bara inköpspris)",
+      "Planera installation utan att störa patientvården",
+      "Få svar på era specifika frågor"
+    ]}
+    ctaText="Boka gratis rådgivning"
+    ctaHref="#kontakt"
+    trustElements={[
+      "Ingen försäljning, bara ärlig rådgivning",
+      "30 minuters samtal med vårdexpert",
+      "Konkreta nästa steg för ert projekt"
+    ]}
+  />
+</BaseLayout>
