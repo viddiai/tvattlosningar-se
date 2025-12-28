@@ -1,33 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --font-inter: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-outfit: 'Outfit', system-ui, -apple-system, sans-serif;
+
+    /* Color tokens */
+    --color-brand: #1a73e8;
+    --color-brand-light: #e8f1fd;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-muted: #64748b;
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8fafc;
+    --color-bg-tertiary: #f1f5f9;
+    --color-border: #e2e8f0;
+    --color-border-light: #f1f5f9;
   }
 
   * {
-    @apply border-ken-gray-200;
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   body {
-    @apply bg-white text-ken-gray-900;
+    @apply bg-white text-slate-900;
+    font-family: var(--font-outfit);
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
   }
 
-  /* Smooth scrolling */
-  html {
-    scroll-behavior: smooth;
+  /* Typography refinements */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-slate-900;
   }
 
-  /* Focus styles for accessibility */
+  p {
+    @apply text-slate-600 leading-relaxed;
+  }
+
+  /* Focus styles */
   *:focus-visible {
-    @apply outline-none ring-2 ring-ken-blue ring-offset-2;
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-brand-100 text-brand-900;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-narrow {
+    @apply mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-lg {
+    @apply py-20 md:py-32;
+  }
+
+  /* Card styles */
+  .card {
+    @apply rounded-xl border border-slate-200 bg-white shadow-card transition-all duration-200;
+  }
+
+  .card-hover {
+    @apply hover:shadow-card-hover hover:border-slate-300;
+  }
+
+  /* Button base styles */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-500 text-white hover:bg-brand-600 focus-visible:ring-brand-500;
+  }
+
+  .btn-secondary {
+    @apply btn border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white focus-visible:ring-slate-900;
+  }
+
+  .btn-ghost {
+    @apply btn text-slate-600 hover:bg-slate-100 hover:text-slate-900 focus-visible:ring-slate-400;
+  }
+
+  /* Table styles matching the design */
+  .data-table {
+    @apply w-full border-collapse;
+  }
+
+  .data-table th {
+    @apply px-4 py-3 text-left text-xs font-semibold uppercase tracking-wider text-slate-500 bg-slate-50 border-b border-slate-200;
+  }
+
+  .data-table td {
+    @apply px-4 py-4 text-sm text-slate-700 border-b border-slate-100;
+  }
+
+  .data-table tr:last-child td {
+    @apply border-b-0;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-medium;
+  }
+
+  .badge-brand {
+    @apply badge bg-brand-50 text-brand-700;
+  }
+
+  .badge-success {
+    @apply badge bg-emerald-50 text-emerald-700;
+  }
+
+  /* Icon container */
+  .icon-box {
+    @apply flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600;
+  }
+
+  .icon-box-lg {
+    @apply flex h-14 w-14 items-center justify-center rounded-xl bg-brand-50 text-brand-600;
+  }
+
+  /* Stat card */
+  .stat-value {
+    @apply text-4xl font-bold tracking-tight text-brand-600;
+  }
+
+  .stat-label {
+    @apply text-sm font-medium uppercase tracking-wider text-slate-500;
   }
 }
 
 @layer utilities {
-  /* Hide scrollbar but keep functionality */
+  /* Hide scrollbar */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -37,25 +162,46 @@
     display: none;
   }
 
-  /* Custom container */
-  .container {
-    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-600 to-brand-400 bg-clip-text text-transparent;
+  }
+
+  /* Blueprint pattern background */
+  .bg-blueprint {
+    background-image:
+      linear-gradient(rgba(26, 115, 232, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 115, 232, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Subtle grid pattern */
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(0, 0, 0, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.02) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Gradient overlays */
+  .gradient-fade-b {
+    @apply bg-gradient-to-b from-transparent to-white;
+  }
+
+  .gradient-fade-t {
+    @apply bg-gradient-to-t from-transparent to-white;
   }
 }
 
 /* Animations */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 @keyframes slideUp {
   from {
-    transform: translateY(20px);
+    transform: translateY(16px);
     opacity: 0;
   }
   to {
@@ -66,7 +212,7 @@
 
 @keyframes slideDown {
   from {
-    transform: translateY(-20px);
+    transform: translateY(-16px);
     opacity: 0;
   }
   to {
@@ -76,7 +222,7 @@
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.4s ease-out;
 }
 
 .animate-slide-up {
@@ -84,5 +230,11 @@
 }
 
 .animate-slide-down {
-  animation: slideDown 0.5s ease-out;
+  animation: slideDown 0.4s ease-out;
 }
+
+/* Staggered animation delays */
+.animate-delay-100 { animation-delay: 100ms; }
+.animate-delay-200 { animation-delay: 200ms; }
+.animate-delay-300 { animation-delay: 300ms; }
+.animate-delay-400 { animation-delay: 400ms; }
